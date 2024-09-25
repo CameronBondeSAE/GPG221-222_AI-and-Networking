@@ -2733,7 +2733,7 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 1050360910}
-    PlayerPrefab: {fileID: 0}
+    PlayerPrefab: {fileID: 1921023574}
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: e519af4a72e75774bafeb34f32ac45b4, type: 2}
@@ -2935,6 +2935,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1921023574 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6268239980472248478, guid: 1fa9540019f86944db1280528ecfe275,
+    type: 3}
+  m_PrefabInstance: {fileID: 2325385563604736729}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2037755435
 PrefabInstance:
   m_ObjectHideFlags: 0
