@@ -25,6 +25,34 @@ public class ColourChanger : NetworkBehaviour
 		}
 	}
 
+	public void Update()
+	{
+		// Local only. Not networked
+		if (IsLocalPlayer)
+		{
+			if(Input.GetKeyDown(KeyCode.Space))
+			{
+				GetBigOrDieTrying_RequestToServer_Rpc();
+			}
+		}
+	}
+
+	// Function that ONLY runs on the server. Typically for client controller code when they press buttons etc
+	[Rpc(SendTo.Server, RequireOwnership = true, Delivery = RpcDelivery.Reliable)]
+	private void GetBigOrDieTrying_RequestToServer_Rpc()
+	{
+		// Check if it's legal/not cheating
+		GetBigOrDieTrying_ServerToClients_Rpc();
+	}
+
+	// Function that runs from the Server TO ALL clients
+	[Rpc(SendTo.ClientsAndHost, RequireOwnership = false, Delivery = RpcDelivery.Reliable)]
+	private void GetBigOrDieTrying_ServerToClients_Rpc()
+	{
+		// This is bugged
+		transform.localScale = transform.localScale + new Vector3(1.25f, 1.25f, 1.25f);
+	}
+
 	/// <summary>
 	/// Client side only
 	/// View (Pure presentation to the player, graphics, sounds etc, no game logic)
