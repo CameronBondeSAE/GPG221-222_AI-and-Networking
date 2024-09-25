@@ -2,22 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Avoid : MonoBehaviour
+namespace CameronBonde
 {
-	public Rigidbody rb;
-	[SerializeField]
-	private float turnSpeed = 10f;
+	public class Avoid : MonoBehaviour
+	{
+		public Rigidbody rb;
 
-	[SerializeField]
-	private float distance = 2.5f;
+		[SerializeField]
+		private float turnSpeed = 10f;
 
-	void FixedUpdate()
-    {
-	    bool hitSomething = Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, distance);
+		[SerializeField]
+		private float distance = 2.5f;
 
-	    if (hitSomething)
-	    {
-		    rb.AddRelativeTorque(0, turnSpeed, 0);
-	    }
-    }
+		void FixedUpdate()
+		{
+			bool hitSomething = Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, distance);
+			
+			if (hitSomething)
+			{
+				rb.AddRelativeTorque(0, turnSpeed, 0);
+			}
+		}
+	}
 }
