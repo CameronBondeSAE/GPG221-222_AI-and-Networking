@@ -26,11 +26,12 @@ public class NavMeshPath_EB : MonoBehaviour
         NavMesh.CalculatePath(transform.position, targetPoint.position, NavMesh.AllAreas, path);
         foreach (var corner in path.corners)
         {
-            
+
             Debug.DrawLine(lastPoint, corner, Color.green);
             lastPoint = corner;
         }
-        
+
     }
 
+    
 }
