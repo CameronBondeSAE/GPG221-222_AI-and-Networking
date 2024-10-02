@@ -5,9 +5,7 @@ using UnityEngine;
 public class MoveForward_EB : MonoBehaviour
 {
 
-    public float turnSpeed = 2;
-    public Transform targetObject;
-    public Vector3 targetPosition;
+    
 
     public Rigidbody rb;
 
@@ -27,22 +25,16 @@ public class MoveForward_EB : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Ray ray = new Ray(transform.position, transform.forward);
+        if (!Physics.Raycast(ray, out RaycastHit hit, 3f))
+        {
+            rb.AddRelativeForce(0, 0, speed);
+        }
+
 
         rb.AddRelativeForce(0, 0, speed);
 
-        Vector3 targetDir;
-        if (targetObject)
-        {
-            // Has a target gameobject
-            targetDir = targetObject.position - transform.position;
-        }
-        else
-        {
-            // Just a raw position in the world (for pathfinding points)
-            targetDir = targetPosition - transform.position;
-        }
-
-        float angle = Vector3.SignedAngle(transform.forward, targetDir, Vector3.up);
+       
     }
 
     

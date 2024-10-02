@@ -8,8 +8,10 @@ public class Avoid_EB : MonoBehaviour
 {
     public Rigidbody rb;
 
-    [SerializeField] private float turnSpeed = 10f;
+    [SerializeField] private float turnSpeedRight = 10f;
+    [SerializeField] private float turnSpeedLeft = -10f;
     [SerializeField] private float distance = 2f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,9 +26,17 @@ public class Avoid_EB : MonoBehaviour
 
         if (hitsomething)
         {
-            rb.AddRelativeTorque(0, turnSpeed, 0);
+            if (Random.value < .1)
+            {
+                rb.AddRelativeTorque(0, turnSpeedRight, 0);
+            }
+            else
+            {
+                rb.AddRelativeTorque(0, turnSpeedLeft, 0);
+            }
+            
         }
 
-      
+        
     }
 }
