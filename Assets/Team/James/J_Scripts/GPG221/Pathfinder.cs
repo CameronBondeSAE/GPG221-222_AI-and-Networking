@@ -10,17 +10,14 @@ namespace JamesKilpatrick
         // NAVMESH
         // Variable that gets filled in with the points
         public NavMeshPath path;
-        public Transform targetPoint;
+        public Transform target;
 
         public Vector3 lastPoint;
+        public Vector3[] pathCorners;
 
-        public void Start()
-        {
-           
-        }
 
         // ONLY USE UPDATE WHILE DEVELOPING. Eventually your planner will call this only when it needs to
-        void Update()
+        void Start()
         {
             lastPoint = transform.position;
 
@@ -29,10 +26,14 @@ namespace JamesKilpatrick
 
 
             // Call this when you want to go somewhere! Then read the path variable and you’ll see
-            NavMesh.CalculatePath(transform.position, targetPoint.position, NavMesh.AllAreas, path);
+            NavMesh.CalculatePath(transform.position, target.position, NavMesh.AllAreas, path);
 
-           foreach (Vector3 point in path.corners) 
-            {             
+
+        }
+        private void Update()
+        {
+            foreach (Vector3 point in path.corners)
+            {
                 Debug.DrawLine(lastPoint, point, Color.green);
                 lastPoint = point;
             }
