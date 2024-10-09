@@ -14,7 +14,7 @@ public class Spawner : MonoBehaviour
     {
 	    for (int i = 0; i < amount; i++)
 	    {
-		    Instantiate(prefab, transform.position, Quaternion.identity);
+		    Instantiate(prefab, transform.position, Quaternion.Euler(0, Random.Range(0,360), 0));
 	    }
     }
 }

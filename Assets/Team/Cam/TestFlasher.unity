@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 3659569580969461428, guid: 93813c72c8dcdd243ae24c3c1d7df091, type: 3}
-  amount: 2
+  amount: 10
 --- !u!4 &278883391
 Transform:
   m_ObjectHideFlags: 0
