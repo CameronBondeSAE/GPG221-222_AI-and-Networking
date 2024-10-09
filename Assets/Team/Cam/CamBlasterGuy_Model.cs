@@ -2,9 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CameronBonde
+public class CamBlasterGuy_Model : MonoBehaviour
 {
-	public class CamBlasterGuy_Model : Character_Base
-	{
-	}
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }
