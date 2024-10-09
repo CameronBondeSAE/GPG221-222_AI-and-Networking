@@ -6,8 +6,6 @@ public class NeighbourManager_EB : MonoBehaviour
 {
     public List<Transform> neighbours = new List<Transform>();
 
-
-
     public void OnTriggerEnter(Collider other)
     {
         if (!other.isTrigger)
