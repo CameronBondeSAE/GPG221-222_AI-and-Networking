@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Alignment : MonoBehaviour
+public class Allign_EB : MonoBehaviour
 {
     // Variable pointing to your Neighbours component
     // Neighbours neighbours;
     public Rigidbody rb;
-    [SerializeField] private float force = 100f;
+    public NeighbourManager_EB neighbours;
+    public float force;
 
     void FixedUpdate()
     {
         // Some are Torque, some are Force		
-        Vector3 targetDirection = CalculateMove(neighbours.neighboursList);
+        Vector3 targetDirection = CalculateMove(neighbours.neighbours);
 
         // Cross will take YOUR direction and the TARGET direction and turn it into a rotation force vector. It CROSSES through both at 90 degrees
         Vector3 cross = Vector3.Cross(transform.forward, targetDirection);

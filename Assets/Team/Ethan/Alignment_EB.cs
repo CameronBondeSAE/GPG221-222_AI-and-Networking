@@ -14,6 +14,8 @@ public class Alignment_EB : MonoBehaviour
 
     public void FixedUpdate()
     {
+
+        
         // Some are Torque, some are Force		
         Vector3 targetDirection = CalculateMove(neighbours.neighbours);
 
