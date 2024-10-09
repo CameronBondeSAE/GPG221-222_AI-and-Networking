@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &55200574
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -243,7 +243,7 @@ GameObject:
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &278883390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3105,6 +3105,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3659569580969461428, guid: 93813c72c8dcdd243ae24c3c1d7df091,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4035789193586142573, guid: 93813c72c8dcdd243ae24c3c1d7df091,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3350,6 +3355,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube flasher
       objectReference: {fileID: 0}
+    - target: {fileID: 6268239980472248478, guid: 1fa9540019f86944db1280528ecfe275,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3363,7 +3373,6 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 2325385563604736729}
-  - {fileID: 1050360912}
   - {fileID: 2037755435}
   - {fileID: 684307551}
   - {fileID: 963342173}
@@ -3374,4 +3383,5 @@ SceneRoots:
   - {fileID: 1300292509}
   - {fileID: 1650844176}
   - {fileID: 55200577}
+  - {fileID: 1050360912}
   - {fileID: 352198066}
