@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace CameronBonde
 {
@@ -11,10 +12,13 @@ namespace CameronBonde
 		[SerializeField]
 		private float force = 100f;
 
+		[SerializeField]
+		private NeighboursManager neighboursManager;
+
 		void FixedUpdate()
 		{
 			// Some are Torque, some are Force		
-			Vector3 targetDirection = CalculateMove(neighbours.neighboursList);
+			Vector3 targetDirection = CalculateMove(neighboursManager.neighbours);
 
 			// Cross will take YOUR direction and the TARGET direction and turn it into a rotation force vector. It CROSSES through both at 90 degrees
 			Vector3 cross = Vector3.Cross(transform.forward, targetDirection);
