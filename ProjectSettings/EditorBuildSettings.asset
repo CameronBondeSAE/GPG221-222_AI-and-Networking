@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MainCubeTest.unity
     guid: 306207680b5d2404f98e61ee1076e950
+  - enabled: 1
+    path: Assets/Team/Ethan/Scenes_EB/MarbleGame_EB.unity
+    guid: f7660e0d42f0bd249b5516b6da75206a
   m_configObjects: {}

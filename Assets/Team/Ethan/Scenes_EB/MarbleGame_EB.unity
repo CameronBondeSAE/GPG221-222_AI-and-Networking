@@ -1969,7 +1969,7 @@ PrefabInstance:
     - target: {fileID: 90463951873978608, guid: 43ded7a296b94b541a0b06fab8934cff,
         type: 3}
       propertyPath: changeDirectionDelay
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5768642838397479062, guid: 43ded7a296b94b541a0b06fab8934cff,
         type: 3}
