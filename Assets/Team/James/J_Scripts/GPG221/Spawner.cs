@@ -24,7 +24,7 @@ namespace JamesKilpatrick
         {
             for (int i = 0; i < amount; i++)
             {
-                Instantiate(character, transform.position, Quaternion.Euler(0, Random.Range(0, 360),0));
+                Instantiate(character, transform.position, Quaternion.identity);
             }
         }
     }

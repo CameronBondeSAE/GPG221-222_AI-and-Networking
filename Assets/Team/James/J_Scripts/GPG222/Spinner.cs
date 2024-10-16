@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using Unity.Netcode;
 
 namespace JamesKilpatrick
 {
-    public class Spinner : NetworkBehaviour
+    public class Spinner : MonoBehaviour
     {
 
         public Rigidbody spinBody;
@@ -45,51 +44,46 @@ namespace JamesKilpatrick
 
         void Start()
         {
-            StartCoroutine(StateManager());
+            // StartCoroutine(Spinning());
         }
 
         // Update is called once per frame
         void FixedUpdate()
         {
-            //Players should not have control of changing states
-            //if (IsServer)
+
+            if (state == states.Idle)
             {
-                if (state == states.Idle)
-                {
-                    rend.material.color = Color.white;
-                    // Do Idle
-                }
-                if (state == states.Rotating)
-                {
-
-                    //Starts spin
-                    SpinRotate_ServerToClients_RPC();
-                    rend.material.color = Color.green;
-                }
-                if (state == states.Moving)
-                {
-
-                    //Starts movement 
-                    SpinMovement_ServerToClients_RPC();
-                    rend.material.color = Color.red;
-                }
+                rend.material.color = Color.white;
+                // Do Idle
+            }
+            if (state == states.Rotating)
+            {
+                //Starts spin coroutine
+                StartCoroutine(Spinning());
+                rend.material.color = Color.green;
+            }
+            if (state == states.Moving)
+            {
+                //Starts movement coroutine
+                StartCoroutine(Movement());
+                rend.material.color = Color.red;
             }
 
         }
-        IEnumerator StateManager()
+
+        IEnumerator Spinning()
         {
-            state = states.Rotating;
-            yield return new WaitForSeconds(5);
+            spinTransform.Rotate(0, 1f, 0);
+            yield return new WaitForSeconds(5f);
+            StopCoroutine(Spinning());
             state = states.Moving;
-            yield return new WaitForSeconds(10);
-            Debug.Log("Endo");
-            StartCoroutine(StateManager());
+           
+
         }
 
-        // Function that runs from the Server TO ALL clients
-        [Rpc(SendTo.ClientsAndHost, RequireOwnership = false, Delivery = RpcDelivery.Reliable)]
-        private void SpinMovement_ServerToClients_RPC()
+        IEnumerator Movement()
         {
+
             if (targetObject)
             {
                 targetDirection = (targetObject.position - transform.position).normalized;
@@ -110,13 +104,19 @@ namespace JamesKilpatrick
 
             spinBody.AddRelativeTorque(0, angle, 0);
             spinBody.AddRelativeForce(0, 0, speed);
+
+            yield return new WaitForSeconds(10f);
+            StopCoroutine(Movement());
+            state = states.Rotating;
+            
+
         }
 
-        // Function that runs from the Server TO ALL clients
-        [Rpc(SendTo.ClientsAndHost, RequireOwnership = false, Delivery = RpcDelivery.Reliable)]
-        public void SpinRotate_ServerToClients_RPC()
+        IEnumerator StateManager()
         {
-            spinTransform.Rotate(0, 1f, 0);
+            state = states.Rotating;
+            yield return new WaitForSeconds(5f);
+            state = states.Moving;
         }
     }
 }

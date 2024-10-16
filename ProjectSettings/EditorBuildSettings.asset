@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/MainCubeTest.unity
     guid: 306207680b5d2404f98e61ee1076e950
   - enabled: 1
-    path: Assets/Team/Ethan/Scenes_EB/MarbleGame_EB.unity
-    guid: f7660e0d42f0bd249b5516b6da75206a
+    path: Assets/Team/Cam/TestFlasher.unity
+    guid: 7b92b2e6f9d2ab3488bd1334d890afe9
   - enabled: 1
-    path: Assets/Team/James/J_Scenes/James_MarbleGame.unity
-    guid: 73cef7e1c8e4aad49819b6655f7efbfc
+    path: Assets/Scenes/TestGameManager.unity
+    guid: 1ad8ba6f8bc76f9409d716ef39046fe2
+  - enabled: 1
+    path: Assets/Scenes/MarbleMain.unity
+    guid: 18458be06e0e0244caa3fb765821369c
   m_configObjects: {}
