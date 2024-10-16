@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace CameronBonde
 {
-	public class CamBlasterGuy_Model : Character_Base
+	public class CamMonsterGuy : Character_Base
 	{
+
 	}
 }
