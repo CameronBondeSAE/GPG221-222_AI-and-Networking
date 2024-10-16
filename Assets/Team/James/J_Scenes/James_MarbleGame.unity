@@ -1529,6 +1529,7 @@ GameObject:
   - component: {fileID: 1272754997}
   - component: {fileID: 1272754996}
   - component: {fileID: 1272754995}
+  - component: {fileID: 1272755000}
   - component: {fileID: 1272754994}
   - component: {fileID: 1272754993}
   - component: {fileID: 1272754999}
@@ -1584,7 +1585,7 @@ MonoBehaviour:
   newTargetPosition: {x: 0, y: 0, z: 0}
   targetDirection: {x: 0, y: 0, z: 0}
   turnspeed: 3
-  speed: 5000
+  speed: 500
   targetObject: {fileID: 0}
   rend: {fileID: 1272754996}
   reachedTargetPosition: 0
@@ -1696,6 +1697,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1272755000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272754992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2098346682
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &1312609315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,6 +1858,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1460210754}
   - component: {fileID: 1460210755}
+  - component: {fileID: 1460210756}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1872,12 +1895,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkConfig:
     ProtocolVersion: 0
-    NetworkTransport: {fileID: 0}
+    NetworkTransport: {fileID: 1460210756}
     PlayerPrefab: {fileID: 0}
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: 5084bb7f750296f4a83bc48c4594db0e, type: 2}
-    TickRate: 10
+    TickRate: 30
     ClientConnectionBufferTimeout: 10
     ConnectionApproval: 0
     ConnectionData: 
@@ -1895,6 +1918,33 @@ MonoBehaviour:
     OldPrefabList: []
   RunInBackground: 1
   LogLevel: 1
+--- !u!114 &1460210756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460210753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6960e84d07fb87f47956e7a81d71c4e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ProtocolType: 0
+  m_MaxPacketQueueSize: 128
+  m_MaxPayloadSize: 6144
+  m_HeartbeatTimeoutMS: 500
+  m_ConnectTimeoutMS: 1000
+  m_MaxConnectAttempts: 60
+  m_DisconnectTimeoutMS: 30000
+  ConnectionData:
+    Address: 127.0.0.1
+    Port: 7777
+    ServerListenAddress: 127.0.0.1
+  DebugSimulator:
+    PacketDelayMS: 0
+    PacketJitterMS: 0
+    PacketDropRate: 0
 --- !u!1 &1464347417 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7203126632311761550, guid: 8a262fa1c1e1b364083290ef8b64b4af,
