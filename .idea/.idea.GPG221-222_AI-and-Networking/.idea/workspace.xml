@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3d7cde75-73d7-487e-a029-7ab897593ebf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Team/Cam/Bash.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Team/Cam/Bash.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Team/Cam/New Animator Controller.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Team/Cam/New Animator Controller.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Team/Ethan/Alignment.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Team/Cam/Alignment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Team/Cam/Alignment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Team/Cam/CamBlasterGuy_Model.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Team/Cam/CamBlasterGuy_Model.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Team/Cam/NeighboursManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Team/Cam/NeighboursManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Team/Cam/TestFlasher.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Team/Cam/TestFlasher.unity" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitRewordedCommitMessages">
+    <option name="onto" value="7bb541c962b6dceeaccb37f829bce20ed5cb9c61" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "53358bad",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="GitHub.CommitStatus" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="main" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="HEAD" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
