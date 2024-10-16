@@ -1,3 +1,4 @@
+using JamesKilpatrick;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -56,11 +57,20 @@ public class TurnTowards_EB : MonoBehaviour
 
         if (nav.path != null)
         {
-            if (Vector3.Distance(transform.position, nav.path.corners[cornerIndex]) < minimumDistanceToCorner)
+            if (cornerIndex < nav.path.corners.Length)
             {
-                cornerIndex++;
-                GetComponent<TurnTowards_EB>().targetPosition = nav.path.corners[cornerIndex];
+                if (Vector3.Distance(transform.position, nav.path.corners[cornerIndex]) < minimumDistanceToCorner)
+                {
+                    cornerIndex++;
+                    GetComponent<TurnTowards_EB>().targetPosition = nav.path.corners[cornerIndex];
+                }
+                else
+                {
+                    enabled = false;
+                }
             }
+
+            
         }
 
         

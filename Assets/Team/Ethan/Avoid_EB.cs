@@ -4,39 +4,39 @@ using Unity.VisualScripting;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
-public class Avoid_EB : MonoBehaviour
+namespace EB
 {
-    public Rigidbody rb;
-
-    [SerializeField] private float turnSpeedRight = 10f;
-    [SerializeField] private float turnSpeedLeft = -10f;
-    [SerializeField] private float distance = 2f;
-
-
-    // Start is called before the first frame update
-    void Start()
+    public class Avoid_EB : MonoBehaviour
     {
-        
-    }
+        public Rigidbody rb;
 
-    // Update is called once per frame
-    void Update()
-    {
-        bool hitsomething = Physics.Raycast(origin: transform.position, direction: transform.forward, out RaycastHit hit, distance);
+        [SerializeField] private float turnSpeedRight = 10f;
+        [SerializeField] private float turnSpeedLeft = -10f;
+        [SerializeField] private float distance = 2f;
 
-        if (hitsomething)
+
+        // Start is called before the first frame update
+        void Start()
         {
-            if (Random.value < .1)
-            {
-                rb.AddRelativeTorque(0, turnSpeedRight, 0);
-            }
-            else
-            {
-                rb.AddRelativeTorque(0, turnSpeedLeft, 0);
-            }
-            
+
         }
 
-        
+        // Update is called once per frame
+        void Update()
+        {
+            bool hitsomething = Physics.Raycast(origin: transform.position, direction: transform.forward, out RaycastHit hit, distance);
+
+            if (hitsomething)
+            {
+                
+                
+                 rb.AddRelativeTorque(0, turnSpeedLeft, 0);
+                
+
+            }
+
+
+        }
     }
 }
+

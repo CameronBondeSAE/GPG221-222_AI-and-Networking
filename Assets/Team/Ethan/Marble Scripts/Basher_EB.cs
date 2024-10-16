@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using Unity.Netcode;
 using UnityEngine;
 
-public class Basher_EB : MonoBehaviour
+public class Basher_EB : NetworkBehaviour
 {
     [SerializeField] private GameObject basher;
     [SerializeField] private float startTimer;
@@ -23,14 +25,15 @@ public class Basher_EB : MonoBehaviour
         destinationTarget = endPostion;
 
         startTimer = Time.time;
-        isWaiting = true;
         journeyLength = Vector3.Distance(departTarget.position, destinationTarget.position);
+        isWaiting = false;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        MoveDown();
+       if (IsServer)
+            MoveDown();
     }
 
     private void MoveDown()

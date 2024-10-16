@@ -2,27 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NeighbourManager_EB : MonoBehaviour
+namespace EB
 {
-    public List<Transform> neighbours = new List<Transform>();
-
-    public LayerMask Critters;
-
-    public void OnTriggerEnter(Collider other)
+    public class NeighbourManager_EB : MonoBehaviour
     {
-        if (!other.isTrigger && other.CompareTag("Critters"))
-        {
-            neighbours.Add(other.transform);
-        }
-        
-    }
+        public List<Transform> neighbours = new List<Transform>();
 
-    public void OnTriggerExit(Collider other)
-    {
-        if (!other.isTrigger && other.CompareTag("Critters"))
+        public LayerMask Critters;
+
+        public void OnTriggerEnter(Collider other)
         {
-            neighbours.Remove(other.transform);
+            if (!other.isTrigger && other.CompareTag("Critters"))
+            {
+                neighbours.Add(other.transform);
+            }
+
         }
-        
+
+        public void OnTriggerExit(Collider other)
+        {
+            if (!other.isTrigger && other.CompareTag("Critters"))
+            {
+                neighbours.Remove(other.transform);
+            }
+
+        }
     }
 }
+
