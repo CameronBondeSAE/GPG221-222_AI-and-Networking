@@ -4,7 +4,9 @@ using UnityEngine;
 
 namespace CameronBonde
 {
-	public class CamBlasterGuy_Model : Character_Base
+	public class Character_Base : MonoBehaviour
 	{
+		public float speed;
+
 	}
 }
