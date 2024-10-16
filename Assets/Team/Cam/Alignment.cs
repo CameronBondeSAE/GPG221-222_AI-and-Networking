@@ -9,8 +9,10 @@ namespace CameronBonde
 		// Variable pointing to your Neighbours component
 		// Neighbours neighbours;
 		public Rigidbody rb;
-		[SerializeField]
-		private float force = 100f;
+
+=======
+		public float force = 100f;
+
 
 		[SerializeField]
 		private NeighboursManager neighboursManager;

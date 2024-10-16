@@ -8,15 +8,24 @@ namespace CameronBonde
 	{
 		public List<Transform> neighbours;
 
+
+		public LayerMask layerMask;
+		
 		private void OnTriggerEnter(Collider other)
 		{
-			if (other.GetComponent<CamBlasterGuy_Model>())
+			// if ((layerMask.value & (1 << layerMask)) != 0)
+			// {
 				neighbours.Add(other.transform);
+			// }
+
+			// if (other.gameObject.layer == layerMask.value)
+
 		}
 
 		private void OnTriggerExit(Collider other)
 		{
-			if (other.GetComponent<CamBlasterGuy_Model>())
+
+			// if (other.GetComponent<CamBlasterGuy_Model>())
 				neighbours.Remove(other.transform);
 		}
 	}
