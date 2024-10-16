@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Team/Ethan/Scenes_EB/MarbleGame_EB.unity
     guid: f7660e0d42f0bd249b5516b6da75206a
+  - enabled: 1
+    path: Assets/Team/James/J_Scenes/James_MarbleGame.unity
+    guid: 73cef7e1c8e4aad49819b6655f7efbfc
   m_configObjects: {}
