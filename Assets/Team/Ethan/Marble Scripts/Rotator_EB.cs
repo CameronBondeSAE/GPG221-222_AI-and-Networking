@@ -18,7 +18,7 @@ public class Rotator_EB : NetworkBehaviour
     // This one gets called by Unity itself, 60 times a second
     void FixedUpdate()
     {
-        if (IsServer)
+        //if (IsServer)
         {
             // Now we've wired it up, we can tell it to do.. whatever it can do! Note the dot
             myTransform.Rotate(0, speed, 0);
