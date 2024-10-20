@@ -122,7 +122,6 @@ GameObject:
   - component: {fileID: 6214520737169832736}
   - component: {fileID: 7767489714919588506}
   - component: {fileID: 4872398835672340677}
-  - component: {fileID: 4210308964213513463}
   m_Layer: 0
   m_Name: PathFollowerCharacter
   m_TagString: Untagged
@@ -291,6 +290,7 @@ MonoBehaviour:
   target: {fileID: 0}
   lastPoint: {x: 0, y: 0, z: 0}
   pathCorners: []
+  cornerIndex: 0
 --- !u!114 &4872398835672340677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,18 +307,3 @@ MonoBehaviour:
   turnspeed: 1
   targetPosition: {x: 0, y: 0, z: 0}
   targetObject: {fileID: 0}
---- !u!114 &4210308964213513463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5904395580989289946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0947150247847544fa6f7bbdb9e8d706, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pathfinder: {fileID: 7767489714919588506}
-  turnTowards: {fileID: 4872398835672340677}
-  cornerIndex: 0

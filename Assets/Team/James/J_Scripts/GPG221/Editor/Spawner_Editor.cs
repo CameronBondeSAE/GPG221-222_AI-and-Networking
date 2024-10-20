@@ -16,13 +16,19 @@ namespace JamesKilpatrick
             base.OnInspectorGUI();
 
             //isPlaying makes sure when button is pressed it doesn't add new characters into the editor when not in play mode
-            if (GUILayout.Button("Spawn") && Application.isPlaying)
+            if (GUILayout.Button("Spawn 10 Characters") && Application.isPlaying)
             {
                 Spawner spawner;
                 spawner = target as Spawner;
-                spawner?.SpawnCharacter();
+                spawner?.Spawn10Character();
+            }
+
+            if (GUILayout.Button("Spawn 50 Characters") && Application.isPlaying)
+            {
+                Spawner spawner;
+                spawner = target as Spawner;
+                spawner?.Spawn50Character();
             }
         }
-        
     }
 }

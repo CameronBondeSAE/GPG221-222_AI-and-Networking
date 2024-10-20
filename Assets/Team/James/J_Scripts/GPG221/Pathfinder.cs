@@ -15,11 +15,14 @@ namespace JamesKilpatrick
         public Vector3 lastPoint;
         public Vector3[] pathCorners;
 
+        public int cornerIndex = 0;
+        private float minimumDistanceToCorner = 3f;
+
 
         // ONLY USE UPDATE WHILE DEVELOPING. Eventually your planner will call this only when it needs to
         void Start()
         {
-            
+            CreatePath();
         }
         private void Update()
         {
@@ -28,6 +31,26 @@ namespace JamesKilpatrick
                 Debug.DrawLine(lastPoint, point, Color.green);
                 lastPoint = point;
             }
+
+
+            if (cornerIndex < path.corners.Length)
+            {
+                // See if we are close to the corner
+                if (Vector3.Distance(transform.position, path.corners[cornerIndex]) < minimumDistanceToCorner)
+                {
+                    cornerIndex++;
+                    if (cornerIndex < path.corners.Length)
+                    {
+                        GetComponent<TurnTowards>().targetPosition = path.corners[cornerIndex];
+                    }                
+                }
+            }
+            if (cornerIndex >= path.corners.Length)
+            {
+                GetComponent<TurnTowards>().targetPosition = target.position;
+            }
+
+
         }
 
         public void CreatePath()
@@ -40,6 +63,11 @@ namespace JamesKilpatrick
 
             // Call this when you want to go somewhere! Then read the path variable and you’ll see
             NavMesh.CalculatePath(transform.position, target.position, NavMesh.AllAreas, path);
+
+            cornerIndex = 0;
+
+            Debug.Log("Created new path to target");
+
         }
     }
 }
