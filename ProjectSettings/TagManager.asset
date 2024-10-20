@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Critters
   - Floor
+  - Target
   layers:
   - Default
   - TransparentFX

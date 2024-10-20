@@ -8,13 +8,7 @@ namespace EB
     {
         [SerializeField] private GameObject prefab;
 
-        public int amount = 10;
-
-        // Start is called before the first frame update
-        void Start()
-        {
-            SpawnMany();
-        }
+        public int amount = 1;
 
         public void SpawnMany()
         {
