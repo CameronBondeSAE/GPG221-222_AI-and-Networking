@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MarbleMain.unity
     guid: 18458be06e0e0244caa3fb765821369c
+  - enabled: 1
+    path: Assets/Scenes/TestRelay.unity
+    guid: 2afbb250ae1f1a34e84b409c4118dc9b
   m_configObjects: {}
