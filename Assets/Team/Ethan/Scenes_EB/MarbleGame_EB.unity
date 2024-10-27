@@ -221,6 +221,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1707275633}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &84991165 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3262495336955153629, guid: a7d16b3133d20e84688567ff89c695f8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1707275633}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &92198929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1053,9 +1059,9 @@ MonoBehaviour:
     Port: 7777
     ServerListenAddress: 127.0.0.1
   DebugSimulator:
-    PacketDelayMS: 150
-    PacketJitterMS: 50
-    PacketDropRate: 10
+    PacketDelayMS: 0
+    PacketJitterMS: 0
+    PacketDropRate: 0
 --- !u!114 &1117058322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1120,6 +1126,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8609789039953202132}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1219071069 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3262495336955153629, guid: a7d16b3133d20e84688567ff89c695f8,
+    type: 3}
+  m_PrefabInstance: {fileID: 8609789039953202132}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1286699232
 GameObject:
   m_ObjectHideFlags: 11
@@ -1165,13 +1177,13 @@ MonoBehaviour:
   - _gameObject: {fileID: 1318944621}
     _prefab: Assets/Team/Ethan/Prefab_EB/Marble Prefab/End Goal.prefab
   - _gameObject: {fileID: 1537296355}
-    _prefab: Assets/Team/Ethan/Prefab_EB/Basher All.prefab
+    _prefab: Assets/Team/Ethan/Prefab_EB/Marble Prefab/Basher All.prefab
   - _gameObject: {fileID: 1219071062}
-    _prefab: Assets/Team/Ethan/Prefab_EB/Basher_EB.prefab
+    _prefab: Assets/Team/Ethan/Prefab_EB/Marble Prefab/Basher_EB.prefab
   - _gameObject: {fileID: 979508501}
-    _prefab: Assets/Team/Ethan/Prefab_EB/Basher All.prefab
+    _prefab: Assets/Team/Ethan/Prefab_EB/Marble Prefab/Basher All.prefab
   - _gameObject: {fileID: 84991159}
-    _prefab: Assets/Team/Ethan/Prefab_EB/Basher_EB.prefab
+    _prefab: Assets/Team/Ethan/Prefab_EB/Marble Prefab/Basher_EB.prefab
 --- !u!4 &1286699234
 Transform:
   m_ObjectHideFlags: 11
@@ -1496,6 +1508,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.6
       objectReference: {fileID: 0}
+    - target: {fileID: 5510188700008134980, guid: a7d16b3133d20e84688567ff89c695f8,
+        type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 84991165}
     - target: {fileID: 6849008102706756659, guid: a7d16b3133d20e84688567ff89c695f8,
         type: 3}
       propertyPath: m_Name
@@ -2152,6 +2169,11 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 3893020078
       objectReference: {fileID: 0}
+    - target: {fileID: 5510188700008134980, guid: a7d16b3133d20e84688567ff89c695f8,
+        type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 1219071069}
     - target: {fileID: 6849008102706756659, guid: a7d16b3133d20e84688567ff89c695f8,
         type: 3}
       propertyPath: m_Name

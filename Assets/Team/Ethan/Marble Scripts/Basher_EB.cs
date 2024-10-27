@@ -1,3 +1,4 @@
+using Anthill.Effects;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ public class Basher_EB : NetworkBehaviour
     [SerializeField] float changeDirectionDelay;
     private float journeyLength;
     private bool isWaiting;
+    public Renderer rend;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +49,12 @@ public class Basher_EB : NetworkBehaviour
                 float fractionOfJourney = distCovered / journeyLength;
 
                 transform.position = Vector3.Lerp(departTarget.position, destinationTarget.position, fractionOfJourney);
+
+                if (IsServer && !isWaiting)
+                {
+
+                    ChangeColourBlue_RPC();
+                }
             }
             else
             {
@@ -76,6 +84,12 @@ public class Basher_EB : NetworkBehaviour
         startTimer = Time.time;
         journeyLength = Vector3.Distance(departTarget.position, destinationTarget.position);
         isWaiting = false;
+    }
+
+    [Rpc(SendTo.Server, RequireOwnership = false, Delivery = RpcDelivery.Unreliable)]
+    private void ChangeColourBlue_RPC()
+    {
+        rend.material.color = Color.blue;
     }
 
 }
