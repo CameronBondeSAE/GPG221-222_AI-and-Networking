@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using Unity.VisualScripting;
 
 public class CollapsingPlatform_Model : NetworkBehaviour
 {
@@ -10,6 +11,7 @@ public class CollapsingPlatform_Model : NetworkBehaviour
     private float cdTimer;
     public bool timerCalled = false;
     public bool debugTimerFinished = false;
+    
 
     Rigidbody rb;
 
@@ -37,6 +39,12 @@ public class CollapsingPlatform_Model : NetworkBehaviour
         rb.isKinematic = false;
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        Trigger_RequestToServer_Rpc();
+        Debug.Log("Platform triggered");
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -46,18 +54,22 @@ public class CollapsingPlatform_Model : NetworkBehaviour
     public void Timer()
     {
         if (timerCalled == true)
-        {     
+        {   
+            cdTimer -= Time.deltaTime;
             if (cdTimer < 0)
             {
-                timerCalled = false;
                 debugTimerFinished = true;
+                timerCalled = false;
+               
 
             }
+            
         }
     }
 
     public void Update()
     {
+        /*
         if (IsClient)
         {
             if (Input.GetKeyDown(KeyCode.F))
@@ -66,6 +78,7 @@ public class CollapsingPlatform_Model : NetworkBehaviour
                 Trigger_RequestToServer_Rpc();
             }
         }
+        */
 
         Timer();
 
