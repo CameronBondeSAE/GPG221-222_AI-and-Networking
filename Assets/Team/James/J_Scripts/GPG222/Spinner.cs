@@ -11,16 +11,8 @@ public class Spinner : NetworkBehaviour
     //Spins Game Object 
     public Transform spinTransform;
 
-    //The Start Point for the Game Object used for its movement
-    public Vector3 targetPosition;
-
-    public Vector3 newTargetPosition;
-
-    //Direction Game Object moves to
+    //Target postion spinner moves towards when in movement state
     public Vector3 targetDirection;
-
-    //Speed of turn
-    public float turnspeed;
 
     //Speed of Movement
     public float speed;
@@ -28,20 +20,18 @@ public class Spinner : NetworkBehaviour
     //Used to make spinner move towards a Game Object
     public Transform targetObject;
 
+    //Used to change the spinners color 
     public Renderer rend;
 
-    public bool reachedTargetPosition;
+    //Bool used for looping movement
+    public bool goingRight;
 
-    //Starting Position of Spinner used too loop movement
-    public Vector3 startPosition;
-
-    //Current Position of spinner used too check bool
-    public Vector3 currentPosition;
 
     public enum states
     {
         Idle,
         Rotating,
+        Alignment,
         Moving
     }
     public states state;
@@ -49,7 +39,6 @@ public class Spinner : NetworkBehaviour
     void Start()
     {
         StartCoroutine(StateManager());
-        startPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -69,6 +58,12 @@ public class Spinner : NetworkBehaviour
                 SpinRotate();
                 ChangeColourToGreen_Rpc();
             }
+            if (state == states.Alignment)
+            {
+                //Alligns rotation back to set path so it does not move around crazy
+                ChangeColourToYellow_Rpc();
+                SpinAlign();
+            }
             if (state == states.Moving)
             {
                 //Starts movement 
@@ -76,40 +71,46 @@ public class Spinner : NetworkBehaviour
                 ChangeColourToRed_Rpc();
             }
         }
-        TargetPositionChanger();
-        currentPosition = transform.position;
+
     }
     IEnumerator StateManager()
     {
         state = states.Rotating;
         yield return new WaitForSeconds(5);
+        state = states.Alignment;
+        yield return new WaitForSeconds(1);
         state = states.Moving;
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         Debug.Log("Endo");
         StartCoroutine(StateManager());
     }
 
-    // Function that runs from the Server TO ALL clients
-    private void SpinMovement()
+    //Alligns Spinner back to target position
+    private void SpinAlign()
     {
         //Used to move towards player marble if wanted
         if (targetObject)
         {
             targetDirection = (targetObject.position - transform.position).normalized;
         }
-        //Moves towards a position
-        else
-        {
-            targetDirection = (targetPosition - transform.position).normalized;
-        }
 
-        float angle = Vector3.SignedAngle(transform.forward, targetDirection, transform.up) * turnspeed;
+        spinTransform.rotation = Quaternion.Euler(0, 0, 0);
 
-        spinBody.AddRelativeTorque(0, angle, 0);
-        spinBody.AddRelativeForce(0, 0, speed);
     }
 
-    // Function that runs from the Server TO ALL clients
+    private void SpinMovement()
+    {
+        if (goingRight == true)
+        {
+            spinBody.AddRelativeForce(0, 0, speed);
+        }
+        else
+        {
+            spinBody.AddRelativeForce(0, 0, -speed);
+        }
+
+    }
+
     public void SpinRotate()
     {
         spinTransform.Rotate(0, 1f, 0);
@@ -129,26 +130,22 @@ public class Spinner : NetworkBehaviour
         rend.material.color = Color.green;
     }
 
-    public void TargetPositionChanger()
+    [Rpc(SendTo.ClientsAndHost, RequireOwnership = false, Delivery = RpcDelivery.Unreliable)]
+    public void ChangeColourToYellow_Rpc()
     {
-        //Loops Position. this allows for longer routes with the same code
-        if (currentPosition == newTargetPosition)
-        {
-            reachedTargetPosition = true;
-        }
-        if (currentPosition == startPosition)
-        {
-            reachedTargetPosition = false;
-        }
+        //Changes object to Yellow when alligning back to target position
+        rend.material.color = Color.yellow;
+    }
 
-
-        if (reachedTargetPosition == true)
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("LeftWall"))
         {
-            targetPosition = startPosition;
+            goingRight = true;
         }
-        if (reachedTargetPosition == false)
+        if (collision.gameObject.CompareTag("RightWall"))
         {
-            targetPosition = newTargetPosition;
+            goingRight = false;
         }
     }
 }
