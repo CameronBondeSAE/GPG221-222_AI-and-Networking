@@ -32,6 +32,7 @@ public class ColourChanger : NetworkBehaviour
 		{
 			if(Input.GetKeyDown(KeyCode.Space))
 			{
+				Debug.Log("Button Pressed");
 				GetBigOrDieTrying_RequestToServer_Rpc();
 			}
 		}

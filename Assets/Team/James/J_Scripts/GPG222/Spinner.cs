@@ -65,20 +65,19 @@ public class Spinner : NetworkBehaviour
             }
             if (state == states.Rotating)
             {
-
                 //Starts spin
-                SpinRotate_ServerToClients_RPC();
+                SpinRotate();
                 ChangeColourToGreen_Rpc();
             }
             if (state == states.Moving)
             {
-
                 //Starts movement 
-                SpinMovement_ServerToClients_RPC();
+                SpinMovement();
                 ChangeColourToRed_Rpc();
             }
         }
         TargetPositionChanger();
+        currentPosition = transform.position;
     }
     IEnumerator StateManager()
     {
@@ -91,7 +90,7 @@ public class Spinner : NetworkBehaviour
     }
 
     // Function that runs from the Server TO ALL clients
-    private void SpinMovement_ServerToClients_RPC()
+    private void SpinMovement()
     {
         //Used to move towards player marble if wanted
         if (targetObject)
@@ -111,7 +110,7 @@ public class Spinner : NetworkBehaviour
     }
 
     // Function that runs from the Server TO ALL clients
-    public void SpinRotate_ServerToClients_RPC()
+    public void SpinRotate()
     {
         spinTransform.Rotate(0, 1f, 0);
     }
@@ -119,12 +118,14 @@ public class Spinner : NetworkBehaviour
     [Rpc(SendTo.ClientsAndHost, RequireOwnership = false, Delivery = RpcDelivery.Unreliable)]
     public void ChangeColourToRed_Rpc()
     {
+        //Changes object to red when moving
         rend.material.color = Color.red;
     }
 
     [Rpc(SendTo.ClientsAndHost, RequireOwnership = false, Delivery = RpcDelivery.Unreliable)]
     public void ChangeColourToGreen_Rpc()
     {
+        //Changes object to green when spinning
         rend.material.color = Color.green;
     }
 

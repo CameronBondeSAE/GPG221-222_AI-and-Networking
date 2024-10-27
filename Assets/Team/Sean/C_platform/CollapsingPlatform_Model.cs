@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using Unity.Netcode;
 
 public class CollapsingPlatform_Model : NetworkBehaviour
 {
 
-
     public float activateTimer = 5f;
     private float cdTimer;
+    public bool timerCalled = false;
+    public bool debugTimerFinished = false;
 
     Rigidbody rb;
 
@@ -20,30 +20,19 @@ public class CollapsingPlatform_Model : NetworkBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    public enum States
+    // Function that ONLY runs on the server. Typically for client controller code when they press buttons etc
+    [Rpc(SendTo.Server, RequireOwnership = false, Delivery = RpcDelivery.Reliable)]
+    private void Trigger_RequestToServer_Rpc()
     {
-        Idle, Activated, Triggered
+        //made bool true on server only
+        timerCalled = true;
+        Debug.Log("Timer Started");
     }
 
-    public States states = States.Idle;
-
-    [Rpc(SendTo.Server, RequireOwnership = true, Delivery = RpcDelivery.Reliable)]
-    public void ReqTrigger_Rpc()
-    {
-        Trigger_Rpc();
-    }
-    //PLACEHOLDER
-    public void Trigger_Rpc()
-    {
-        states = States.Triggered;
-
-        Debug.Log("Platform triggered");
-    }
-
-    [Rpc(SendTo.ClientsAndHost, RequireOwnership = false, Delivery = RpcDelivery.Reliable)]
+    [Rpc(SendTo.ClientsAndHost, RequireOwnership = false, Delivery = RpcDelivery.Unreliable)]
     public void ActivateRPC()
     {
-        states = States.Activated;
+        //Makes platform dissapear
         Debug.Log("Platform activated");
         rb.isKinematic = false;
     }
@@ -51,39 +40,43 @@ public class CollapsingPlatform_Model : NetworkBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (IsServer)
-        {
-            if (states == States.Triggered)
+           
+    }
+
+    public void Timer()
+    {
+        if (timerCalled == true)
+        {     
+            if (cdTimer < 0)
             {
+                timerCalled = false;
+                debugTimerFinished = true;
 
-                cdTimer -= Time.deltaTime;
-                Debug.Log(cdTimer);
-
-            }
-
-            if (cdTimer <= 0)
-            {
-                ActivateRPC();
             }
         }
-        //Placeholder activation
-
-       
-
     }
 
     public void Update()
     {
-        if (IsLocalPlayer)
+        if (IsClient)
         {
-
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.F))
             {
-                ReqTrigger_Rpc();
-                Debug.Log("space pressed");
-
+                Debug.Log("Button Pressed");
+                Trigger_RequestToServer_Rpc();
             }
         }
+
+        Timer();
+
+        //Debugs after 5 seconds of timer starting, finishing timer which calls only once instead of constantly
+        if (debugTimerFinished == true)
+        {
+            Debug.Log("Timer Finished");
+            ActivateRPC();
+            debugTimerFinished = false;
+        }
+
     }
 
 
