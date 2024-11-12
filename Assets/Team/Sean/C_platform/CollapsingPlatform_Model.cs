@@ -97,7 +97,7 @@ public class CollapsingPlatform_Model : NetworkBehaviour
 }
 
 /*
- * > Activation condition : When player enters trigger box
+ * > Activation condition : When playerTransform enters trigger box
  * > Request to server (Sendto.Server with owndership)
  * > Answer from server (Sendto.ClientsandHost, no ownership
 */

@@ -88,7 +88,7 @@ public class Spinner : NetworkBehaviour
     //Alligns Spinner back to target position
     private void SpinAlign()
     {
-        //Used to move towards player marble if wanted
+        //Used to move towards playerTransform marble if wanted
         if (targetObject)
         {
             targetDirection = (targetObject.position - transform.position).normalized;

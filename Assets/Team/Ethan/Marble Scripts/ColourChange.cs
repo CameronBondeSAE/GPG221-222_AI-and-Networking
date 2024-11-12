@@ -32,7 +32,7 @@ public class ColourChange : NetworkBehaviour
 
     /// <summary>
     /// Client side only
-    /// View (Pure presentation to the player, graphics, sounds etc, no game logic)
+    /// View (Pure presentation to the playerTransform, graphics, sounds etc, no game logic)
     /// Remote Procedure Call
     /// </summary>
     /// <param name="colour">Colour for client. It's important for some reason</param>
