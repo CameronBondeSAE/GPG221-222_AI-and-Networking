@@ -17,122 +17,114 @@ MonoBehaviour:
     - id: 0
       name: See Target Far
     - id: 1
-      name: path location
+      name: IsHome
     - id: 2
-      name: See target Close
+      name: IsAttacking
     - id: 3
-      name: Home
+      name: IsBlocking
     - id: 4
-      name: Attacking
+      name: See Target Close
     - id: 5
-      name: Block
-    - id: 6
-      name: Move to home
+      name: PlayerDead
   actions:
-  - name: Search Target
-    isDefault: 1
+  - name: Search Target Close
+    isDefault: 0
     state: {fileID: 0}
     cost: 0
-    position: {x: 250, y: 53}
+    position: {x: 855.17346, y: 73.36223}
     pre:
     - id: 3
       value: 1
-    - id: 2
-      value: 0
-    - id: 0
+    - id: 4
       value: 0
     post:
-    - id: 0
-      value: 1
-  - name: Move to Path
-    isDefault: 0
-    state: {fileID: 0}
-    cost: 0
-    position: {x: 454, y: 56}
-    pre:
-    - id: 1
-      value: 0
-    - id: 0
-      value: 1
-    - id: 2
-      value: 0
-    post:
-    - id: 1
-      value: 1
-  - name: Attack Target
-    isDefault: 0
-    state: {fileID: 0}
-    cost: 0
-    position: {x: 882, y: 55}
-    pre:
-    - id: 5
-      value: 1
-    - id: 2
-      value: 0
-    - id: 0
-      value: 1
-    post:
-    - id: 2
-      value: 1
     - id: 4
       value: 1
+    - id: 3
+      value: 0
+    - id: 0
+      value: 0
   - name: Block
     isDefault: 0
     state: {fileID: 0}
     cost: 0
-    position: {x: 662, y: 54}
+    position: {x: 646.2364, y: 72.36222}
+    pre:
+    - id: 0
+      value: 1
+    - id: 3
+      value: 0
+    post:
+    - id: 3
+      value: 1
+  - name: MoveToHome
+    isDefault: 1
+    state: {fileID: 0}
+    cost: 0
+    position: {x: 234.96906, y: 74.09277}
+    pre:
+    - id: 1
+      value: 0
+    - id: 4
+      value: 0
+    - id: 0
+      value: 0
+    - id: 2
+      value: 0
+    - id: 3
+      value: 0
+    post:
+    - id: 1
+      value: 1
+  - name: Search Target
+    isDefault: 0
+    state: {fileID: 0}
+    cost: 0
+    position: {x: 437.79535, y: 72.73231}
     pre:
     - id: 1
       value: 1
     - id: 0
-      value: 1
-    - id: 2
       value: 0
+    post:
+    - id: 0
+      value: 1
+    - id: 1
+      value: 0
+  - name: Attack Target
+    isDefault: 0
+    state: {fileID: 0}
+    cost: 0
+    position: {x: 1059.8428, y: 77.0945}
+    pre:
+    - id: 4
+      value: 1
+    - id: 3
+      value: 0
+    post:
+    - id: 2
+      value: 1
+  - name: Kill Player
+    isDefault: 0
+    state: {fileID: 0}
+    cost: 0
+    position: {x: 1282.4741, y: 87.88659}
+    pre:
+    - id: 2
+      value: 1
     post:
     - id: 5
-      value: 1
-  - name: Can't Find Target
-    isDefault: 0
-    state: {fileID: 0}
-    cost: 0
-    position: {x: 1088, y: 54}
-    pre:
-    - id: 0
-      value: 0
-    - id: 2
-      value: 0
-    post:
-    - id: 6
-      value: 1
-  - name: Is Home
-    isDefault: 0
-    state: {fileID: 0}
-    cost: 0
-    position: {x: 1297, y: 46}
-    pre:
-    - id: 2
-      value: 0
-    - id: 0
-      value: 0
-    - id: 6
-      value: 1
-    post:
-    - id: 3
-      value: 1
-    - id: 0
-      value: 0
-    - id: 2
       value: 0
   goals:
-  - name: YAH
+  - name: Kill Player
     isDefault: 1
-    position: {x: 240, y: 375}
+    position: {x: 228.9126, y: 396.01556}
     conditions:
-    - id: 0
-      value: 1
+    - id: 5
+      value: 0
   worldStates:
-  - position: {x: 250, y: 548}
-    isAutoUpdate: 0
+  - position: {x: 226.90726, y: 624.30914}
+    isAutoUpdate: 1
     list:
     - id: 0
       value: 0
@@ -145,6 +137,4 @@ MonoBehaviour:
     - id: 4
       value: 0
     - id: 5
-      value: 0
-    - id: 6
-      value: 0
+      value: 1
