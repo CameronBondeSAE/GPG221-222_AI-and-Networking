@@ -11,7 +11,7 @@ namespace JamesKilpatrick
         public string lobbyName = "new lobby";
         public int maxPlayers = 4;
         CreateLobbyOptions options = new CreateLobbyOptions();
-        bool IsServerPublic = false;
+       // private bool IsServerPublic = false;
         private Lobby currentLobby;
 
 
