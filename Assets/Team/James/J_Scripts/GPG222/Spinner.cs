@@ -81,7 +81,6 @@ public class Spinner : NetworkBehaviour
         yield return new WaitForSeconds(1);
         state = states.Moving;
         yield return new WaitForSeconds(5);
-        Debug.Log("Endo");
         StartCoroutine(StateManager());
     }
 
