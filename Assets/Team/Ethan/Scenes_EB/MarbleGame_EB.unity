@@ -1474,12 +1474,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8609789039953202132}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &1219071069 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 3262495336955153629, guid: a7d16b3133d20e84688567ff89c695f8,
-    type: 3}
-  m_PrefabInstance: {fileID: 8609789039953202132}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1224047150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1575,6 +1569,8 @@ MonoBehaviour:
     _prefab: Assets/Team/Ethan/Prefab_EB/Marble Prefab/RotatingCube.prefab
   - _gameObject: {fileID: 1815165247}
     _prefab: Assets/Team/Ethan/Prefab_EB/Marble Prefab/RotatingCube.prefab
+  - _gameObject: {fileID: 7074483826686972410}
+    _prefab: Assets/Team/Ethan/Prefab_EB/Marble Prefab/JumpPad All.prefab
 --- !u!4 &1286699234
 Transform:
   m_ObjectHideFlags: 11
@@ -3304,6 +3300,80 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbffc392a929561428336138f1e462f9, type: 3}
+--- !u!1001 &7074483826686972409
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.553062
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.6893297
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 54.49624
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8495264350509793210, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_Name
+      value: JumpPad All
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d1f11d6c4d77fb84089b7c70dd72dc1d, type: 3}
+--- !u!1 &7074483826686972410 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8495264350509793210, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7074483826686972409}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7605409295439008572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3652,11 +3722,6 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 3893020078
       objectReference: {fileID: 0}
-    - target: {fileID: 5510188700008134980, guid: a7d16b3133d20e84688567ff89c695f8,
-        type: 3}
-      propertyPath: rend
-      value: 
-      objectReference: {fileID: 1219071069}
     - target: {fileID: 6849008102706756659, guid: a7d16b3133d20e84688567ff89c695f8,
         type: 3}
       propertyPath: m_Name
@@ -3737,3 +3802,4 @@ SceneRoots:
   - {fileID: 1652162609}
   - {fileID: 1555842244}
   - {fileID: 860571341}
+  - {fileID: 7074483826686972409}
