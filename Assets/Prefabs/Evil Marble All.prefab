@@ -1,0 +1,246 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1109663096535718673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3554550229276109661}
+  m_Layer: 0
+  m_Name: Evil Marble All
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3554550229276109661
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109663096535718673}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -100.5, y: 0.27, z: -4.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8607296588347757111}
+  - {fileID: 2797386509719839992}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1807418916524271662
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2797386509719839992}
+  m_Layer: 0
+  m_Name: Evil Marble Home
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2797386509719839992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807418916524271662}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3554550229276109661}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2785526561870135979
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3554550229276109661}
+    m_Modifications:
+    - target: {fileID: 5898430193907339420, guid: e236770d4e28aad489abe53b17782bf1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.599998
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898430193907339420, guid: e236770d4e28aad489abe53b17782bf1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.106000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898430193907339420, guid: e236770d4e28aad489abe53b17782bf1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.7000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898430193907339420, guid: e236770d4e28aad489abe53b17782bf1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898430193907339420, guid: e236770d4e28aad489abe53b17782bf1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898430193907339420, guid: e236770d4e28aad489abe53b17782bf1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898430193907339420, guid: e236770d4e28aad489abe53b17782bf1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898430193907339420, guid: e236770d4e28aad489abe53b17782bf1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898430193907339420, guid: e236770d4e28aad489abe53b17782bf1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898430193907339420, guid: e236770d4e28aad489abe53b17782bf1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6476265868983184032, guid: e236770d4e28aad489abe53b17782bf1,
+        type: 3}
+      propertyPath: m_Name
+      value: Evil Marble EB
+      objectReference: {fileID: 0}
+    - target: {fileID: 6476265868983184032, guid: e236770d4e28aad489abe53b17782bf1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6476265868983184032, guid: e236770d4e28aad489abe53b17782bf1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5072367541480172354}
+    - targetCorrespondingSourceObject: {fileID: 6476265868983184032, guid: e236770d4e28aad489abe53b17782bf1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8193170270016597668}
+    - targetCorrespondingSourceObject: {fileID: 6476265868983184032, guid: e236770d4e28aad489abe53b17782bf1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7781608021488503490}
+    - targetCorrespondingSourceObject: {fileID: 6476265868983184032, guid: e236770d4e28aad489abe53b17782bf1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2350091279021030760}
+  m_SourcePrefab: {fileID: 100100000, guid: e236770d4e28aad489abe53b17782bf1, type: 3}
+--- !u!4 &8607296588347757111 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5898430193907339420, guid: e236770d4e28aad489abe53b17782bf1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2785526561870135979}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9171717912305985547 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6476265868983184032, guid: e236770d4e28aad489abe53b17782bf1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2785526561870135979}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5072367541480172354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9171717912305985547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 977c7355877e0084da14be60dac9fb0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  home: {fileID: 3554550229276109661}
+  ishome: 0
+--- !u!114 &8193170270016597668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9171717912305985547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d49ca7b85cef2a54bb90d173b8e0872f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7781608021488503490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9171717912305985547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7957882c91639c429371d62920731ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seeTargetFar: 0
+  seeTargetClose: 0
+  pathlocation: 0
+  block: 0
+  attacking: 0
+  blockLocations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  targetFarDetection: 70
+  targetCloseDetection: 20
+  detectionLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  playerTransform: {fileID: 0}
+  playerTransformClose: {fileID: 0}
+  player_rb: {fileID: 0}
+  movementSpeed: 10
+  chaseSpeed: 10
+  targetReachThreshold: 0.5
+--- !u!135 &2350091279021030760
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9171717912305985547}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.50000006
+  m_Center: {x: 0, y: 0, z: 0}

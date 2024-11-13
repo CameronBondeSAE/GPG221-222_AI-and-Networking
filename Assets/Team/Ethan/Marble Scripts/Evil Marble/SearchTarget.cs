@@ -31,13 +31,13 @@ public class SearchTarget : MonoBehaviour
         DetectFarCircle();
         DetectCloseCircle();
 
-        if (seeTargetClose && playerTransform != null) // Check if close detection is true
+        if (seeTargetClose && playerTransform != null) 
         {
-            ChasePlayer(); // Call ChasePlayer if the player is within the close detection circle
+            ChasePlayer();
         }
         else if (playerTransform != null)
         {
-            MoveToBlockLocation(); // Move to block location if the player is not in the close detection circle
+            MoveToBlockLocation();
         }
     }
 
@@ -50,7 +50,7 @@ public class SearchTarget : MonoBehaviour
         foreach (var hitCollider in hitColliders)
         {
             playerTransform = hitCollider.transform;
-            player_rb = hitCollider.GetComponent<Rigidbody>(); // Get the Rigidbody component to access velocity
+            player_rb = hitCollider.GetComponent<Rigidbody>();
             Debug.Log("Player detected in far circle");
             seeTargetFar = true;
             playerDetectedFar = true;
@@ -84,39 +84,35 @@ public class SearchTarget : MonoBehaviour
         }
     }
 
-    // Visualize the detection spheres in the Scene view
     private void OnDrawGizmosSelected()
     {
-        // Set the color and draw the far detection circle
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, targetFarDetection);
 
-        // Set the color and draw the close detection circle
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, targetCloseDetection);
     }
 
     private void MoveToBlockLocation()
     {
-        if (player_rb == null) return;
+        if (player_rb == null)
+        {
+            return;
+        }
 
-        // Check if we have a current block target
         if (currentBlockTarget == null || Vector3.Distance(transform.position, currentBlockTarget.position) < targetReachThreshold)
         {
-            // If we reached the target, clear it to find a new one
             currentBlockTarget = null;
 
             Vector3 playerVelocity = player_rb.velocity;
             Transform closestBlock = null;
             float closestDistance = Mathf.Infinity;
 
-            // Find the block location closest to the player's velocity direction
             foreach (var blockLocation in blockLocations)
             {
                 Vector3 directionToBlock = (blockLocation.position - playerTransform.position).normalized;
                 float distance = Vector3.Distance(transform.position, blockLocation.position);
 
-                // Check if this block aligns with the player's velocity direction and is closer than previous ones
                 if (Vector3.Dot(directionToBlock, playerVelocity.normalized) > 0.5f && distance < closestDistance)
                 {
                     closestBlock = blockLocation;
@@ -124,7 +120,6 @@ public class SearchTarget : MonoBehaviour
                 }
             }
 
-            // Set the closest block location as the target if found
             if (closestBlock != null)
             {
                 currentBlockTarget = closestBlock;
@@ -132,9 +127,6 @@ public class SearchTarget : MonoBehaviour
             }
         }
 
-
-
-        // Move towards the current block target if it's set
         if (currentBlockTarget != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, currentBlockTarget.position, Time.deltaTime * movementSpeed);

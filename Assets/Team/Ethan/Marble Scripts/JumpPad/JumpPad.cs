@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class JumpPad : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public float jumpForce = 10f;
+    public AudioSource jumpPad;
+    public Animator jumpPadani;
+
+    private void Start()
     {
-        
+        jumpPad = GetComponent<AudioSource>();
+        jumpPadani = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("Player"))
+        {
+            Rigidbody player_rb = other.GetComponent<Rigidbody>();
+
+            if (player_rb != null)
+            {
+                jumpPad.Play();
+                jumpPadani.SetTrigger("JumpPadTrigger");
+
+                player_rb.velocity = new Vector3 (player_rb.velocity.x, jumpForce, player_rb.velocity.z); 
+
+                Debug.Log("Player Jumped");
+            }
+        }
     }
+
+
 }
