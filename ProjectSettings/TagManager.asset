@@ -9,6 +9,7 @@ TagManager:
   - Target
   - RightWall
   - LeftWall
+  - EvilMarble
   layers:
   - Default
   - TransparentFX

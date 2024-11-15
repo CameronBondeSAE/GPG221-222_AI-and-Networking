@@ -42,10 +42,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2797386509719839992}
+  - component: {fileID: 2201021582308078258}
+  - component: {fileID: 7938355754573152120}
   m_Layer: 0
   m_Name: Evil Marble Home
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -58,12 +60,45 @@ Transform:
   m_GameObject: {fileID: 1807418916524271662}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.92, y: 0, z: -3.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3554550229276109661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &2201021582308078258
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807418916524271662}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.7225456
+  m_Center: {x: 1.2225456, y: 0, z: 0}
+--- !u!114 &7938355754573152120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807418916524271662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 200e08d9523b1e240b05137f8f53b18c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2785526561870135979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -132,18 +167,15 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6476265868983184032, guid: e236770d4e28aad489abe53b17782bf1,
+        type: 3}
+      propertyPath: m_TagString
+      value: EvilMarble
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6476265868983184032, guid: e236770d4e28aad489abe53b17782bf1,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5072367541480172354}
-    - targetCorrespondingSourceObject: {fileID: 6476265868983184032, guid: e236770d4e28aad489abe53b17782bf1,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8193170270016597668}
     - targetCorrespondingSourceObject: {fileID: 6476265868983184032, guid: e236770d4e28aad489abe53b17782bf1,
         type: 3}
       insertIndex: -1
@@ -152,7 +184,25 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2350091279021030760}
+    - targetCorrespondingSourceObject: {fileID: 6476265868983184032, guid: e236770d4e28aad489abe53b17782bf1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8261941535327637653}
+    - targetCorrespondingSourceObject: {fileID: 6476265868983184032, guid: e236770d4e28aad489abe53b17782bf1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6586654500102881725}
+    - targetCorrespondingSourceObject: {fileID: 6476265868983184032, guid: e236770d4e28aad489abe53b17782bf1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8702160178432283750}
   m_SourcePrefab: {fileID: 100100000, guid: e236770d4e28aad489abe53b17782bf1, type: 3}
+--- !u!54 &177111063248563841 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 2656301571106122794, guid: e236770d4e28aad489abe53b17782bf1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2785526561870135979}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8607296588347757111 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5898430193907339420, guid: e236770d4e28aad489abe53b17782bf1,
@@ -165,32 +215,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2785526561870135979}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5072367541480172354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9171717912305985547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 977c7355877e0084da14be60dac9fb0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  home: {fileID: 3554550229276109661}
-  ishome: 0
---- !u!114 &8193170270016597668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9171717912305985547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d49ca7b85cef2a54bb90d173b8e0872f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7781608021488503490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,3 +268,52 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.50000006
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8261941535327637653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9171717912305985547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc09d242d62e724a9cd307c7b833673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  home: {fileID: 2797386509719839992}
+  rb: {fileID: 177111063248563841}
+--- !u!114 &6586654500102881725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9171717912305985547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 168278c3a64560248a3bdfb6026fdc12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  home: {fileID: 0}
+  rb: {fileID: 0}
+  IsAttacking: 0
+  IsHome: 0
+  IsBlocking: 0
+  SeeTargetFar: 0
+  SeeTargetClose: 0
+  PlayerDead: 0
+--- !u!114 &8702160178432283750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9171717912305985547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e724e36405834fa192b36cd6a4e6059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manualUpdate: 0
+  thinkInterval: 0.1
+  scenario: {fileID: 11400000, guid: 6580fa9dde4e3ba43ad1fd2bd0dff4ca, type: 2}

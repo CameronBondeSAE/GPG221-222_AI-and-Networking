@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Home_State : MonoBehaviour
+public class Block_State : EvilMarbleBase
 {
     // Start is called before the first frame update
     void Start()

@@ -36,7 +36,7 @@ namespace JamesKilpatrick
 
             foreach (Collider result in results)
             {
-                EvilMarble evilMarbleSound = result.GetComponent<EvilMarble>();
+                EvilMarbleBase evilMarbleSound = result.GetComponent<EvilMarbleBase>();
                 if (evilMarbleSound != null)
                 {
                     evilMarbleSound.HeardSound();
