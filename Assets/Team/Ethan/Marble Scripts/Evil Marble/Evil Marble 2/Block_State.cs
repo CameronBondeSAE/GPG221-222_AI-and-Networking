@@ -11,8 +11,8 @@ public class Block_State : EvilMarbleBase
     public SearchPlayerClose searchPlayerClose;
     public TextFaceCameraEvilMarble textEvilMarble;
 
-    private Rigidbody playerRb;  // Player Rigidbody
-    private Transform playerTransform;  // Player Transform
+    private Rigidbody playerRb; 
+    private Transform playerTransform;
 
     public override void Create(GameObject aGameObject)
     {
@@ -23,7 +23,6 @@ public class Block_State : EvilMarbleBase
         searchPlayerClose = aGameObject.GetComponent<SearchPlayerClose>();
         textEvilMarble = aGameObject.GetComponentInChildren<TextFaceCameraEvilMarble>();
 
-        // Find player Rigidbody and Transform at runtime
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
         {
@@ -45,20 +44,17 @@ public class Block_State : EvilMarbleBase
 
         if (playerRb == null || playerTransform == null)
         {
-            return; // Exit if player data isn't available
+            return;
         }
 
-        // Proceed with block logic
         if (EvilMarbleBase.currentBlockTarget == null || Vector3.Distance(transform.position, EvilMarbleBase.currentBlockTarget.position) < EvilMarbleBase.targetReachThreshold)
         {
             if (EvilMarbleBase.currentBlockTarget != null)
             {
-                // Stop movement since we reached the target
-                EvilRB.velocity = Vector3.zero; // Reset velocity
+                EvilRB.velocity = Vector3.zero;
                 return;
             }
 
-            // Check if blockLocations list has entries
             if (EvilMarbleBase.blockLocations.Count == 0)
             {
                 return;
@@ -72,7 +68,6 @@ public class Block_State : EvilMarbleBase
                 Vector3 directionToBlock = (blockLocation.position - playerTransform.position).normalized;
                 float distance = Vector3.Distance(transform.position, blockLocation.position);
 
-                // Check if the direction to block is aligned with player's movement
                 if (Vector3.Dot(directionToBlock, playerRb.velocity.normalized) > 0.5f && distance < closestDistance)
                 {
                     closestBlock = blockLocation;
@@ -92,18 +87,15 @@ public class Block_State : EvilMarbleBase
 
             if (distanceToTarget >= EvilMarbleBase.targetReachThreshold)
             {
-                // Calculate the new position using Rigidbody's current position
                 Vector3 direction = (EvilMarbleBase.currentBlockTarget.position - EvilRB.position).normalized;
                 Vector3 newPosition = EvilRB.position + direction * EvilMarbleBase.movementSpeed * Time.deltaTime;
 
-                // Move the Rigidbody
                 EvilRB.MovePosition(newPosition);
             }
             else
             {
-                // Stop movement when reaching the block location
-                EvilRB.velocity = Vector3.zero; // Reset velocity
-                EvilMarbleBase.currentBlockTarget = null; // Reset to indicate the block has been reached
+                EvilRB.velocity = Vector3.zero;
+                EvilMarbleBase.currentBlockTarget = null;
             }
         }
     }
