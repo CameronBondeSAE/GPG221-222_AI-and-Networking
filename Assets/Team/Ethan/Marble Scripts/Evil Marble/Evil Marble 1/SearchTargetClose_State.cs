@@ -1,5 +1,7 @@
+using EB;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SearchTargetClose_State : EvilMarbleBase
@@ -7,15 +9,23 @@ public class SearchTargetClose_State : EvilMarbleBase
     public GameObject evilMarble;
     public Rigidbody EvilRB;
     public EvilMarbleBase EvilMarbleBase;
-
+    public TextFaceCameraEvilMarble textEvilMarble;
     public override void Create(GameObject aGameObject)
     {
         base.Create(aGameObject);
         evilMarble = aGameObject;
         EvilRB = aGameObject.GetComponent<Rigidbody>();
         EvilMarbleBase = aGameObject.GetComponent<EvilMarbleBase>();
+        textEvilMarble = aGameObject.GetComponentInChildren<TextFaceCameraEvilMarble>();
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+        EvilMarbleBase.marbleRenderer.material.color = Color.green;
+
+        textEvilMarble.GetComponent<TMP_Text>().text = "Search State";
+    }
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);

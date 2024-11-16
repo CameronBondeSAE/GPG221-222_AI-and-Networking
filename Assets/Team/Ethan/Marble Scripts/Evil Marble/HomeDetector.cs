@@ -10,7 +10,13 @@ public class HomeDetector : MonoBehaviour
         if (other.CompareTag("EvilMarble"))
         {
             other.GetComponent<EvilMarbleSensor>().IsHome = true;
+
             Debug.Log("Marble is Home");
+        }
+
+        if (other.CompareTag("EvilMarble 2"))
+        {
+            other.GetComponent<EvilMarbleSensorss>().IsHome = true;
         }
     }
 }

@@ -1,5 +1,7 @@
+using EB;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Attacking_State : EvilMarbleBase
@@ -8,6 +10,7 @@ public class Attacking_State : EvilMarbleBase
     public Rigidbody EvilRB;
     public EvilMarbleBase EvilMarbleBase;
     public SearchPlayerClose searchPlayerClose;
+    public TextFaceCameraEvilMarble textEvilMarble;
 
     public override void Create(GameObject aGameObject)
     {
@@ -16,8 +19,16 @@ public class Attacking_State : EvilMarbleBase
         EvilRB = aGameObject.GetComponent<Rigidbody>();
         EvilMarbleBase = aGameObject.GetComponent<EvilMarbleBase>();
         searchPlayerClose = aGameObject.GetComponent<SearchPlayerClose>();
+        textEvilMarble = aGameObject.GetComponentInChildren<TextFaceCameraEvilMarble>();
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+        EvilMarbleBase.marbleRenderer.material.color = Color.red;
+
+        textEvilMarble.GetComponent<TMP_Text>().text = "Attack State";
+    }
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);
