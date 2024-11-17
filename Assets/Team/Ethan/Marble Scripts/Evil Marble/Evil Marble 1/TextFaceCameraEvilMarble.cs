@@ -6,17 +6,15 @@ namespace EB
 {
     public class TextFaceCameraEvilMarble : MonoBehaviour
     {
-        public Transform parentObject; // The object the text follows
-        public Vector3 positionOffset; // Offset for positioning the text relative to the parent
+        public Transform parentObject; 
+        public Vector3 positionOffset; 
 
         private Transform cameraTransform;
 
         void Start()
         {
-            // Cache the camera's transform for efficiency
             cameraTransform = Camera.main.transform;
 
-            // Ensure the parentObject is assigned if not explicitly set
             if (parentObject == null)
                 parentObject = transform.parent;
         }
@@ -25,15 +23,15 @@ namespace EB
         {
             if (parentObject == null || cameraTransform == null) return;
 
-            // Position the text relative to the parent with an offset
+            //make sure it is on the marbles transform
             transform.position = parentObject.position + positionOffset;
 
-            // Make the text face the camera
+            //set text to face camera
             Vector3 directionToCamera = (cameraTransform.position - transform.position).normalized;
-            directionToCamera.y = 0; // Keep the text upright
+            directionToCamera.y = 0; 
             transform.rotation = Quaternion.LookRotation(directionToCamera);
 
-            // Flip the text 180 degrees
+            //flip text 180 so it faces the camera properly
             transform.rotation *= Quaternion.Euler(0, 180, 0);
         }
     }

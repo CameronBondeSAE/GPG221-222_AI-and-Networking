@@ -6,10 +6,13 @@ using UnityEngine;
 
 public class SearchTargetClose_State : EvilMarbleBase
 {
+    //References to other gameobjects/scripts
     public GameObject evilMarble;
     public Rigidbody EvilRB;
     public EvilMarbleBase EvilMarbleBase;
     public TextFaceCameraEvilMarble textEvilMarble;
+
+    //make sure when created to get all references
     public override void Create(GameObject aGameObject)
     {
         base.Create(aGameObject);
@@ -19,6 +22,7 @@ public class SearchTargetClose_State : EvilMarbleBase
         textEvilMarble = aGameObject.GetComponentInChildren<TextFaceCameraEvilMarble>();
     }
 
+    //when entering the state change colour and txt
     public override void Enter()
     {
         base.Enter();
@@ -26,6 +30,8 @@ public class SearchTargetClose_State : EvilMarbleBase
 
         textEvilMarble.GetComponent<TMP_Text>().text = "Search State";
     }
+
+    //Patrol home by following a circle pattern
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);

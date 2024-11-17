@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EvilMarbleBase : AntAIState
 {
+    //Base class to hold all info for other scripts to grab from
     public Transform home;
     public Rigidbody rb;
     public float orbitSpeed = 2f;

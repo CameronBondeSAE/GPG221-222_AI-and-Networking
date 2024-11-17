@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class Block_State : EvilMarbleBase
 {
+    //References to other gameobjects/scripts
     public GameObject evilMarble;
     public Rigidbody EvilRB;
     public EvilMarbleBase EvilMarbleBase;
     public SearchPlayerClose searchPlayerClose;
     public TextFaceCameraEvilMarble textEvilMarble;
-
     private Rigidbody playerRb; 
     private Transform playerTransform;
 
+    //make sure when created to get all references
     public override void Create(GameObject aGameObject)
     {
         base.Create(aGameObject);
@@ -23,6 +24,7 @@ public class Block_State : EvilMarbleBase
         searchPlayerClose = aGameObject.GetComponent<SearchPlayerClose>();
         textEvilMarble = aGameObject.GetComponentInChildren<TextFaceCameraEvilMarble>();
 
+        //get players transfom
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
         {
@@ -31,6 +33,7 @@ public class Block_State : EvilMarbleBase
         }
     }
 
+    //when entering the state change colour and txt
     public override void Enter()
     {
         base.Enter();
@@ -38,6 +41,7 @@ public class Block_State : EvilMarbleBase
         textEvilMarble.GetComponent<TMP_Text>().text = "Block State";
     }
 
+    //Check players velocity to move to suitable block location
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);
@@ -46,9 +50,10 @@ public class Block_State : EvilMarbleBase
         {
             return;
         }
-
+        //get block location
         if (EvilMarbleBase.currentBlockTarget == null || Vector3.Distance(transform.position, EvilMarbleBase.currentBlockTarget.position) < EvilMarbleBase.targetReachThreshold)
         {
+            //if at block location, turn velocity to 0 so we don't fly away
             if (EvilMarbleBase.currentBlockTarget != null)
             {
                 EvilRB.velocity = Vector3.zero;
@@ -63,6 +68,7 @@ public class Block_State : EvilMarbleBase
             Transform closestBlock = null;
             float closestDistance = Mathf.Infinity;
 
+            //Get the block location depending on player
             foreach (var blockLocation in EvilMarbleBase.blockLocations)
             {
                 Vector3 directionToBlock = (blockLocation.position - playerTransform.position).normalized;
@@ -81,6 +87,7 @@ public class Block_State : EvilMarbleBase
             }
         }
 
+        //go to block location
         if (EvilMarbleBase.currentBlockTarget != null)
         {
             float distanceToTarget = Vector3.Distance(EvilRB.position, EvilMarbleBase.currentBlockTarget.position);

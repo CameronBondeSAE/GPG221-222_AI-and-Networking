@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class HomeDetector : MonoBehaviour
 {
+    //when entering turn Ishome to true so we change state
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("EvilMarble"))
