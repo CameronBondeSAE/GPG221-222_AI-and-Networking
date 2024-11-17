@@ -14,12 +14,12 @@ GameObject:
   - component: {fileID: 4000265669984414720}
   - component: {fileID: 7905127235615439438}
   - component: {fileID: 5104526158892069833}
-  - component: {fileID: 1298655397135682327}
-  - component: {fileID: 2977405590813245394}
+  - component: {fileID: 6320214279700800532}
+  - component: {fileID: 3789324737696477861}
   - component: {fileID: 5258378101097825354}
   m_Layer: 0
-  m_Name: Chasing Evil Marble
-  m_TagString: ChasingEvilMarble
+  m_Name: Attacking Evil Marble
+  m_TagString: EvilMarble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 6700780969027199024}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.98, y: 0.62, z: -63.78}
+  m_LocalPosition: {x: 35.98, y: 0.62, z: -48.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -159,7 +159,7 @@ MonoBehaviour:
   EMMarbleRenderer: {fileID: 4891634489314578823}
   chaseOffset: {x: 0, y: 0, z: 0}
   chaseDistance: 3
---- !u!114 &1298655397135682327
+--- !u!114 &6320214279700800532
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,10 +168,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6700780969027199024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15edd51c6ef799c48a7fc28eaca2c3c0, type: 3}
+  m_Script: {fileID: 11500000, guid: af84af880015afa4daa683ea68915a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EMHome: {fileID: 3560246188035665017}
+  EMHome: {fileID: 0}
   EMrb: {fileID: 7905127235615439438}
   EMOrbitRadius: 5
   EMOrbitSpeed: 1
@@ -182,9 +182,9 @@ MonoBehaviour:
   chaseOffset: {x: 0, y: 0, z: 0}
   chaseDistance: 3
   IsHome: 0
-  IsChasing: 0
+  IsAttacking: 0
   SeesPlayer: 0
---- !u!114 &2977405590813245394
+--- !u!114 &3789324737696477861
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,13 +193,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6700780969027199024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02585338af3da56478f21db0b5f27913, type: 3}
+  m_Script: {fileID: 11500000, guid: 4034ef6c748b21d4ebba8dd525a3b6dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRange: 10
   detectionLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   playerTransform: {fileID: 0}
 --- !u!114 &5258378101097825354
 MonoBehaviour:
@@ -215,4 +215,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manualUpdate: 0
   thinkInterval: 0.1
-  scenario: {fileID: 11400000, guid: 2c71cea3404058b42ad4499e29d6b56b, type: 2}
+  scenario: {fileID: 11400000, guid: c17a43abcb3e41f4d8b9bf4cf71dc297, type: 2}

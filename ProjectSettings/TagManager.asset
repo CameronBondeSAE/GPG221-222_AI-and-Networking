@@ -11,6 +11,7 @@ TagManager:
   - LeftWall
   - EvilMarble
   - EvilMarble 2
+  - ChasingEvilMarble
   layers:
   - Default
   - TransparentFX

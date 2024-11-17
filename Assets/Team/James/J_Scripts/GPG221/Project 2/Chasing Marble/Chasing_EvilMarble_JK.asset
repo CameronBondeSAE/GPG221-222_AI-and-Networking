@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2f22e7053ea04ed0922308786facc8c, type: 3}
+  m_Name: Chasing_EvilMarble_JK
+  m_EditorClassIdentifier: 
+  conditions:
+    list:
+    - id: 0
+      name: Is Home
+    - id: 1
+      name: Sees Player
+    - id: 2
+      name: Is Chasing
+  actions:
+  - name: Look For Marble Action
+    isDefault: 0
+    state: {fileID: 3298933432796928510, guid: bc92ca1006af82d4aadd7b21213e5702, type: 3}
+    cost: 0
+    position: {x: 495, y: 184}
+    pre:
+    - id: 0
+      value: 1
+    post:
+    - id: 1
+      value: 1
+    - id: 0
+      value: 0
+  - name: Look For Home Action
+    isDefault: 1
+    state: {fileID: 3298933432796928510, guid: 417803e3cf70d1148b505321344cb8ad, type: 3}
+    cost: 0
+    position: {x: 289, y: 183}
+    pre:
+    - id: 0
+      value: 0
+    - id: 1
+      value: 0
+    - id: 2
+      value: 0
+    post:
+    - id: 0
+      value: 1
+  - name: Chase Player Marble Action
+    isDefault: 0
+    state: {fileID: 3298933432796928510, guid: 1ad25499fd403754ba096e3b3b420421, type: 3}
+    cost: 0
+    position: {x: 697, y: 185}
+    pre:
+    - id: 1
+      value: 1
+    - id: 0
+      value: 0
+    post:
+    - id: 2
+      value: 1
+    - id: 1
+      value: 0
+  goals:
+  - name: Is Chasing
+    isDefault: 1
+    position: {x: 286, y: 457}
+    conditions:
+    - id: 2
+      value: 1
+  worldStates:
+  - position: {x: 283, y: 610}
+    isAutoUpdate: 1
+    list:
+    - id: 0
+      value: 0
+    - id: 1
+      value: 0
+    - id: 2
+      value: 0

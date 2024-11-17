@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Team/Sean/C_platform/Collapsing platorm test.unity
     guid: 66ce3de2366df10458e04f12ef2b8579
+  - enabled: 1
+    path: Assets/Team/James/J_Scenes/James_MarbleGame.unity
+    guid: 73cef7e1c8e4aad49819b6655f7efbfc
   m_configObjects: {}
