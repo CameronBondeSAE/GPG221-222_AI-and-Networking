@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+
 public class SearchTargetClose_State : EvilMarbleBase
 {
     //References to other gameobjects/scripts
@@ -36,6 +37,7 @@ public class SearchTargetClose_State : EvilMarbleBase
     {
         base.Execute(aDeltaTime, aTimeScale);
 
+        //Sets a circle pattern
         EvilMarbleBase.angle += EvilMarbleBase.orbitSpeed * Time.deltaTime;
 
         float x = EvilMarbleBase.home.position.x + Mathf.Cos(EvilMarbleBase.angle) * EvilMarbleBase.orbitRadius;
@@ -45,6 +47,7 @@ public class SearchTargetClose_State : EvilMarbleBase
 
         Debug.DrawRay(newCirclePosition, Vector3.up *10);
 
+        //gets direction and follows the pattern
         Vector3 targetDir;
         targetDir = (newCirclePosition - transform.position).normalized;
 
