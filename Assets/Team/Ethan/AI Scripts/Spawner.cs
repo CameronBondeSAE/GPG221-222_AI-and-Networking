@@ -10,6 +10,7 @@ namespace EB
 
         public int amount = 1;
 
+
         public void SpawnMany()
         {
             for (int i = 0; i < amount; i++)

@@ -21,6 +21,12 @@ namespace EB
                 spawner = target as Spawner;
                 spawner?.Spawn();
             }
+            if (GUILayout.Button("SpawnMany"))
+            {
+                Spawner spawners;
+                spawners = target as Spawner;
+                spawners?.SpawnMany();
+            }
         }
     }
 }
