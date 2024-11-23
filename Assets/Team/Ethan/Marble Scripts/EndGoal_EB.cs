@@ -1,19 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class EndGoal_EB : MonoBehaviour
+public class EndGoal_EB : NetworkBehaviour
 {
 
-    public delegate void Simple();
+    public delegate void Simple(ulong winClientId);
 
 
     public event Simple EndGoalReached_Event;
 
+    public bool gameOver = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        EndGoalReached_Event?.Invoke();
+        if (other.CompareTag("Player") && IsServer && !gameOver)
+        {
+            var player = other.GetComponent<NetworkObject>();
+
+            if (player != null)
+            {
+                ulong winClientId = player.OwnerClientId;
+
+                gameOver = true;
+
+                EndGoalReached_Event?.Invoke(winClientId);
+            }
+        }
+        
     }
 
 }
