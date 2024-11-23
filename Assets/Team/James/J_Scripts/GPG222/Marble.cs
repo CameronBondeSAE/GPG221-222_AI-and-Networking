@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 namespace JamesKilpatrick
 {
-    public class Marble : MonoBehaviour
+    public class Marble : NetworkBehaviour
     {
         // Variables
         // They store information
@@ -13,9 +14,11 @@ namespace JamesKilpatrick
         // This one stores a 'float' which is just a number. You can change these in the editor
         public float speed = 25f;
 
-        //public Vector3 position;
-       // public string soundType;
-       // public float radius;
+        public Vector3 marblePosition;
+        public Vector3 marbleVelocity;
+        public Vector3 marbleAngularVelocity;
+        // public string soundType;
+        // public float radius;
 
 
         // Functions
@@ -24,27 +27,36 @@ namespace JamesKilpatrick
         {
             // We're talking to the Rigidbody via our variable. Note the dot. This will show you everything that component can do
             rb.AddTorque(Input.GetAxis("Horizontal") * speed, 0, Input.GetAxis("Vertical") * speed);
-            
+            CalculateMarbleStatsServerRPC();
         }
 
-       /*
-        public void EmitSound()
+        [Rpc(SendTo.Server)]
+        public void CalculateMarbleStatsServerRPC()
         {
-            Collider[] results = new Collider[] { };
+            //Calculates current position to use when sending location to server
+            marblePosition = transform.position;
 
-            Physics.OverlapSphereNonAlloc(transform.position, radius, results);
+            //Calculates current velocity to use when sending location to server
+            marbleVelocity = rb.velocity;
 
-            foreach (Collider result in results)
-            {
-                EvilMarbleBase evilMarbleSound = result.GetComponent<EvilMarbleBase>();
-                if (evilMarbleSound != null)
-                {
-                    evilMarbleSound.HeardSound();
-                }
-            }
+            //Caluculates current angularVelocity to use when sending location to server
+            marbleAngularVelocity = rb.angularVelocity;
+
+            UpdateMarblePostitionRPC();
         }
-       */
-       
+
+        [Rpc(SendTo.ClientsAndHost)]
+        public void UpdateMarblePostitionRPC()
+        {
+            transform.position = marblePosition;
+            rb.velocity = marbleVelocity;
+            rb.angularVelocity = marbleAngularVelocity;
+
+        }
+
+
+
+
 
     }
 }

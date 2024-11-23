@@ -7,14 +7,14 @@ namespace SeanA
     public class Avoid : MonoBehaviour
     {
         [SerializeField] float scandistance;
-        Rigidbody rigidbody;
+        Rigidbody rb;
 
         bool avoidtarget;
         [SerializeField] float forcemultiplier = 100f;
         // Start is called before the first frame update
         void Start()
         {
-            rigidbody = GetComponent<Rigidbody>();
+            rb = GetComponent<Rigidbody>();
         }
 
         // Update is called once per frame
@@ -23,7 +23,7 @@ namespace SeanA
             avoidtarget = Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, scandistance);
             if (avoidtarget)
             {
-                rigidbody.AddRelativeTorque(Vector3.up * forcemultiplier, ForceMode.Force);
+                rb.AddRelativeTorque(Vector3.up * forcemultiplier, ForceMode.Force);
             }
         }
 
