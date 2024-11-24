@@ -12,23 +12,30 @@ public class Basher_EB : NetworkBehaviour
     [SerializeField] private GameObject basher;
 
     // timers for basher, can change in inspecter 
+    [Tooltip("Timer to start moving")]
     [SerializeField] private float startTimer;
+    [Tooltip("Timer between moving")]
     [SerializeField] private float downTimer;
+    [Tooltip("Timer to move back up")]
     [SerializeField] private float upTimer;
 
     // base speed, can change in inspecter 
+    [Tooltip("Speed of the Basher")]
     [SerializeField] private float speed = 10;
 
     // Basher positions
+    [Tooltip("Start and End point of the Basher")]
     [SerializeField] private Transform startPostion, endPostion;
     [SerializeField] private Transform destinationTarget, departTarget;
     //change delay
+    [Tooltip("Time between movements")]
     [SerializeField] float changeDirectionDelay;
     //length of journey
     private float journeyLength;
     //bool for waiting
     private bool isWaiting;
     //render to change colour
+    [Tooltip("Renderer for colour change")]
     public Renderer rend;
 
     // Start is called before the first frame update

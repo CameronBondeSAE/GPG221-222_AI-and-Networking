@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class Rotator_EB : NetworkBehaviour
 {
-    
+
     // Variables
     // This links your code to any other code in the whole game. 
     // In this case it's like a wire that can hook in to a "Transform" component script
+    [Tooltip("Transform of Rotator")]
     public Transform myTransform;
-
+    [Tooltip("Speed of rotation")]
     public float speed;
 
 

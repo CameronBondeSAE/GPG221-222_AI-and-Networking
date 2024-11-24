@@ -8,8 +8,10 @@ public class Marble_EB : NetworkBehaviour
     // Variables
     // They store information
     // This one stores which 'Rigidbody' component we want to talk to. They do the physics movement
+    [Tooltip("Rigidbody of marble for movement")]
     public Rigidbody rb;
     // This one stores a 'float' which is just a number. You can change these in the editor
+    [Tooltip("Rigidbody of marble for movement")]
     public float speed = 25f;
 
     private Vector3 lastPosition;

@@ -932,11 +932,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: bd080191-45f9-4222-ad66-c2eeaa8bc742
+  cloudProjectId: dd7507d0-ec2c-434e-83fe-7e60587f6a47
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: GPG222Test
-  organizationId: sae-melbourne
+  projectName: GPG221+222 - AI and Networking
+  organizationId: ethanb976
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
