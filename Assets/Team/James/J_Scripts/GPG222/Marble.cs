@@ -5,18 +5,26 @@ using Unity.Netcode;
 
 namespace JamesKilpatrick
 {
+    /// <summary>
+    /// James's Player Marble
+    /// TODO:
+    /// Implement special ability to seperate it from base class (Jumping ability)
+    /// 
+    /// This marble networks its position, velocity and angular velocity to allow all players to see this marble in their clients allow it to be customised more than what regular network transform allows
+    /// It uses torque on its rigidbody to move around
+    /// </summary>
     public class Marble : NetworkBehaviour
     {
         // Variables
         // They store information
-        // This one stores which 'Rigidbody' component we want to talk to. They do the physics movement
+        [Tooltip("This one stores which 'Rigidbody' component we want to talk to. They do the physics movement")]
         public Rigidbody rb;
-        // This one stores a 'float' which is just a number. You can change these in the editor
+        [Tooltip("This one stores a 'float' which is just a number. You can change these in the editor")]
         public float speed = 25f;
 
-        public Vector3 marblePosition;
-        public Vector3 marbleVelocity;
-        public Vector3 marbleAngularVelocity;
+        private Vector3 marblePosition;
+        private Vector3 marbleVelocity;
+        private Vector3 marbleAngularVelocity;
 
         // Functions
 
@@ -45,7 +53,7 @@ namespace JamesKilpatrick
         }
 
         [Rpc(SendTo.Server, RequireOwnership = false)]
-        public void CalculateMarbleStatsServerRPC(Vector3 position, Vector3 velocity, Vector3 angularVelocity)
+        private void CalculateMarbleStatsServerRPC(Vector3 position, Vector3 velocity, Vector3 angularVelocity)
         {
             //Calculates current position to use when sending location to server
             transform.position = position;
@@ -60,7 +68,7 @@ namespace JamesKilpatrick
         }
 
         [Rpc(SendTo.ClientsAndHost)]
-        public void UpdateMarblePostitionRPC(Vector3 position, Vector3 velocity, Vector3 angularVelocity)
+        private void UpdateMarblePostitionRPC(Vector3 position, Vector3 velocity, Vector3 angularVelocity)
         {
             if (!IsOwner)
             {

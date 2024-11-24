@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2098346682
+  GlobalObjectIdHash: 3154811261
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -123,16 +123,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spinBody: {fileID: 3503327618762334936}
   spinTransform: {fileID: 2078789059613477503}
-  targetPosition: {x: 6, y: 0.5, z: -74}
-  FinishedPosition: {x: 31.39, y: 0.522, z: -75.29746}
   targetDirection: {x: 0, y: 0, z: 0}
-  turnspeed: 3
   speed: 500
   targetObject: {fileID: 0}
   rend: {fileID: 1384877443281738648}
-  reachedFinishedPosition: 0
-  startPosition: {x: 0, y: 0, z: 0}
-  currentPosition: {x: 0, y: 0, z: 0}
+  goingRight: 0
   state: 1
 --- !u!54 &3503327618762334936
 Rigidbody:

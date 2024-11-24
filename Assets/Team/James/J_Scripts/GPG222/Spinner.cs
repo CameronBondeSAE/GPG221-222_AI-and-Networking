@@ -4,26 +4,35 @@ using TMPro;
 using UnityEngine;
 using Unity.Netcode;
 
+/// <summary>
+/// Spinner Game Object:
+/// This object uses different states to move from left to right and spin around to act as a hazard in the level
+/// It has 4 states but mainly uses 3 of them with the Idle state being for any errors that arrise
+/// It uses coroutines to switch between these states
+/// It is networked to show these changes on different clients
+/// It uses collsion to bounce between walls
+/// </summary>
 public class Spinner : NetworkBehaviour
 {
+    [Tooltip("Rigidbody of object for movement")]
     public Rigidbody spinBody;
 
-    //Spins Game Object 
+    [Tooltip("Changes the objects position for spinning")]
     public Transform spinTransform;
 
-    //Target postion spinner moves towards when in movement state
+    [Tooltip("Game object moves towards target postion")]
     public Vector3 targetDirection;
 
-    //Speed of Movement
+    [Tooltip("Changes the speed of the game object")]
     public float speed;
 
-    //Used to make spinner move towards a Game Object
+    [Tooltip("Game object will move towards target object if set")]
     public Transform targetObject;
 
-    //Used to change the spinners color 
+    [Tooltip("Changes game object color")]
     public Renderer rend;
 
-    //Bool used for looping movement
+    [Tooltip("Used for movement looping")]
     public bool goingRight;
 
 

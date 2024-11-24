@@ -250,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedBoost: {fileID: 1123153701707838162}
   speedDown: {fileID: 8874116965284566330}
-  speedIncrease: 10
+  speedIncrease: 50
   speedBoostRenderer: {fileID: 5267586824622378426}
   objectsInSpeedBoost: []
 --- !u!1 &8098980169030470428

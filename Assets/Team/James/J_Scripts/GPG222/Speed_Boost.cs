@@ -4,12 +4,23 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
+/// <summary>
+/// Speed Boost Game Object
+/// This is a area that will increase any marbles speed when inside of its area
+/// It does this by uses a list of rigibodies and a on trigger enter and exit
+/// Entering the trigger area adds the marbles rb to the list which increases speed
+/// Exiting the trigger area removes the marbles rb from the list which removes the speed increase
+/// It uses material renders that are networked to show all players if people are in the speed boost
+/// </summary>
 public class Speed_Boost : MonoBehaviour
 {
-    [SerializeField] private AudioSource speedBoost;
-    [SerializeField] private AudioSource speedDown;
-    public float speedIncrease = 10f;
+    [SerializeField] private AudioSource speedBoostAudio;
+    [SerializeField] private AudioSource speedDownAudio;
+    [Tooltip("Float to change the amount of speed increase player gets")]
+    public float speedIncrease = 50f;
+    [Tooltip("Reference to renderer to show color change")]
     public Renderer speedBoostRenderer;
+    [Tooltip("Creates a list of rigidbody when in speed boost to allow multiple marbles to go fast")]
     public List<Rigidbody> objectsInSpeedBoost = new List<Rigidbody>();
 
     // Start is called before the first frame update
@@ -31,7 +42,7 @@ public class Speed_Boost : MonoBehaviour
     public void ActivateSpeedBoost()
     {
         //Play sound when entering
-        speedBoost.Play();
+        speedBoostAudio.Play();
 
         //Change Speed Boost color for all clients when marble enter the speed boost.
         ChangeSpeedColorOnClientsRPC(Color.cyan);
@@ -40,7 +51,7 @@ public class Speed_Boost : MonoBehaviour
     public void DeactiviateSpeedBoost()
     {
         //Play sound when leaving.
-        speedDown.Play();
+        speedDownAudio.Play();
 
         //Change Speed Boost color for all clients when marble leaves the speed boost.
         ChangeSpeedColorOnClientsRPC(Color.red);
