@@ -13,14 +13,14 @@ public class Rotator_EB : NetworkBehaviour
     // This links your code to any other code in the whole game. 
     // In this case it's like a wire that can hook in to a "Transform" component script
     [Tooltip("Transform of Rotator")]
-    public Transform myTransform;
+    [SerializeField] private Transform myTransform;
     [Tooltip("Speed of rotation")]
-    public float speed;
+    [SerializeField] private float speed;
 
 
     // Functions
     // This one gets called by Unity itself, 60 times a second
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (IsServer)
         {

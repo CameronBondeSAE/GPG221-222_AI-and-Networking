@@ -14,10 +14,10 @@ public class Marble_EB : NetworkBehaviour
     // They store information
     // This one stores which 'Rigidbody' component we want to talk to. They do the physics movement
     [Tooltip("Rigidbody of marble for movement")]
-    public Rigidbody rb;
+    [SerializeField] private Rigidbody rb;
     // This one stores a 'float' which is just a number. You can change these in the editor
-    [Tooltip("Rigidbody of marble for movement")]
-    public float speed = 25f;
+    [Tooltip("FLoat for the speed of the marble")]
+    [SerializeField] private float speed = 25f;
 
     private Vector3 lastPosition;
     private Quaternion lastRotation;
@@ -39,8 +39,8 @@ public class Marble_EB : NetworkBehaviour
 
     // Functions
     // This gets run by Unity whenever the screen updates
-    void Update()
-    {
+    private void Update()
+    { 
         if (IsOwner)
         {
             // We're talking to the Rigidbody via our variable. Note the dot. This will show you everything that component can do

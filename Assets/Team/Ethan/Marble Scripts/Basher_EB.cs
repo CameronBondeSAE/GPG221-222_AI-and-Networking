@@ -35,17 +35,17 @@ public class Basher_EB : NetworkBehaviour
     [SerializeField] private Transform destinationTarget, departTarget;
     //change delay
     [Tooltip("Time between movements")]
-    [SerializeField] float changeDirectionDelay;
+    [SerializeField] private float changeDirectionDelay;
     //length of journey
     private float journeyLength;
     //bool for waiting
     private bool isWaiting;
     //render to change colour
     [Tooltip("Renderer for colour change")]
-    public Renderer rend;
+    [SerializeField] private Renderer rend;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
 
         //Sets target position
@@ -61,7 +61,7 @@ public class Basher_EB : NetworkBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         //if is server start moving
        if (IsServer)
@@ -110,7 +110,7 @@ public class Basher_EB : NetworkBehaviour
             destinationTarget = startPostion;
         }
     }
-    IEnumerator changeDeley()
+    private IEnumerator changeDeley()
     {
         //change to new postion and get ready to move
         yield return new WaitForSeconds(changeDirectionDelay);

@@ -122,8 +122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 10
-  jumpPadAudio: {fileID: 0}
-  jumpPadAni: {fileID: 0}
+  jumpPad: {fileID: 9183269976940094046}
+  jumpPadani: {fileID: 8072343796478910124}
   jumpPadR: {fileID: 3872767441341683842}
 --- !u!82 &9183269976940094046
 AudioSource:
@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2575586326
+  GlobalObjectIdHash: 850224894
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1

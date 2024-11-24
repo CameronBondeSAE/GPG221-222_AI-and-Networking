@@ -8,14 +8,12 @@ using UnityEngine;
 /// </summary>
 public class EndGoal_EB : NetworkBehaviour
 {
-
     public delegate void Simple(ulong winClientId);
-
 
     public event Simple EndGoalReached_Event;
 
     [Tooltip("Bool so it only triggers once")]
-    public bool gameOver = false;
+    [SerializeField] private bool gameOver = false;
 
     private void OnTriggerEnter(Collider other)
     {

@@ -10,11 +10,11 @@ using UnityEngine;
 public class GameManager_EB : NetworkBehaviour
 {
     [Tooltip("EndGoal object/script")]
-    public EndGoal_EB EndGoal;
+    [SerializeField] private EndGoal_EB EndGoal;
     [Tooltip("Win txt to display")]
-    public GameObject winTxt;
+    [SerializeField] private GameObject winTxt;
     [Tooltip("Lose txt to display")]
-    public GameObject lostTxt;
+    [SerializeField] private GameObject lostTxt;
 
     private void OnEnable()
     {

@@ -10,20 +10,20 @@ using Unity.Netcode;
 public class JumpPad : NetworkBehaviour
 {
     [Tooltip("Force applied to marble upwards")]
-    public float jumpForce = 10f;
+    [SerializeField] private float jumpForce = 10f;
     [Tooltip("Audio source for Jumppad")]
-    public AudioSource jumpPadAudio;
+    [SerializeField] private AudioSource jumpPadAudio;
     [Tooltip("Animator for Jumppad")]
-    public Animator jumpPadani;
+    [SerializeField] private Animator jumpPadAni;
     [Tooltip("Renderer for colour change")]
-    public Renderer jumpPadR;
+    [SerializeField] private Renderer jumpPadR;
 
     private bool animationPlayed = false;
 
     private void Start()
     {
         jumpPadAudio = GetComponent<AudioSource>();
-        jumpPadani = GetComponent<Animator>();
+        jumpPadAni = GetComponent<Animator>();
         jumpPadR = GetComponent<Renderer>();
 
         jumpPadR.material.color = Color.cyan;
@@ -104,7 +104,7 @@ public class JumpPad : NetworkBehaviour
         if (playAnimation && !animationPlayed)
         {
             jumpPadAudio.Play();
-            jumpPadani.SetTrigger("JumpPadTrigger");
+            jumpPadAni.SetTrigger("JumpPadTrigger");
             animationPlayed = true;
         }
         else if (!playAnimation)
