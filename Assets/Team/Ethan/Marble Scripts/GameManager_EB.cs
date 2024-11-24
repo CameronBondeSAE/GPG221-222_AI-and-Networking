@@ -11,9 +11,9 @@ public class GameManager_EB : NetworkBehaviour
 {
     [Tooltip("EndGoal object/script")]
     [SerializeField] private EndGoal_EB EndGoal;
-    [Tooltip("Win txt to display")]
+    [Tooltip("Win text to display")]
     [SerializeField] private GameObject winTxt;
-    [Tooltip("Lose txt to display")]
+    [Tooltip("Lose text to display")]
     [SerializeField] private GameObject lostTxt;
 
     private void OnEnable()
