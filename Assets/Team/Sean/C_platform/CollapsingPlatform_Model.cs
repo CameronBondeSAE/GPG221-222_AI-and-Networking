@@ -6,11 +6,12 @@ using Unity.VisualScripting;
 
 public class CollapsingPlatform_Model : NetworkBehaviour
 {
-
+    CollapsingPlatform_View cView;
     public float activateTimer = 5f;
     private float cdTimer;
     public bool timerCalled = false;
     public bool debugTimerFinished = false;
+    
     
 
     Rigidbody rb;
@@ -18,6 +19,7 @@ public class CollapsingPlatform_Model : NetworkBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        cView = GetComponent<CollapsingPlatform_View>();
         cdTimer = activateTimer;
         rb = GetComponent<Rigidbody>();
     }
@@ -37,6 +39,7 @@ public class CollapsingPlatform_Model : NetworkBehaviour
         //Makes platform dissapear
         Debug.Log("Platform activated");
         rb.isKinematic = false;
+        cView.ChangeMesh();
     }
 
     public void OnTriggerEnter(Collider other)
@@ -69,7 +72,7 @@ public class CollapsingPlatform_Model : NetworkBehaviour
 
     public void Update()
     {
-        /*
+        /* debug
         if (IsClient)
         {
             if (Input.GetKeyDown(KeyCode.F))
@@ -79,6 +82,7 @@ public class CollapsingPlatform_Model : NetworkBehaviour
             }
         }
         */
+        
 
         Timer();
 

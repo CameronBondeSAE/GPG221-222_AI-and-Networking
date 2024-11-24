@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class CollapsingPlatform_View : MonoBehaviour
 {
-    CollapsingPlatform_Model model;
+    [SerializeField] GameObject platforMmesh;
+    [SerializeField] GameObject brokenplatformMesh;
+    AudioSource sound;
 
+    public void ChangeMesh()
+    {
+        platforMmesh.SetActive(false);
+        brokenplatformMesh.SetActive(true);
+        sound.Play();
+    }
     
     // Start is called before the first frame update
     void Start()
     {
-        model = GetComponent<CollapsingPlatform_Model>();
+        platforMmesh.SetActive(true);
+        brokenplatformMesh.SetActive(false);
+        sound = GetComponent<AudioSource>();    
     }
 
     // Update is called once per frame

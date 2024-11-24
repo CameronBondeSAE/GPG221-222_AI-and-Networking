@@ -9,13 +9,14 @@ public class MarbleBumperModel : NetworkBehaviour
     public float bumperForce = 10f;
     private float cdTimer;
     private bool readyToFire = true;
+    [SerializeField] MarbleBumperView mView;
 
     private bool validateCollision = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        mView = gameObject.GetComponentInChildren<MarbleBumperView>(); 
     }
 
     // Update is called once per frame
@@ -25,13 +26,9 @@ public class MarbleBumperModel : NetworkBehaviour
 
     }
 
-    [Rpc(SendTo.ClientsAndHost, RequireOwnership = false, Delivery = RpcDelivery.Unreliable)]
-    public void ActivateRPC()
-    {
-        validateCollision = true;
-    }
+    
 
-
+    
     //Check object is in the collider
     private void OnTriggerStay(UnityEngine.Collider collision)
     {
@@ -50,9 +47,12 @@ public class MarbleBumperModel : NetworkBehaviour
                 readyToFire = false;
                 cdTimer = cooldownTimer;
                 Debug.Log("On cooldown");
+                mView.PlayAnimation();
             }
         }
     }
+
+    
 
     [Rpc(SendTo.Server, RequireOwnership = false, Delivery = RpcDelivery.Reliable)]
     private void Trigger_RequestToServer_Rpc()
@@ -61,6 +61,13 @@ public class MarbleBumperModel : NetworkBehaviour
         validateCollision = false;
         ActivateRPC();
         Debug.Log("Something Detected");
+    }
+
+    [Rpc(SendTo.ClientsAndHost, RequireOwnership = false, Delivery = RpcDelivery.Unreliable)]
+    public void ActivateRPC()
+    {
+        validateCollision = true;
+        
     }
 
     public void Cooldown()
