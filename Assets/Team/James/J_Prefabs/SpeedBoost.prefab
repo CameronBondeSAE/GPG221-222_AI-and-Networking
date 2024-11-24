@@ -248,8 +248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 105cfb4454f921a4fb08a13b3db32ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedBoost: {fileID: 1123153701707838162}
-  speedDown: {fileID: 8874116965284566330}
+  speedBoostAudio: {fileID: 1123153701707838162}
+  speedDownAudio: {fileID: 8874116965284566330}
   speedIncrease: 50
   speedBoostRenderer: {fileID: 5267586824622378426}
   objectsInSpeedBoost: []
