@@ -577,6 +577,12 @@ Transform:
   - {fileID: 1099204705}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &206235962 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8874116965284566330, guid: 7e155c95355e72748921fd44f7711f03,
+    type: 3}
+  m_PrefabInstance: {fileID: 984079460}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &243872497
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,6 +906,18 @@ Transform:
   - {fileID: 1019108032}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &587380310 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1123153701707838162, guid: 7e155c95355e72748921fd44f7711f03,
+    type: 3}
+  m_PrefabInstance: {fileID: 1292036915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &651339352 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8874116965284566330, guid: 7e155c95355e72748921fd44f7711f03,
+    type: 3}
+  m_PrefabInstance: {fileID: 1139543576920556434}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &808018040 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6671775323019645673, guid: 7e155c95355e72748921fd44f7711f03,
@@ -1279,11 +1297,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedBoost (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8844484238230492771, guid: 7e155c95355e72748921fd44f7711f03,
+        type: 3}
+      propertyPath: speedDownAudio
+      value: 
+      objectReference: {fileID: 206235962}
+    - target: {fileID: 8844484238230492771, guid: 7e155c95355e72748921fd44f7711f03,
+        type: 3}
+      propertyPath: speedBoostAudio
+      value: 
+      objectReference: {fileID: 986468085}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e155c95355e72748921fd44f7711f03, type: 3}
+--- !u!82 &986468085 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1123153701707838162, guid: 7e155c95355e72748921fd44f7711f03,
+    type: 3}
+  m_PrefabInstance: {fileID: 984079460}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1019108031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,6 +1825,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6849008102706756659, guid: a7d16b3133d20e84688567ff89c695f8,
     type: 3}
   m_PrefabInstance: {fileID: 1073840008}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1076319359 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8874116965284566330, guid: 7e155c95355e72748921fd44f7711f03,
+    type: 3}
+  m_PrefabInstance: {fileID: 1292036915}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1078342320
 PrefabInstance:
@@ -2502,6 +2542,16 @@ PrefabInstance:
       propertyPath: speedIncrease
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 8844484238230492771, guid: 7e155c95355e72748921fd44f7711f03,
+        type: 3}
+      propertyPath: speedDownAudio
+      value: 
+      objectReference: {fileID: 1076319359}
+    - target: {fileID: 8844484238230492771, guid: 7e155c95355e72748921fd44f7711f03,
+        type: 3}
+      propertyPath: speedBoostAudio
+      value: 
+      objectReference: {fileID: 587380310}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2612,6 +2662,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1307366819}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!82 &1328178451 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8874116965284566330, guid: 7e155c95355e72748921fd44f7711f03,
+    type: 3}
+  m_PrefabInstance: {fileID: 1551613438}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1358205420
 GameObject:
   m_ObjectHideFlags: 0
@@ -3244,6 +3300,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedBoost (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8844484238230492771, guid: 7e155c95355e72748921fd44f7711f03,
+        type: 3}
+      propertyPath: speedDownAudio
+      value: 
+      objectReference: {fileID: 1328178451}
+    - target: {fileID: 8844484238230492771, guid: 7e155c95355e72748921fd44f7711f03,
+        type: 3}
+      propertyPath: speedBoostAudio
+      value: 
+      objectReference: {fileID: 1983172417}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3668,6 +3734,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1944541350}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!82 &1983172417 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1123153701707838162, guid: 7e155c95355e72748921fd44f7711f03,
+    type: 3}
+  m_PrefabInstance: {fileID: 1551613438}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1993332870 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1123153701707838162, guid: 7e155c95355e72748921fd44f7711f03,
+    type: 3}
+  m_PrefabInstance: {fileID: 1139543576920556434}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2003893486 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8495264350509793210, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
@@ -3828,6 +3906,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedBoost
       objectReference: {fileID: 0}
+    - target: {fileID: 8844484238230492771, guid: 7e155c95355e72748921fd44f7711f03,
+        type: 3}
+      propertyPath: speedDownAudio
+      value: 
+      objectReference: {fileID: 651339352}
+    - target: {fileID: 8844484238230492771, guid: 7e155c95355e72748921fd44f7711f03,
+        type: 3}
+      propertyPath: speedBoostAudio
+      value: 
+      objectReference: {fileID: 1993332870}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
