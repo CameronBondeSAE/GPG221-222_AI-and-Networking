@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d1768354c00d348ad8b92273118b97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platforMmesh: {fileID: 2582290163801007167}
+  platformMesh: {fileID: 2582290163801007167}
   brokenplatformMesh: {fileID: 1872142386013572868}
 --- !u!54 &6099038119653808547
 Rigidbody:
