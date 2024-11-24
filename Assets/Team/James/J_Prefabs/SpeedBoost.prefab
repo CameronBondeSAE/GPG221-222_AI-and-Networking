@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 5267586824622378426}
   - component: {fileID: 6393059154371772782}
   - component: {fileID: 8844484238230492771}
+  - component: {fileID: 6866016238787545897}
   m_Layer: 0
   m_Name: SpeedBoost
   m_TagString: Untagged
@@ -253,6 +254,27 @@ MonoBehaviour:
   speedIncrease: 50
   speedBoostRenderer: {fileID: 5267586824622378426}
   objectsInSpeedBoost: []
+--- !u!114 &6866016238787545897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671775323019645673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 1523693109
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &8098980169030470428
 GameObject:
   m_ObjectHideFlags: 0

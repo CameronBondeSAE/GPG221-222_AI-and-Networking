@@ -20,14 +20,8 @@ public class Spinner : NetworkBehaviour
     [Tooltip("Changes the objects position for spinning")]
     public Transform spinTransform;
 
-    [Tooltip("Game object moves towards target postion")]
-    public Vector3 targetDirection;
-
     [Tooltip("Changes the speed of the game object")]
     public float speed;
-
-    [Tooltip("Game object will move towards target object if set")]
-    public Transform targetObject;
 
     [Tooltip("Changes game object color")]
     public Renderer rend;
@@ -96,14 +90,7 @@ public class Spinner : NetworkBehaviour
     //Alligns Spinner back to target position
     private void SpinAlign()
     {
-        //Used to move towards playerTransform marble if wanted
-        if (targetObject)
-        {
-            targetDirection = (targetObject.position - transform.position).normalized;
-        }
-
         spinTransform.rotation = Quaternion.Euler(0, 0, 0);
-
     }
 
     private void SpinMovement()

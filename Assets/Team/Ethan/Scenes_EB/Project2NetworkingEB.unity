@@ -912,12 +912,6 @@ AudioSource:
     type: 3}
   m_PrefabInstance: {fileID: 1292036915}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &651339352 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 8874116965284566330, guid: 7e155c95355e72748921fd44f7711f03,
-    type: 3}
-  m_PrefabInstance: {fileID: 1139543576920556434}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &808018040 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6671775323019645673, guid: 7e155c95355e72748921fd44f7711f03,
@@ -1296,6 +1290,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpeedBoost (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866016238787545897, guid: 7e155c95355e72748921fd44f7711f03,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 154608941
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866016238787545897, guid: 7e155c95355e72748921fd44f7711f03,
+        type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 3852180389
       objectReference: {fileID: 0}
     - target: {fileID: 8844484238230492771, guid: 7e155c95355e72748921fd44f7711f03,
         type: 3}
@@ -2537,6 +2541,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedBoost (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6866016238787545897, guid: 7e155c95355e72748921fd44f7711f03,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 4104724711
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866016238787545897, guid: 7e155c95355e72748921fd44f7711f03,
+        type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 3852180389
+      objectReference: {fileID: 0}
     - target: {fileID: 8844484238230492771, guid: 7e155c95355e72748921fd44f7711f03,
         type: 3}
       propertyPath: speedIncrease
@@ -3300,6 +3314,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedBoost (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6866016238787545897, guid: 7e155c95355e72748921fd44f7711f03,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1006513331
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866016238787545897, guid: 7e155c95355e72748921fd44f7711f03,
+        type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 3852180389
+      objectReference: {fileID: 0}
     - target: {fileID: 8844484238230492771, guid: 7e155c95355e72748921fd44f7711f03,
         type: 3}
       propertyPath: speedDownAudio
@@ -3740,12 +3764,6 @@ AudioSource:
     type: 3}
   m_PrefabInstance: {fileID: 1551613438}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &1993332870 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 1123153701707838162, guid: 7e155c95355e72748921fd44f7711f03,
-    type: 3}
-  m_PrefabInstance: {fileID: 1139543576920556434}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2003893486 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8495264350509793210, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
@@ -3906,16 +3924,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedBoost
       objectReference: {fileID: 0}
-    - target: {fileID: 8844484238230492771, guid: 7e155c95355e72748921fd44f7711f03,
+    - target: {fileID: 6866016238787545897, guid: 7e155c95355e72748921fd44f7711f03,
         type: 3}
-      propertyPath: speedDownAudio
-      value: 
-      objectReference: {fileID: 651339352}
-    - target: {fileID: 8844484238230492771, guid: 7e155c95355e72748921fd44f7711f03,
+      propertyPath: GlobalObjectIdHash
+      value: 238798001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866016238787545897, guid: 7e155c95355e72748921fd44f7711f03,
         type: 3}
-      propertyPath: speedBoostAudio
-      value: 
-      objectReference: {fileID: 1993332870}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 3852180389
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
