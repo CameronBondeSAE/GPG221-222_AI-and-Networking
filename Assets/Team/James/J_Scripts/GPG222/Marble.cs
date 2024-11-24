@@ -17,21 +17,10 @@ namespace JamesKilpatrick
         public Vector3 marblePosition;
         public Vector3 marbleVelocity;
         public Vector3 marbleAngularVelocity;
-        // public string soundType;
-        // public float radius;
-
 
         // Functions
-        // This gets run by Unity whenever the screen updates
-        void Update()
-        {
-            // We're talking to the Rigidbody via our variable. Note the dot. This will show you everything that component can do
-            rb.AddTorque(Input.GetAxis("Horizontal") * speed, 0, Input.GetAxis("Vertical") * speed);
-            CalculateMarbleStatsServerRPC();
-        }
 
-        [Rpc(SendTo.Server)]
-        public void CalculateMarbleStatsServerRPC()
+        private void Start()
         {
             //Calculates current position to use when sending location to server
             marblePosition = transform.position;
@@ -41,22 +30,46 @@ namespace JamesKilpatrick
 
             //Caluculates current angularVelocity to use when sending location to server
             marbleAngularVelocity = rb.angularVelocity;
+        }
 
-            UpdateMarblePostitionRPC();
+        // This gets run by Unity whenever the screen updates
+        void Update()
+        {
+            if (IsOwner)
+            {
+                // We're talking to the Rigidbody via our variable. Note the dot. This will show you everything that component can do
+                rb.AddTorque(Input.GetAxis("Horizontal") * speed, 0, Input.GetAxis("Vertical") * speed);
+               
+                CalculateMarbleStatsServerRPC(transform.position, rb.velocity, rb.angularVelocity);
+            }
+        }
+
+        [Rpc(SendTo.Server, RequireOwnership = false)]
+        public void CalculateMarbleStatsServerRPC(Vector3 position, Vector3 velocity, Vector3 angularVelocity)
+        {
+            //Calculates current position to use when sending location to server
+            transform.position = position;
+
+            //Calculates current velocity to use when sending location to server
+            rb.velocity = velocity;
+
+            //Caluculates current angularVelocity to use when sending location to server
+            rb.angularVelocity = angularVelocity;
+
+            UpdateMarblePostitionRPC(position, velocity, angularVelocity);
         }
 
         [Rpc(SendTo.ClientsAndHost)]
-        public void UpdateMarblePostitionRPC()
+        public void UpdateMarblePostitionRPC(Vector3 position, Vector3 velocity, Vector3 angularVelocity)
         {
-            transform.position = marblePosition;
-            rb.velocity = marbleVelocity;
-            rb.angularVelocity = marbleAngularVelocity;
+            if (!IsOwner)
+            {
+                transform.position = position;
+                rb.velocity = velocity;
+                rb.angularVelocity = angularVelocity;
+            }
 
         }
-
-
-
-
 
     }
 }
