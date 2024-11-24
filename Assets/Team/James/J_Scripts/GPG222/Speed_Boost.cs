@@ -1,6 +1,7 @@
 using JamesKilpatrick;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 public class Speed_Boost : MonoBehaviour
@@ -8,7 +9,7 @@ public class Speed_Boost : MonoBehaviour
     [SerializeField] private AudioSource speedBoost;
     [SerializeField] private AudioSource speedDown;
     public float speedIncrease = 10f;
-
+    public Renderer speedBoostRenderer;
     public List<Rigidbody> objectsInSpeedBoost = new List<Rigidbody>();
 
     // Start is called before the first frame update
@@ -22,7 +23,7 @@ public class Speed_Boost : MonoBehaviour
     {
         foreach (Rigidbody body in objectsInSpeedBoost)
         {
-            //Makes any object with a rigidbody that enters faster
+            //Makes any object with a rigidbody that enters faster.
             body.AddForce(transform.forward * speedIncrease * Time.deltaTime);
         }
     }
@@ -31,12 +32,18 @@ public class Speed_Boost : MonoBehaviour
     {
         //Play sound when entering
         speedBoost.Play();
+
+        //Change Speed Boost color for all clients when marble enter the speed boost.
+        ChangeSpeedColorOnClientsRPC(Color.cyan);
     }
 
     public void DeactiviateSpeedBoost()
     {
-        //Play sound when leaving
+        //Play sound when leaving.
         speedDown.Play();
+
+        //Change Speed Boost color for all clients when marble leaves the speed boost.
+        ChangeSpeedColorOnClientsRPC(Color.red);
     }
 
 
@@ -63,5 +70,11 @@ public class Speed_Boost : MonoBehaviour
         {
             DeactiviateSpeedBoost();
         }
+    }
+
+    [Rpc(SendTo.ClientsAndHost)]
+    public void ChangeSpeedColorOnClientsRPC(Color color)
+    {
+        speedBoostRenderer.material.color = color;
     }
 }
