@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class GameManager_EB : NetworkBehaviour
 {
+    [Tooltip("EndGoal object/script")]
     public EndGoal_EB EndGoal;
+    [Tooltip("Win txt to display")]
     public GameObject winTxt;
+    [Tooltip("Lose txt to display")]
     public GameObject lostTxt;
 
     private void OnEnable()

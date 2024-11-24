@@ -11,6 +11,7 @@ public class EndGoal_EB : NetworkBehaviour
 
     public event Simple EndGoalReached_Event;
 
+    [Tooltip("Bool so it only triggers once")]
     public bool gameOver = false;
 
     private void OnTriggerEnter(Collider other)

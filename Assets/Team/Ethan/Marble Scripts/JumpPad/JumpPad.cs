@@ -5,9 +5,13 @@ using Unity.Netcode;
 
 public class JumpPad : NetworkBehaviour
 {
+    [Tooltip("Force applied to marble upwards")]
     public float jumpForce = 10f;
+    [Tooltip("Audio source for Jumppad")]
     public AudioSource jumpPad;
+    [Tooltip("Animator for Jumppad")]
     public Animator jumpPadani;
+    [Tooltip("Renderer for colour change")]
     public Renderer jumpPadR;
 
     private bool animationPlayed = false;
