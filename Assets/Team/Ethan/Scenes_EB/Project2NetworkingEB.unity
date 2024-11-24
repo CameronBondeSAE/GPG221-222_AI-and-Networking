@@ -985,6 +985,91 @@ Transform:
   - {fileID: 1019108032}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &813041091
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 837683190}
+    m_Modifications:
+    - target: {fileID: 2183637715188978603, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3016024856
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 186.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 104.58662
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.9831281
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8495264350509793210, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+        type: 3}
+      propertyPath: m_Name
+      value: JumpPad All (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d1f11d6c4d77fb84089b7c70dd72dc1d, type: 3}
+--- !u!4 &813041092 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+    type: 3}
+  m_PrefabInstance: {fileID: 813041091}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &813041093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8495264350509793210, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
+    type: 3}
+  m_PrefabInstance: {fileID: 813041091}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &837683189
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,6 +1105,7 @@ Transform:
   - {fileID: 1425864326}
   - {fileID: 1920515422}
   - {fileID: 1083168140}
+  - {fileID: 813041092}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &840386190
@@ -1817,7 +1903,7 @@ PrefabInstance:
     - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 232.74734
+      value: 228.8
       objectReference: {fileID: 0}
     - target: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
         type: 3}
@@ -3045,6 +3131,8 @@ MonoBehaviour:
   - _gameObject: {fileID: 1920515421}
     _prefab: Assets/Team/Ethan/Prefab_EB/Marble Prefab/JumpPad All.prefab
   - _gameObject: {fileID: 1083168137}
+    _prefab: Assets/Team/Ethan/Prefab_EB/Marble Prefab/JumpPad All.prefab
+  - _gameObject: {fileID: 813041093}
     _prefab: Assets/Team/Ethan/Prefab_EB/Marble Prefab/JumpPad All.prefab
   - _gameObject: {fileID: 366325628}
     _prefab: Assets/Team/Ethan/Prefab_EB/Marble Prefab/RotatingCube.prefab
