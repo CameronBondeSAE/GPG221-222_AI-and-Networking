@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
+/// <summary>
+/// This script manages the jumppad. This includes the activation using colliders and tags (what the sever handles and what the player sees), the colour change using the renderer, 
+/// force applied to the player using ADDForce to the rigidbody, the animation using an animtaion trigger and the sound effects when triggerd using audiosource
+/// </summary>
 public class JumpPad : NetworkBehaviour
 {
     [Tooltip("Force applied to marble upwards")]
     public float jumpForce = 10f;
     [Tooltip("Audio source for Jumppad")]
-    public AudioSource jumpPad;
+    public AudioSource jumpPadAudio;
     [Tooltip("Animator for Jumppad")]
     public Animator jumpPadani;
     [Tooltip("Renderer for colour change")]
@@ -18,7 +22,7 @@ public class JumpPad : NetworkBehaviour
 
     private void Start()
     {
-        jumpPad = GetComponent<AudioSource>();
+        jumpPadAudio = GetComponent<AudioSource>();
         jumpPadani = GetComponent<Animator>();
         jumpPadR = GetComponent<Renderer>();
 
@@ -99,7 +103,7 @@ public class JumpPad : NetworkBehaviour
 
         if (playAnimation && !animationPlayed)
         {
-            jumpPad.Play();
+            jumpPadAudio.Play();
             jumpPadani.SetTrigger("JumpPadTrigger");
             animationPlayed = true;
         }

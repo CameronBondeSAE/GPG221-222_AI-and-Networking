@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
+/// <summary>
+/// This script handles the activation of the endgame event by checking if it gets trigger using a comparetag collider
+/// </summary>
 public class EndGoal_EB : NetworkBehaviour
 {
 
