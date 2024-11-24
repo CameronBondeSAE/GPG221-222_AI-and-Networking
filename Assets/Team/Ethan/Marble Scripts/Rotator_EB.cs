@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
+/// <summary>
+/// This script handles the rotator. It rotates on the Y axis and updates the server, since it has a netwrok transform it shows on all clients
+/// </summary>
 public class Rotator_EB : NetworkBehaviour
 {
 

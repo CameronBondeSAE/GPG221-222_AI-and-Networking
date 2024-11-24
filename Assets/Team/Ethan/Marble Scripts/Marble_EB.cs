@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
+/// <summary>
+/// This script is the player marble script. It handles its movement and makes sure only the owner can control the marble. 
+/// It sends to the server its transform position, rotation, velocity and angularvelocity so it links up with other clients.
+/// It applies force to the marble through the rigidbody and tracks its location using a Vector3.
+/// </summary>
 public class Marble_EB : NetworkBehaviour
 {
     // Variables

@@ -6,6 +6,12 @@ using System.Net;
 using Unity.Netcode;
 using UnityEngine;
 
+/// <summary>
+/// This script handles the basher. It handles its movement using by getting set location transforms that it moves between.
+/// It has timers that track the time between movements, start and end.
+/// It gets its journey movement using Vector3 and uses a IEnumorator to start again, so it consatly is activating
+/// It also changes its colour using a renderer
+/// </summary>
 public class Basher_EB : NetworkBehaviour
 {
     // basher

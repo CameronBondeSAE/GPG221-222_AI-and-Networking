@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
+/// <summary>
+/// This script manages the end game and sets off events when it does. It manages the txt that show up on screen when the endgame is triggered 
+/// checking who won and lost depending on who triggered it
+/// </summary>
 public class GameManager_EB : NetworkBehaviour
 {
     [Tooltip("EndGoal object/script")]
