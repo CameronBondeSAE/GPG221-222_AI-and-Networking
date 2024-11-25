@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Patrol : MonoBehaviour
+public class noiseping : MonoBehaviour
 {
+    public float debugTimer = 5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,11 @@ public class Patrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        debugTimer -= Time.deltaTime;
+
+        if(debugTimer < 0 )
+        {
+            Destroy(gameObject);
+        }
     }
 }

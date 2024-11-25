@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MarbleControllerView : MonoBehaviour
 {
+    [SerializeField] GameObject noisePrefab;
     // Start is called before the first frame update
     void Awake()
     {
@@ -18,5 +19,6 @@ public class MarbleControllerView : MonoBehaviour
     public void JumpEffects()
     {
         //Debug.Log("JumpEffect");
+        Instantiate(noisePrefab, transform.position, Quaternion.identity);
     }
 }

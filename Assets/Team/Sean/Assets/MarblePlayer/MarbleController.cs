@@ -27,14 +27,19 @@ public class MarbleController : NetworkBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        network = GetComponent<MarbleNetworkconnect>();
+        
         marbleView = GetComponent<MarbleControllerView>();
+
+        if (!useOffline)
+        {
+            network = GetComponent<MarbleNetworkconnect>();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (IsOwner)
+        if (IsOwner || useOffline)
         {
             PlayerInputs();
         }
@@ -42,7 +47,7 @@ public class MarbleController : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        if (IsOwner)
+        if (IsOwner || useOffline)
         {
             Movement();
         }

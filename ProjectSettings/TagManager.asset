@@ -12,6 +12,7 @@ TagManager:
   - EvilMarble
   - EvilMarble 2
   - ChasingEvilMarble
+  - Noise
   layers:
   - Default
   - TransparentFX

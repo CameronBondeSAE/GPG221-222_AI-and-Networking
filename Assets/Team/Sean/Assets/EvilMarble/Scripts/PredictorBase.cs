@@ -1,12 +1,21 @@
+using Anthill.AI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class noiseping : MonoBehaviour
+public class PredictorBase : AntAIState
 {
+
+    
+    //public DetectionMethods detectionMethods;
+   
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        
+        //detectionMethods = GetComponent<DetectionMethods>();
+        
         
     }
 

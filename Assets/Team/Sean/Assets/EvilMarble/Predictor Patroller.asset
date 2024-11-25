@@ -10,74 +10,78 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2f22e7053ea04ed0922308786facc8c, type: 3}
-  m_Name: Attacking_EvilMarble_JK
+  m_Name: Predictor Patroller
   m_EditorClassIdentifier: 
   conditions:
     list:
     - id: 0
-      name: Is Home
+      name: Player Detected
     - id: 1
-      name: 'Sees Player '
+      name: Reset
     - id: 2
-      name: Is Attacking
+      name: Chasing player
+    - id: 3
+      name: Noise Detected
   actions:
-  - name: Attacking Marble Action
+  - name: Cycle patrol points
     isDefault: 0
-    state: {fileID: 3298933432796928510, guid: d3010a8dfab84fe4fabbe46846073d45, type: 3}
+    state: {fileID: 8714445784471292273, guid: 106be23ef0130b04386f5df359e8489f, type: 3}
     cost: 0
-    position: {x: 703.39264, y: 208.67853}
+    position: {x: 503, y: 77}
     pre:
-    - id: 1
-      value: 1
     - id: 0
       value: 0
+    - id: 1
+      value: 0
+    - id: 2
+      value: 0
+    post:
+    - id: 0
+      value: 1
+  - name: AttackPlayer
+    isDefault: 0
+    state: {fileID: 5762951450011476620, guid: bf645054426f15040aa8de6a46afb01b, type: 3}
+    cost: 0
+    position: {x: 709, y: 76}
+    pre:
+    - id: 0
+      value: 1
     post:
     - id: 2
       value: 1
-    - id: 1
-      value: 0
-  - name: Look For Marble Action
-    isDefault: 0
-    state: {fileID: 3298933432796928510, guid: bc92ca1006af82d4aadd7b21213e5702, type: 3}
-    cost: 0
-    position: {x: 479.42865, y: 209.5357}
-    pre:
-    - id: 0
-      value: 1
-    post:
-    - id: 1
-      value: 1
-    - id: 0
-      value: 0
-  - name: Return Home Action
+  - name: Reset
     isDefault: 1
-    state: {fileID: 3298933432796928510, guid: 417803e3cf70d1148b505321344cb8ad, type: 3}
+    state: {fileID: 4401093253090734743, guid: eb51c690d10dd0c42ac56a93bd6649b1, type: 3}
     cost: 0
-    position: {x: 255.10709, y: 209.42857}
+    position: {x: 303, y: 76}
     pre:
+    - id: 1
+      value: 1
+    post:
     - id: 0
       value: 0
     - id: 1
       value: 0
     - id: 2
       value: 0
-    post:
-    - id: 0
-      value: 1
   goals:
-  - name: Attacking Player
+  - name: Chase player
     isDefault: 1
-    position: {x: 245.7857, y: 554.57153}
+    position: {x: 303, y: 347}
     conditions:
+    - id: 0
+      value: 1
     - id: 2
       value: 1
+    - id: 1
+      value: 0
   worldStates:
-  - position: {x: 246.96423, y: 699.8572}
+  - position: {x: 303, y: 541}
     isAutoUpdate: 1
     list:
     - id: 0
       value: 0
     - id: 1
-      value: 0
+      value: 1
     - id: 2
       value: 0
