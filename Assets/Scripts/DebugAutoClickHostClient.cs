@@ -6,7 +6,7 @@ public class DebugAutoClickHostClient : MonoBehaviour
 {
     public bool autoStartHostAndClient = true;
 
-    void Awake()
+    void Start()
     {
         if (autoStartHostAndClient)
         {
