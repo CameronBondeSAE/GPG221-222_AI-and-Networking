@@ -7,10 +7,7 @@ namespace CameronBonde
 
 	public class Spawner : MonoBehaviour
 	{
-		[SerializeField]
-		private GameObject prefab;
-
-		public List<Character_Base> CamCharacters;
+		public List<GameObject> Characters;
 
 		public int amount = 10;
 
@@ -30,8 +27,8 @@ namespace CameronBonde
 
 		public void Spawn()
 		{
-			Instantiate(CamCharacters[Random.Range(0, CamCharacters.Count)], transform.position,
-				Quaternion.Euler(0, Random.Range(0, 360), 0));
+			Instantiate(Characters[Random.Range(0, Characters.Count)], transform.position,
+			            Quaternion.Euler(0, Random.Range(0, 360), 0));
 		}
 	}
 }

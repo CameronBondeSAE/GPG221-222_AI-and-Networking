@@ -7,6 +7,17 @@
       "dependencies": {},
       "hash": "8f963317ca0098166f7fc92b9b018ce5d0c74913"
     },
+    "com.openai.unity": {
+      "version": "https://github.com/RageAgainstThePixel/com.openai.unity.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.utilities.encoder.wav": "2.0.2",
+        "com.utilities.rest": "3.3.0",
+        "com.utilities.websockets": "1.0.1"
+      },
+      "hash": "85963e837754deddd854e50d6d86d594294c0c7b"
+    },
     "com.unity.ai.navigation": {
       "version": "1.1.5",
       "depth": 0,
@@ -45,9 +56,16 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.ext.nunit": {
-      "version": "1.0.6",
+    "com.unity.editorcoroutines": {
+      "version": "1.0.0",
       "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.ext.nunit": {
+      "version": "2.0.3",
+      "depth": 2,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -310,11 +328,11 @@
       }
     },
     "com.unity.test-framework": {
-      "version": "1.1.33",
-      "depth": 0,
+      "version": "1.4.2",
+      "depth": 1,
       "source": "registry",
       "dependencies": {
-        "com.unity.ext.nunit": "1.0.6",
+        "com.unity.ext.nunit": "2.0.3",
         "com.unity.modules.imgui": "1.0.0",
         "com.unity.modules.jsonserialize": "1.0.0"
       },
@@ -380,6 +398,73 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "com.utilities.async": {
+      "version": "https://github.com/RageAgainstThePixel/com.utilities.async.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.editorcoroutines": "1.0.0",
+        "com.unity.test-framework": "1.4.2",
+        "com.unity.nuget.mono-cecil": "1.11.4"
+      },
+      "hash": "43d44da4100389e5d3d2079d23ade8605887ef36"
+    },
+    "com.utilities.audio": {
+      "version": "https://github.com/RageAgainstThePixel/com.utilities.audio.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.modules.audio": "1.0.0",
+        "com.unity.modules.unitywebrequestaudio": "1.0.0",
+        "com.utilities.async": "2.2.1"
+      },
+      "hash": "51c4ec69043ed9b1d50d7bff188d34076d14fea3"
+    },
+    "com.utilities.encoder.wav": {
+      "version": "https://github.com/RageAgainstThePixel/com.utilities.encoder.wav.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.utilities.audio": "2.0.2"
+      },
+      "hash": "df124fb9367781bbbc9781a6d6fb025cd42f881f"
+    },
+    "com.utilities.extensions": {
+      "version": "https://github.com/RageAgainstThePixel/com.utilities.extensions.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.ugui": "1.0.0"
+      },
+      "hash": "4c73832d3e8c0824bae365f37852cf0cc73bf587"
+    },
+    "com.utilities.rest": {
+      "version": "https://github.com/RageAgainstThePixel/com.utilities.rest.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.utilities.async": "2.2.1",
+        "com.utilities.extensions": "1.1.16",
+        "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.modules.unitywebrequestassetbundle": "1.0.0",
+        "com.unity.modules.unitywebrequestaudio": "1.0.0",
+        "com.unity.modules.unitywebrequesttexture": "1.0.0",
+        "com.unity.modules.unitywebrequestwww": "1.0.0",
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      },
+      "hash": "669a2b519d2c4c39c0af9bcd6f688d88e8f7b33b"
+    },
+    "com.utilities.websockets": {
+      "version": "https://github.com/RageAgainstThePixel/com.utilities.websockets.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.utilities.async": "2.2.1",
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      },
+      "hash": "6a918288e9f1cfec25b9e0f1ddc852de5ae07b04"
     },
     "com.veriorpies.parrelsync": {
       "version": "https://github.com/VeriorPies/ParrelSync.git?path=/ParrelSync",
