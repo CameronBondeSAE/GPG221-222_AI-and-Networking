@@ -19,6 +19,9 @@ public class Marble_EB : NetworkBehaviour
     [Tooltip("FLoat for the speed of the marble")]
     [SerializeField] private float speed = 25f;
 
+    [SerializeField] private Vector3 minScale = new Vector3(0.5f, 0.5f, 0.5f);
+    [SerializeField] private Vector3 maxScale = new Vector3(1f, 1f, 1f);
+
     private Vector3 lastPosition;
     private Quaternion lastRotation;
 
@@ -54,9 +57,35 @@ public class Marble_EB : NetworkBehaviour
                 lastPosition = transform.position;
                 lastRotation = transform.rotation;
             }
-        }
+            scaleCharacter();
+        } 
+    }
 
-        
+    private void scaleCharacter()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            scaleCharacterOnServerRpc(minScale);
+        }
+        else if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            scaleCharacterOnServerRpc(maxScale);
+        }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void scaleCharacterOnServerRpc(Vector3 newScale, ServerRpcParams rpcParams = default)
+    {
+        transform.localScale = newScale;
+
+        scaleOnClientRpc(newScale);
+
+    }
+
+    [ClientRpc]
+    private void scaleOnClientRpc(Vector3 newScale)
+    {
+        transform.localScale = newScale;
     }
 
     [ServerRpc(RequireOwnership = false)]
