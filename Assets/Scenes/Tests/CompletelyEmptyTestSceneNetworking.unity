@@ -298,6 +298,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2333988328790045700, guid: c1d114fc01785404abb08b24268d04ad,
+        type: 3}
+      propertyPath: NetworkConfig.PlayerPrefab
+      value: 
+      objectReference: {fileID: 4710473497290891594, guid: bbffc392a929561428336138f1e462f9,
+        type: 3}
+    - target: {fileID: 2333988328790045700, guid: c1d114fc01785404abb08b24268d04ad,
+        type: 3}
+      propertyPath: NetworkConfig.Prefabs.NetworkPrefabsLists.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5084bb7f750296f4a83bc48c4594db0e,
+        type: 2}
     - target: {fileID: 4401210334698623534, guid: c1d114fc01785404abb08b24268d04ad,
         type: 3}
       propertyPath: m_Name
