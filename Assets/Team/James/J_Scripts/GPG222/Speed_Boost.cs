@@ -12,7 +12,7 @@ using UnityEngine;
 /// Exiting the trigger area removes the marbles rb from the list which removes the speed increase
 /// It uses material renders that are networked to show all players if people are in the speed boost
 /// </summary>
-public class Speed_Boost : MonoBehaviour
+public class Speed_Boost : NetworkBehaviour
 {
     [SerializeField] private AudioSource speedBoostAudio;
     [SerializeField] private AudioSource speedDownAudio;
@@ -26,7 +26,7 @@ public class Speed_Boost : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -41,27 +41,32 @@ public class Speed_Boost : MonoBehaviour
 
     public void ActivateSpeedBoost()
     {
-        //Play sound when entering
-        speedBoostAudio.Play();
+        if (IsServer)
+        {
+            //Change Speed Boost color and Play sound for all clients when marble enter the speed boost.
+            ActivateSpeedBoostRPC(Color.cyan);
 
-        //Change Speed Boost color for all clients when marble enter the speed boost.
-        ChangeSpeedColorOnClientsRPC(Color.cyan);
+            PlaySpeedBoostSoundRPC();
+        }
+
     }
 
     public void DeactiviateSpeedBoost()
     {
-        //Play sound when leaving.
-        speedDownAudio.Play();
+        if (IsServer)
+        {
+            //Change Speed Boost color and play speed down sound for all clients when marble leaves the speed boost.
+            ActivateSpeedBoostRPC(Color.red);
 
-        //Change Speed Boost color for all clients when marble leaves the speed boost.
-        ChangeSpeedColorOnClientsRPC(Color.red);
+            PlaySpeedDownSoundRPC();
+        }
     }
 
 
     public void OnTriggerEnter(Collider other)
     {
         //Adds any object with a rigidbody to the objectsInSpeedBoost list
-        objectsInSpeedBoost.Add (other.gameObject.GetComponent<Rigidbody>());
+        objectsInSpeedBoost.Add(other.gameObject.GetComponent<Rigidbody>());
 
         //If player enters play sound effect
         if (other.CompareTag("Player"))
@@ -74,8 +79,8 @@ public class Speed_Boost : MonoBehaviour
     public void OnTriggerExit(Collider other)
     {
         //Removes any object with a rigidbody in the objectsInSpeedBoost list
-        objectsInSpeedBoost.Remove (other.gameObject.GetComponent<Rigidbody>());
-        
+        objectsInSpeedBoost.Remove(other.gameObject.GetComponent<Rigidbody>());
+
         //If player leaves play sound effect
         if (other.CompareTag("Player"))
         {
@@ -84,8 +89,20 @@ public class Speed_Boost : MonoBehaviour
     }
 
     [Rpc(SendTo.ClientsAndHost)]
-    public void ChangeSpeedColorOnClientsRPC(Color color)
+    public void ActivateSpeedBoostRPC(Color color)
     {
         speedBoostRenderer.material.color = color;
+    }
+
+    [Rpc(SendTo.ClientsAndHost)]
+    public void PlaySpeedBoostSoundRPC()
+    {
+        speedBoostAudio.Play();
+    }
+
+    [Rpc(SendTo.ClientsAndHost)]
+    public void PlaySpeedDownSoundRPC()
+    {
+        speedDownAudio.Play();
     }
 }
