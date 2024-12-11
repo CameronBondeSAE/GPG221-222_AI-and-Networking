@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class noiseping : MonoBehaviour
+public class TestBehaviours : MonoBehaviour
 {
-    public float debugTimer = 5f;
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +13,19 @@ public class noiseping : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        debugTimer -= Time.deltaTime;
+        
+    }
 
-        if(debugTimer < 0 )
+    public void ToggleTest(bool active)
+    {
+        if(active)
         {
-            Destroy(gameObject);
+            Debug.Log("button is active");
         }
+        else
+        {
+            Debug.Log("button is deactivated");
+        }
+
     }
 }

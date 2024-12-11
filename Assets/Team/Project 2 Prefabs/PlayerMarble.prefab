@@ -98,9 +98,10 @@ GameObject:
   - component: {fileID: 5008691642292572613}
   - component: {fileID: 7381192332677558574}
   - component: {fileID: 487074556494543534}
+  - component: {fileID: 2302297203558602677}
   m_Layer: 0
   m_Name: PlayerMarble
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 5
-  jumpForce: 100
+  dashForce: 10
   useOffline: 0
   moveDir: {x: 0, y: 0, z: 0}
 --- !u!114 &5008691642292572613
@@ -205,6 +206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71d36cb2601061a42974e127a5cb48bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noisePrefab: {fileID: 2970117751538977153, guid: 6b192ad65e9232546806500c42897717,
+    type: 3}
 --- !u!54 &487074556494543534
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -232,3 +235,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2302297203558602677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6302430331801565994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee05b547a63509438d8443a1d4bccd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

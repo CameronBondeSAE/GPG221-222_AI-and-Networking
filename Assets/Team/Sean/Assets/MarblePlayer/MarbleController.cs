@@ -8,7 +8,7 @@ public class MarbleController : NetworkBehaviour
 {
     //Customizable variables
     public float playerSpeed = 5f;
-    public float jumpForce = 100f;
+    public float dashForce = 100f;
     [SerializeField] private bool useOffline = false;
 
     //input variables
@@ -60,13 +60,13 @@ public class MarbleController : NetworkBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Jump();
+            Dash();
         }
     }
 
-    private void Jump()
+    private void Dash()
     {
-        rb.AddForce(Vector3.up * jumpForce);
+        rb.AddForce(moveDir * dashForce, ForceMode.Impulse);
         if (!useOffline)
         {
             network.reqJumpValidationRPC();
