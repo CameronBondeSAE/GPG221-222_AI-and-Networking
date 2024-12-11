@@ -35,7 +35,7 @@ public class Timed_Button : MonoBehaviour
         }
         if (state == buttonStates.Pressed)
         {
-            TimerButtonPressed();
+            TimerButtonPressedRPC();
         }
     }
 
@@ -50,19 +50,20 @@ public class Timed_Button : MonoBehaviour
     }
 
     //Used To Change the Timer Button Material Color to show changes in states.
-    public void ChangeTimerButtonColors(Color color)
+    private void ChangeTimerButtonColors(Color color)
     {
         buttonRenderer.material.color = color;
     }
 
     //Change Button Color to Blue to show change in State and allow for button to be pressed again.
-    public void TimerButtonDefault()
+    private void TimerButtonDefault()
     {
         ChangeTimerButtonColors(Color.blue);
     }
 
     //Change Button Color to Red to show change in State and start cooldown timer.
-    public void TimerButtonPressed()
+    [ServerRpc(RequireOwnership = false)]
+    private void TimerButtonPressedRPC()
     {
         //Change to red color to display button being pressed
         ChangeTimerButtonColors(Color.red);

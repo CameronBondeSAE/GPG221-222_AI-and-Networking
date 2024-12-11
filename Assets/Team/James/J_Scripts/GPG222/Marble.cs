@@ -7,9 +7,6 @@ namespace JamesKilpatrick
 {
     /// <summary>
     /// James's Player Marble
-    /// TODO:
-    /// Implement special ability to seperate it from base class (Jumping ability)
-    /// 
     /// This marble networks its position, velocity and angular velocity to allow all players to see this marble in their clients allow it to be customised more than what regular network transform allows
     /// It uses torque on its rigidbody to move around
     /// </summary>
@@ -21,6 +18,7 @@ namespace JamesKilpatrick
         public Rigidbody rb;
         [Tooltip("This one stores a 'float' which is just a number. You can change these in the editor")]
         public float speed = 25f;
+        public float jumpForce = 25f;
 
         private Vector3 marblePosition;
         private Vector3 marbleVelocity;
@@ -49,6 +47,8 @@ namespace JamesKilpatrick
                 rb.AddTorque(Input.GetAxis("Horizontal") * speed, 0, Input.GetAxis("Vertical") * speed);
                
                 CalculateMarbleStatsServerRPC(transform.position, rb.velocity, rb.angularVelocity);
+
+                MarbleJump();
             }
         }
 
@@ -77,6 +77,14 @@ namespace JamesKilpatrick
                 rb.angularVelocity = angularVelocity;
             }
 
+        }
+
+        private void MarbleJump()
+        {
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                rb.AddForce(Vector3.up * jumpForce);
+            }
         }
 
     }
