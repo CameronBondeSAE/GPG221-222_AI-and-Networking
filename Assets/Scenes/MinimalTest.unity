@@ -262,7 +262,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &234122731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newLobbyName: LobbyHelloWorldd7396d4a-8b90-45db-acd5-bd9be431521d
-  maxPlayers: 8
+  maxPlayers: 12
   isPrivate: 0
 --- !u!4 &234122732
 Transform:

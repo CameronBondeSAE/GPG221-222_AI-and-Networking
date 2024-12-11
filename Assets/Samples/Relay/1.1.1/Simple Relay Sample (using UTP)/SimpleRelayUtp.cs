@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Unity.Collections;
 using Unity.Networking.Transport;
 using Unity.Networking.Transport.Relay;
@@ -118,7 +119,7 @@ public class SimpleRelayUtp : MonoBehaviour
     public Text PlayerMessageReceivedText;
 
     // GUI vars
-    string joinCode = "n/a";
+    public string joinCode = "n/a";
     string playerId = "Not signed in";
     string autoSelectRegionName = "auto-select (QoS)";
     int regionAutoSelectIndex = 0;
@@ -264,7 +265,7 @@ public class SimpleRelayUtp : MonoBehaviour
     /// <summary>
     /// Event handler for when the Get Regions button is clicked.
     /// </summary>
-    public async void OnRegion()
+    public async Task OnRegion()
     {
         Debug.Log("Host - Getting regions.");
         var allRegions = await RelayService.Instance.ListRegionsAsync();
@@ -350,7 +351,7 @@ public class SimpleRelayUtp : MonoBehaviour
     /// <summary>
     /// Event handler for when the Get Join Code button is clicked.
     /// </summary>
-    public async void OnJoinCode()
+    public async Task OnJoinCode()
     {
         Debug.Log("Host - Getting a join code for my allocation. I would share that join code with the other players so they can join my session.");
 
