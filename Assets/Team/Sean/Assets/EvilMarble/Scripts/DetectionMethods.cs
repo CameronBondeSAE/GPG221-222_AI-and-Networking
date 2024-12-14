@@ -13,6 +13,7 @@ public enum MarbleStates
 }
 public class DetectionMethods : MonoBehaviour, ISense
 {
+    
     //patrolling script section
     public Transform[] patrolAreas;
     public float patroltimer = 5f;
@@ -21,6 +22,7 @@ public class DetectionMethods : MonoBehaviour, ISense
     AntAIAgent agent;
     public TextMeshPro statusText;
 
+    
     
     
 

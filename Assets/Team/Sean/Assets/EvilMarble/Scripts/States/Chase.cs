@@ -46,7 +46,15 @@ public class Chase : PredictorBase
     public override void Execute(float aDeltaTime, float aTimeScale)
     {
         base.Execute(aDeltaTime, aTimeScale);
+        
+        if(!targetscript.directChase){
         targetscript.agentTarget.transform.position = player.transform.position + player.gameObject.GetComponent<Rigidbody>().velocity;
+        }
+        else
+        {
+            targetscript.agentTarget.transform.position = player.transform.position;
+        }
+        
 
     }
 }

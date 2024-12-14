@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d7cde75-73d7-487e-a029-7ab897593ebf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GPG221-222_AI-and-Networking/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GPG221-222_AI-and-Networking/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GPG221-222_AI-and-Networking/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GPG221-222_AI-and-Networking/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Lobbytest/Testlobby.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Lobbytest/Testlobby.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Team/Sean/NetworkedButton/New Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Team/Sean/NetworkedButton/New Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Team/Sean/Assets/EvilMarble/Evilmarblepredictor.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Team/Sean/Assets/EvilMarble/Evilmarblepredictor.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Team/Sean/Assets/EvilMarble/MarbleAI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Team/Sean/Assets/EvilMarble/MarbleAI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Team/Sean/Assets/EvilMarble/Scripts/AIMarbleTarget.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Team/Sean/Assets/EvilMarble/Scripts/AIMarbleTarget.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Team/Sean/Assets/EvilMarble/Scripts/DetectionMethods.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Team/Sean/Assets/EvilMarble/Scripts/DetectionMethods.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Team/Sean/Assets/EvilMarble/Scripts/States/Chase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Team/Sean/Assets/EvilMarble/Scripts/States/Chase.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +29,7 @@
     <option name="onto" value="7bb541c962b6dceeaccb37f829bce20ed5cb9c61" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/74c83e1749b14c5186b518ce8b1669c41fe00/de/ea2b31c0/Collider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.9/Scripts/Editor/TMP_EditorUtility.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
@@ -115,7 +119,7 @@
       <workItem from="1733882436340" duration="4050000" />
       <workItem from="1733900053783" duration="1130000" />
       <workItem from="1734050660858" duration="2471000" />
-      <workItem from="1734208512378" duration="1874000" />
+      <workItem from="1734208512378" duration="5385000" />
     </task>
     <servers />
   </component>

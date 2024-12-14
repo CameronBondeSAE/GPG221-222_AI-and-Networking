@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,10 @@ using UnityEngine;
 public class AIMarbleTarget : MonoBehaviour
 {
     Rigidbody rb;
+    
+    [SerializeField] private ParticleSystem IdleIndicator;
+    [SerializeField] private ParticleSystem AngryIndicator;
+    [SerializeField] private ParticleSystem ConfusedIndicator;
 
      public GameObject agentTarget;
     DetectionMethods detectionMethods;
@@ -12,6 +17,10 @@ public class AIMarbleTarget : MonoBehaviour
     public float ResetTimer = 8f;
     float timer;
     public float moveForce = 5f;
+    public float playerDetect = 0f;
+    [SerializeField] private float detectCap = 3f;
+    
+    bool playerInDetect = false;
 
     // Start is called before the first frame update
     void Awake()
@@ -19,12 +28,61 @@ public class AIMarbleTarget : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         detectionMethods = GetComponent<DetectionMethods>();
     }
-
+    [SerializeField] private float predictCuttoff = 2f;
+    public bool directChase = false;
+    
     void Update()
     {
+        if (CalculateDistanceToTarget().magnitude < predictCuttoff)
+        {
+            directChase = true;
+        }
+        else
+        {
+            directChase = false;
+        }
+        
         MoveAgent();
 
         timer -= Time.deltaTime;
+
+        if (playerDetect > detectCap)
+        {
+            detectionMethods.PlayerDetected = true;
+            Debug.Log("Player found");
+            playerDetect = 0;
+        }
+
+        if (playerInDetect && timer < 0f)
+        {
+            playerDetect += Time.deltaTime;
+        }
+        else
+        {
+            if (playerDetect  >= 0)
+            {
+                playerDetect -= Time.deltaTime;
+            }
+        }
+
+        if (detectionMethods.PlayerDetected)
+        {
+            AngryIndicator.Play();
+            ConfusedIndicator.Stop();
+            IdleIndicator.Stop();
+        }
+        else if (detectionMethods.NoiseDetected)
+        {
+            AngryIndicator.Stop();
+            ConfusedIndicator.Play();
+            IdleIndicator.Stop();
+        }
+        else
+        {
+            ConfusedIndicator.Stop();
+            AngryIndicator.Stop();
+            IdleIndicator.Play();
+        }
 
     }
 
@@ -33,8 +91,24 @@ public class AIMarbleTarget : MonoBehaviour
     {
         if (other.GetComponent<PlayerAIinterface>() != null && timer < 0)
         {
-            detectionMethods.PlayerDetected = true;
-            Debug.Log("Player found");
+
+            playerInDetect = true;
+            Debug.Log("Player being detected");
+        }
+
+        if (other.GetComponent<DetectionMethods>() != null && detectionMethods.PlayerDetected)
+        {
+            other.GetComponent<DetectionMethods>().PlayerDetected = true;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<PlayerAIinterface>())
+        {
+
+            playerInDetect = false;
+            
         }
     }
 
@@ -48,9 +122,9 @@ public class AIMarbleTarget : MonoBehaviour
         }
     }
 
+    
 
-
-    Vector3 CalculateDistanceToTarget()
+     Vector3 CalculateDistanceToTarget()
     {
         return (agentTarget.transform.position - transform.position);
     }

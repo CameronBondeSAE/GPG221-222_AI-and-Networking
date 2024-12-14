@@ -388,6 +388,7 @@ MonoBehaviour:
   refLobby: {fileID: 490554348}
   panelUI: {fileID: 8578492402750874951, guid: 5deaec1aa3147774c956401fcf063ba1, type: 3}
   newLobbyName: LobbyHelloWorld2a873588-f157-44ce-bd10-c7bc4384eb82
+  lobbyNameText: 
   maxPlayers: 8
   isPrivate: 0
 --- !u!1 &494215844
@@ -809,6 +810,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629409881424249188, guid: 5ebf99f5498ade94e839791a557d6607,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629409881424249188, guid: 5ebf99f5498ade94e839791a557d6607,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629409881424249188, guid: 5ebf99f5498ade94e839791a557d6607,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 490554349}
+    - target: {fileID: 8629409881424249188, guid: 5ebf99f5498ade94e839791a557d6607,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629409881424249188, guid: 5ebf99f5498ade94e839791a557d6607,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: refresh
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629409881424249188, guid: 5ebf99f5498ade94e839791a557d6607,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LobbyListUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629409881424249188, guid: 5ebf99f5498ade94e839791a557d6607,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
