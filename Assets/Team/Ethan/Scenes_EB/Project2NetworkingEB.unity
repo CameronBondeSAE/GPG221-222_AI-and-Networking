@@ -945,7 +945,7 @@ PrefabInstance:
     - target: {fileID: 2174030679875843811, guid: 5ebf99f5498ade94e839791a557d6607,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CreateRelay
+      value: ClickStart
       objectReference: {fileID: 0}
     - target: {fileID: 2174030679875843811, guid: 5ebf99f5498ade94e839791a557d6607,
         type: 3}
@@ -2162,8 +2162,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1728538991}
         m_TargetAssemblyTypeName: RelayCreation, Assembly-CSharp
-        m_MethodName: JoinRelay
-        m_Mode: 5
+        m_MethodName: ClickJoin
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4709,6 +4709,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lobbyCodeText: {fileID: 410546345}
   lobbyInput: {fileID: 2082349742}
+  joinCodeText: {fileID: 2050406238}
+  joinCode: 
   relayCode: 
 --- !u!223 &1731694822 stripped
 Canvas:
@@ -5038,6 +5040,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2092060760}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2050406238 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4613367966249177816, guid: 5ebf99f5498ade94e839791a557d6607,
+    type: 3}
+  m_PrefabInstance: {fileID: 281659677}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2080374690 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3739048153358280800, guid: d1f11d6c4d77fb84089b7c70dd72dc1d,
