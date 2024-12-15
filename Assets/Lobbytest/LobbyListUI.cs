@@ -20,7 +20,14 @@ public class LobbyListUI : MonoBehaviour
     private QueryResponse response;
     public int maxPlayers = 8;
     public bool isPrivate = false;
-    
+    public TextMeshProUGUI lobbyCodeText;
+    private Lobby currentLobby;
+    public TMP_InputField lobbyInput;
+    public Player lobbyPlayer;
+
+
+    //This Part Written By Sean:
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,24 +45,19 @@ public class LobbyListUI : MonoBehaviour
 
     public void MakeLobby()
     {
-        Create(refLobby.foundLobbies, refLobby.currentLobby, maxPlayers, isPrivate, refLobby.loggedInPlayer);
 
+        Create(refLobby.foundLobbies, refLobby.currentLobby, maxPlayers, isPrivate);
 
-    }
-    
-    
+    }    
 
-    
-
-    public async Task Create(List<Lobby> foundLobbies, Lobby currentLobby, int maxPlayers, bool isPrivate, Player loggedInPlayer)
+    public async Task Create(List<Lobby> foundLobbies, Lobby currentLobby, int maxPlayers, bool isPrivate)
     {
 
-        
         // Populate the new lobby with some data; use indexes so it's easy to search for
         var lobbyData = new Dictionary<string, DataObject>()
         {
             ["Test"] = new DataObject(DataObject.VisibilityOptions.Public, "true", DataObject.IndexOptions.S1),
-            ["GameMode"] = new DataObject(DataObject.VisibilityOptions.Public, "ctf", DataObject.IndexOptions.S2),
+            ["GameMode"] = new DataObject(DataObject.VisibilityOptions.Public, "Marble Race", DataObject.IndexOptions.S2),
             ["Skill"] = new DataObject(DataObject.VisibilityOptions.Public, Random.Range(1, 51).ToString(),
                 DataObject.IndexOptions.N1),
             ["Rank"] = new DataObject(DataObject.VisibilityOptions.Public, Random.Range(1, 51).ToString()),
@@ -69,10 +71,10 @@ public class LobbyListUI : MonoBehaviour
             {
                 Data = lobbyData,
                 IsPrivate = isPrivate,
-                Player = loggedInPlayer
+                Player = lobbyPlayer
             });
 
-        Debug.Log($"Created new lobby {currentLobby.Name} ({currentLobby.Id})");
+        Debug.Log($"Created new lobby {currentLobby.Name} ({currentLobby.Id}) {currentLobby.LobbyCode}");
         
         List<QueryOrder> queryOrdering = new List<QueryOrder>
         {
@@ -89,7 +91,7 @@ public class LobbyListUI : MonoBehaviour
         
         PopulateLobbyUI(foundLobbies);
 
-
+        lobbyCodeText.SetText("Lobby Code = " + currentLobby.LobbyCode);
     }
 
     public void refresh()
@@ -111,8 +113,70 @@ public class LobbyListUI : MonoBehaviour
         }
     }
 
+    //This Part Written By James:
+    public async void SignInPlayerAsync()
+    {
+        await UnityServices.InitializeAsync();
 
+        // Log in a player for this game client
+        Player loggedInPlayer = await GetPlayerFromAnonymousLoginAsync();
 
+        loggedInPlayer = lobbyPlayer;
+
+        // Add some data to our player
+        // This data will be included in a lobby under players -> player.data
+        //lobbyPlayer.Data.Add("Ready", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, "No"));
+    }
+
+    // Log in a player using Unity's "Anonymous Login" API and construct a Player object for use with the Lobbies APIs
+    static async Task<Player> GetPlayerFromAnonymousLoginAsync()
+    {
+        if (!AuthenticationService.Instance.IsSignedIn)
+        {
+            Debug.Log($"Trying to log in a player ...");
+
+            // Use Unity Authentication to log in
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
+
+            if (!AuthenticationService.Instance.IsSignedIn)
+            {
+                throw new InvalidOperationException(
+                    "Player was not signed in successfully; unable to continue without a logged in player");
+            }
+        }
+
+        Debug.Log("Player signed in as " + AuthenticationService.Instance.PlayerId);
+
+        // Player objects have Get-only properties, so you need to initialize the data bag here if you want to use it
+        return new Player(AuthenticationService.Instance.PlayerId,
+            data: new Dictionary<string, PlayerDataObject>());
+    }
+
+    public async void JoinLobby(string lobbyCode)
+    {
+        // Try to join the lobby
+        // Player is optional because the service can pull the player data from the auth token
+        // However, if your player has custom data, you will want to pass the Player object into this call
+        // This will save you having to do a Join call followed by an UpdatePlayer call
+        currentLobby = await LobbyService.Instance.JoinLobbyByCodeAsync(
+            lobbyCode,
+            options: new JoinLobbyByCodeOptions()
+            {
+                Player = lobbyPlayer
+            });
+
+        Debug.Log($"Joined lobby {currentLobby.Name} ({currentLobby.LobbyCode})");
+
+        // You can also join via a Lobby Code instead of a lobby ID
+        // Lobby Codes are a short, unique codes that map to a specific lobby ID
+        // EX:
+        // currentLobby = await LobbyService.Instance.JoinLobbyByCodeAsync("myLobbyJoinCode");
+    }
+
+    public void ClickJoin()
+    {
+        JoinLobby(lobbyInput.text);
+    }
 
 }
 

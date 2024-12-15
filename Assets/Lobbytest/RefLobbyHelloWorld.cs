@@ -32,29 +32,27 @@ public class RefLobbyHelloWorld : MonoBehaviour
     /// <summary>
     /// Used to set the lobby name in this example.
     /// </summary>
-    
+
 
     /// <summary>
     /// Used to set the max number of players in this example.
     /// </summary>
-    
+
 
     /// <summary>
     /// Used to determine if the lobby shall be private in this example.
     /// </summary>
-    
+
 
     // We'll only be in one lobby at once for this demo, so let's track it here
     public Lobby currentLobby;
 
     async void Start()
     {
-        
-
         try
         {
             await ExecuteLobbyDemoAsync();
-            
+
         }
         catch (Exception ex)
         {
@@ -85,7 +83,7 @@ public class RefLobbyHelloWorld : MonoBehaviour
         await UnityServices.InitializeAsync();
 
         // Log in a player for this game client
-         loggedInPlayer = await GetPlayerFromAnonymousLoginAsync();
+        loggedInPlayer = await GetPlayerFromAnonymousLoginAsync();
 
         // Add some data to our player
         // This data will be included in a lobby under players -> player.data
@@ -146,19 +144,19 @@ public class RefLobbyHelloWorld : MonoBehaviour
         });
 
         foundLobbies = response.Results;
-        
-        
 
-        
-        
+
+
+
+
         //await listUI.Create(foundLobbies,currentLobby, maxPlayers, isPrivate, loggedInPlayer);
-        
+
         listUI.PopulateLobbyUI(foundLobbies);
-        
-        
+
+
     }
-    
-    
+
+
 
     // Log in a player using Unity's "Anonymous Login" API and construct a Player object for use with the Lobbies APIs
     static async Task<Player> GetPlayerFromAnonymousLoginAsync()

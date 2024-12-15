@@ -6,9 +6,7 @@ using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
-
-
-
+using TMPro;
 public class LobbyStartUp : MonoBehaviour
 {
     // Inspector properties with initial values
@@ -30,23 +28,27 @@ public class LobbyStartUp : MonoBehaviour
 
     // We'll only be in one lobby at once for this demo, so let's track it here
     private Lobby currentLobby;
-    
+
+    public string lobbyCode;
+
     public Player lobbyPlayer;
-    
+
+    public TextMeshProUGUI lobbyCodeText;
+
     /// <summary>
     /// TASKS:
     /// Sign In Button
     /// Chose Color
     /// </summary>
     /// <returns></returns>
-   
-    
+
+
     public async void SignInPlayerAsync()
     {
         await UnityServices.InitializeAsync();
 
         // Log in a player for this game client
-        lobbyPlayer = await GetPlayerFromAnonymousLoginAsync();
+        Player lobbyPlayer = await GetPlayerFromAnonymousLoginAsync();
 
         // Add some data to our player
         // This data will be included in a lobby under players -> player.data
@@ -77,27 +79,26 @@ public class LobbyStartUp : MonoBehaviour
             data: new Dictionary<string, PlayerDataObject>());
     }
 
-    public async void SendDataToLobby()
+    public async void JoinLobby()
     {
-        // Populate the new lobby with some data; use indexes so it's easy to search for
-        var lobbyData = new Dictionary<string, DataObject>()
-        {
-            ["Relay Code"] = new DataObject(DataObject.VisibilityOptions.Public, "Code"),
-        };
-
-        // Create a new lobby
-        currentLobby = await LobbyService.Instance.CreateLobbyAsync(
-            lobbyName: newLobbyName,
-            maxPlayers: maxPlayers,
-            options: new CreateLobbyOptions()
+        // Try to join the lobby
+        // Player is optional because the service can pull the player data from the auth token
+        // However, if your player has custom data, you will want to pass the Player object into this call
+        // This will save you having to do a Join call followed by an UpdatePlayer call
+        currentLobby = await LobbyService.Instance.JoinLobbyByCodeAsync(
+            lobbyCode = "myLobbyJoinCode",  
+            options: new JoinLobbyByCodeOptions()
             {
-                Data = lobbyData,
-                IsPrivate = isPrivate,
                 Player = lobbyPlayer
             });
 
-        Debug.Log($"Created new lobby {currentLobby.Name} ({currentLobby.Id})");
+        Debug.Log($"Joined lobby {currentLobby.Name} ({currentLobby.Id})");
+
+        // You can also join via a Lobby Code instead of a lobby ID
+        // Lobby Codes are a short, unique codes that map to a specific lobby ID
+        // EX:
+        // currentLobby = await LobbyService.Instance.JoinLobbyByCodeAsync("myLobbyJoinCode");
     }
-    
-    
+
+
 }

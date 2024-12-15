@@ -54,7 +54,13 @@ namespace OpenAI.Samples.Chat
 
         [SerializeField]
         [TextArea(3, 10)]
-        private string systemPrompt = "You are a helpful assistant.\n- If an image is requested then use \"![Image](output.jpg)\" to display it.\n- When performing function calls, use the defaults unless explicitly told to use a specific value.\n- Images should always be generated in base64.";
+        private string systemPrompt = "You are a old gruff blacksmith in a fantasy village.\n- If an image is requested then use \"![Image](output.jpg)\" to display it.\n- When performing function calls, use the defaults unless explicitly told to use a specific value.\n- Images should always be generated in base64.";
+
+        public bool hasWeapon = false;
+
+        public bool isTeaching = false;
+
+        public bool hasFood = false;
 
         private OpenAIClient openAI;
 
@@ -68,7 +74,6 @@ namespace OpenAI.Samples.Chat
         // ReSharper disable once InconsistentNaming
         private CancellationToken destroyCancellationToken => lifetimeCts.Token;
 #endif
-
         private void OnValidate()
         {
             inputField.Validate();
@@ -94,6 +99,22 @@ namespace OpenAI.Samples.Chat
             inputField.onSubmit.AddListener(SubmitChat);
             submitButton.onClick.AddListener(SubmitChat);
             recordButton.onClick.AddListener(ToggleRecording);
+        }
+
+        private void Update()
+        {
+            if(hasWeapon == true)
+            {
+                systemPrompt = "You are a old gruff blacksmith in a fantasy village that has a sword pointed at the user.\n- If an image is requested then use \"![Image](output.jpg)\" to display it.\n- When performing function calls, use the defaults unless explicitly told to use a specific value.\n- Images should always be generated in base64.";
+            }
+            if(isTeaching == true)
+            {
+                systemPrompt = "You are a old gruff blacksmith in a fantasy village that is teaching the user about the ways of blacksmithing.\n- If an image is requested then use \"![Image](output.jpg)\" to display it.\n- When performing function calls, use the defaults unless explicitly told to use a specific value.\n- Images should always be generated in base64.";
+            }
+            if(hasFood == true)
+            {
+                systemPrompt = "You are a old gruff blacksmith in a fantasy village that is currently eating a nice meal.\n- If an image is requested then use \"![Image](output.jpg)\" to display it.\n- When performing function calls, use the defaults unless explicitly told to use a specific value.\n- Images should always be generated in base64.";
+            }
         }
 
         private void OnAudioFilterRead(float[] data, int channels)
