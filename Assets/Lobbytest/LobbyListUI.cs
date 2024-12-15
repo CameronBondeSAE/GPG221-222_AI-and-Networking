@@ -281,5 +281,23 @@ public class LobbyListUI : MonoBehaviour
     {
         return currentLobby != null && currentLobby.HostId == AuthenticationService.Instance.PlayerId;
     }
+
+    //If Host Disconnects Switch to New Hots
+    private async void MigrateLobbyHost()
+    {
+        try
+        {
+            hostLobby = await Lobbies.Instance.UpdateLobbyAsync(hostLobby.Id, new UpdateLobbyOptions
+            {
+                HostId = currentLobby.Players[1].Id
+            });
+            currentLobby = hostLobby;
+
+        }
+        catch (LobbyServiceException e)
+        {
+            Debug.Log(e);
+        }
+    }
 }
 
