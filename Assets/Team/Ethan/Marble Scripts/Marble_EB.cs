@@ -114,6 +114,12 @@ public class Marble_EB : NetworkBehaviour
         marbleColorIndex.Value = colorIndex;
     }
 
+    [ClientRpc]
+    private void UpdateColourRpc(int colorIndex)
+    {
+        UpdateColor(colorIndex);
+    }
+
     private void scaleCharacter()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
