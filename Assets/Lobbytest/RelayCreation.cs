@@ -15,8 +15,9 @@ public class RelayCreation : MonoBehaviour
 {
     public TextMeshProUGUI lobbyCodeText;
     public TMP_InputField lobbyInput;
+    public TextMeshProUGUI joinCodeText;
+    public string joinCode;
     public string relayCode;
-
     private async void Start()
     {
         await UnityServices.InitializeAsync();
@@ -29,50 +30,52 @@ public class RelayCreation : MonoBehaviour
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
 
-    public async void CreateRelay()
+    private void Update()
     {
-        try
+        joinCodeText.text = lobbyInput.text;
+        relayCode = lobbyInput.text;
+        joinCode = relayCode;
+    }
+    public async Task<string> StartHostWithRelay(int maxConnections = 5)
+    {
+        await UnityServices.InitializeAsync();
+        if (!AuthenticationService.Instance.IsSignedIn)
         {
-            Allocation allocation = await RelayService.Instance.CreateAllocationAsync(3);
-
-            relayCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
-
-            Debug.Log(relayCode);
-            lobbyCodeText.SetText(relayCode);
-
-            RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
-            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
-
-            NetworkManager.Singleton.StartHost();
-            
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
         }
-        catch (RelayServiceException e)
-        {
-            Debug.Log(e);
-        }
+        Allocation allocation = await RelayService.Instance.CreateAllocationAsync(maxConnections);
+        NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(new RelayServerData(allocation, "dtls"));
+        var joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
+        Debug.Log(joinCode);
+        lobbyCodeText.text = "Lobby Code = " + joinCode;
+        return NetworkManager.Singleton.StartHost() ? joinCode : null;
+
+        
     }
 
 
-    public async void JoinRelay(string joincode)
+    public async Task<bool> StartClientWithRelay(string joinCode)
     {
-        try
+        await UnityServices.InitializeAsync();
+        if (!AuthenticationService.Instance.IsSignedIn)
         {
-            Debug.Log("Joining relay with " + joincode);
-            JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joincode);
-
-            RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
-            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
-
-            NetworkManager.Singleton.StartClient();
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
         }
-        catch (RelayServiceException e)
-        {
-            Debug.Log(e);
-        }
+
+        var joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode: joinCode);
+        NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(new RelayServerData(joinAllocation, "dtls"));
+        return !string.IsNullOrEmpty(joinCode) && NetworkManager.Singleton.StartClient();
     }
 
-    public void ClickJoin()
+    public async void ClickJoin()
     {
-        JoinRelay(lobbyInput.text);
+        relayCode = lobbyInput.text;
+
+        await StartClientWithRelay(relayCode);
+    }
+
+    public async void ClickStart()
+    {
+        await StartHostWithRelay();
     }
 }

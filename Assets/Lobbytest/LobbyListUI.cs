@@ -271,7 +271,7 @@ public class LobbyListUI : MonoBehaviour
         {
             if (currentLobby.Data["StartGame"].Value != "0")
             {
-                relayCreation.JoinRelay(currentLobby.Data["StartGame"].Value);
+              //  relayCreation.JoinRelay(currentLobby.Data["StartGame"].Value);
             }
         }
         currentLobby = null;
