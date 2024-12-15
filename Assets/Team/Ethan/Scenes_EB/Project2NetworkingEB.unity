@@ -5775,7 +5775,7 @@ MonoBehaviour:
   joinCodeText: {fileID: 2050406238}
   joinCode: 
   relayCode: 
-  LobbyUI: {fileID: 0}
+  LobbyUI: {fileID: 1731694822}
 --- !u!223 &1731694822 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 4878211180904402854, guid: 5ebf99f5498ade94e839791a557d6607,
