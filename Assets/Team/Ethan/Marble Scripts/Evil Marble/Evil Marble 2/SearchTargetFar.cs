@@ -24,7 +24,6 @@ public class SearchTargetFar : MonoBehaviour
     public float broadcastRadius = 15f;
     public LayerMask aiLayer;
     private Vector3 soundLocation;
-    private bool isMovingToSound = false;
 
     public void Start()
     {
@@ -38,10 +37,7 @@ public class SearchTargetFar : MonoBehaviour
         DetectCloseCircle();
         UpdateColor();
 
-        if (isMovingToSound)
-        {
-            MoveToSound();
-        }
+
     }
 
     // Uses a circle collider to detect the player using a layer
@@ -105,7 +101,6 @@ public class SearchTargetFar : MonoBehaviour
         if (Vector3.Distance(transform.position, soundLocation) <= soundDetectionRadius)
         {
             this.soundLocation = soundLocation;
-            isMovingToSound = true;
             evilMarbleSensors.IsListening = true;
         }
     }
@@ -119,22 +114,10 @@ public class SearchTargetFar : MonoBehaviour
             if (ai.TryGetComponent(out SearchLocation_State locationState))
             {
                 locationState.ReceiveLocation(location);
-                evilMarbleSensors.IsListening = true;
             }
         }
     }
 
-    private void MoveToSound()
-    {
-        Vector3 targetDir = (soundLocation - transform.position).normalized;
-        EvilRB.AddForce(targetDir * 10f);
-
-        // Stop moving after reaching the sound location
-        if (Vector3.Distance(transform.position, soundLocation) < 1f)
-        {
-            isMovingToSound = false;
-        }
-    }
 
     public void ResetStates()
     {
