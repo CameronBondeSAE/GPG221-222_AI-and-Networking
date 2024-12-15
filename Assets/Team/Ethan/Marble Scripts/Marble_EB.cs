@@ -28,16 +28,35 @@ public class Marble_EB : NetworkBehaviour
     private Vector3 marbleVelocity;
     private Vector3 marbleAngularVelocity;
 
+    private NetworkVariable<int> marbleColorIndex = new NetworkVariable<int>(default, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+
+    private Renderer renderer;
+
+    private static readonly Dictionary<int, Color> ColorMap = new Dictionary<int, Color>
+    {
+        { 0, Color.red },
+        { 1, Color.green },
+        { 2, Color.blue },
+        { 3, Color.yellow }
+    };
+
     private void Start()
     {
+        renderer = GetComponent<Renderer>();
+
         if (IsOwner)
         {
             lastPosition = transform.position;
             lastRotation = transform.rotation;
             marbleAngularVelocity = rb.angularVelocity;
             marbleVelocity = rb.velocity;
+
+            string selectedColor = PlayerPrefs.GetString("SelectedColor");
+            int colorIndex = GetColorIndex(selectedColor);
+            SetMarbleColorServerRpc(colorIndex);
         }
 
+        UpdateColor(marbleColorIndex.Value);
     }
 
     // Functions
@@ -58,7 +77,41 @@ public class Marble_EB : NetworkBehaviour
                 lastRotation = transform.rotation;
             }
             scaleCharacter();
+
+            marbleColorIndex.OnValueChanged += (oldValue, newValue) =>
+            {
+                UpdateColor(newValue);
+            };
         } 
+    }
+
+    private void UpdateColor(int colorIndex)
+    {
+        if (ColorMap.TryGetValue(colorIndex, out Color color))
+        {
+            renderer.material.color = color;
+        }
+        else
+        {
+            Debug.LogError($"Color for index {colorIndex} not found!");
+        }
+    }
+
+    private int GetColorIndex(string color)
+    {
+        return color switch
+        {
+            "Red" => 0,
+            "Green" => 1,
+            "Blue" => 2,
+            "Yellow" => 3
+        };
+    }
+
+    [ServerRpc]
+    private void SetMarbleColorServerRpc(int colorIndex)
+    {
+        marbleColorIndex.Value = colorIndex;
     }
 
     private void scaleCharacter()
