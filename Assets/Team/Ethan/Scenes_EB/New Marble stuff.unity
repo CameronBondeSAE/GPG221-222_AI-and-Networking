@@ -4069,6 +4069,11 @@ PrefabInstance:
       objectReference: {fileID: 4536966782528947943}
     - target: {fileID: 924865290102367802, guid: a259a2c3794343647b85fabaa92a8016,
         type: 3}
+      propertyPath: detectPlayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 924865290102367802, guid: a259a2c3794343647b85fabaa92a8016,
+        type: 3}
       propertyPath: aiLayer.m_Bits
       value: 4096
       objectReference: {fileID: 0}
@@ -4120,6 +4125,11 @@ PrefabInstance:
     - target: {fileID: 1332024300726855598, guid: a259a2c3794343647b85fabaa92a8016,
         type: 3}
       propertyPath: IsHome
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1332024300726855598, guid: a259a2c3794343647b85fabaa92a8016,
+        type: 3}
+      propertyPath: IsListening
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1332024300726855598, guid: a259a2c3794343647b85fabaa92a8016,
