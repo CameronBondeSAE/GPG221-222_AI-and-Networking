@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MinimalTest.unity
     guid: 3edd44d2492e2a441a0efc0a431aa9ea
+  - enabled: 1
+    path: Assets/Team/Ethan/Scenes_EB/New Marble stuff.unity
+    guid: bbc473f85599a0744aace1652cb276c1
   m_configObjects: {}

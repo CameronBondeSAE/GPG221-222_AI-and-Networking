@@ -10,7 +10,8 @@ namespace EB
     {
         IsHome = 0,
         IsAttacking = 1,
-        SeeTargetClose = 2
+        SeeTargetClose = 2,
+        IsListening = 3
     }
 
     public class EvilMarbleSensor : EvilMarbleBase, ISense
@@ -19,6 +20,7 @@ namespace EB
         public bool IsAttacking = false;
         public bool IsHome = false;
         public bool SeeTargetClose = false;
+        public bool IsListening = false;
 
         //Sets world state for Planner
         public void CollectConditions(AntAIAgent aAgent, AntAICondition aWorldState)
@@ -26,6 +28,7 @@ namespace EB
             aWorldState.Set(EvilMarble_EB.IsAttacking, IsAttacking);
             aWorldState.Set(EvilMarble_EB.IsHome, IsHome);
             aWorldState.Set(EvilMarble_EB.SeeTargetClose, SeeTargetClose);
+            aWorldState.Set(EvilMarble_EB.IsListening, IsListening);
         }
     }
 }

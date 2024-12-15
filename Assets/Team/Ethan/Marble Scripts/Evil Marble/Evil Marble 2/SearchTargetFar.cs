@@ -2,77 +2,171 @@ using EB;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.FilePathAttribute;
 
 public class SearchTargetFar : MonoBehaviour
 {
-    //variabels for detection radius/layer and player transform 
+    // Variables for detection radius, layer, and player transform
     public float targetCloseDetection = 5f;
-    public LayerMask detectionLayer;
+    public List<LayerMask> detectionLayers;
     public Transform playerTransform;
-    EvilMarbleSensorss EvilMarbleSensorss;
+    EvilMarbleSensorss evilMarbleSensors;
     public Rigidbody EvilRB;
+    public float detectionMeter = 0f;
+    public float detectPlayer = 5f;
+    public float detectionRate = 2f;
+    public Renderer renderer;
 
     private bool playerIsDetected;
 
+    // Sound detection variables
+    public float soundDetectionRadius = 10f;
+    public float broadcastRadius = 15f;
+    public LayerMask aiLayer;
+    private Vector3 soundLocation;
+    private bool isMovingToSound = false;
+
     public void Start()
     {
-        EvilMarbleSensorss = GetComponent<EvilMarbleSensorss>();
+        evilMarbleSensors = GetComponent<EvilMarbleSensorss>();
         EvilRB = GetComponent<Rigidbody>();
+        renderer = GetComponent<Renderer>();
     }
 
     void Update()
     {
         DetectCloseCircle();
+        UpdateColor();
+
+        if (isMovingToSound)
+        {
+            MoveToSound();
+        }
     }
 
-    //Uses a circle collider to detect the player using a layer
+    // Uses a circle collider to detect the player using a layer
     public void DetectCloseCircle()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, targetCloseDetection, detectionLayer);
-        bool playerDetectedFar = false;
-
-        foreach (var hitCollider in hitColliders)
+        foreach (var layer in detectionLayers)
         {
-            //Shoot out a raycast to check is player is behind a wall
-            Vector3 directionToTarget = (hitCollider.transform.position - transform.position).normalized;
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, targetCloseDetection, layer);
+            bool playerDetectedFar = false;
 
-            if (Physics.Raycast(transform.position, directionToTarget, out RaycastHit hit, targetCloseDetection))
+            foreach (var hitCollider in hitColliders)
             {
-                Debug.DrawRay(transform.position, directionToTarget * targetCloseDetection, Color.green, 1f);
+                Vector3 directionToTarget = (hitCollider.transform.position - transform.position).normalized;
 
-                //If player is in radius and not behind a wall, change state
-                if (hit.collider == hitCollider)
+                // Raycast to ensure the player is not behind a wall
+                if (Physics.Raycast(transform.position, directionToTarget, out RaycastHit hit, targetCloseDetection))
                 {
-                    playerTransform = hitCollider.transform;
-                    EvilMarbleSensorss.SeeTargetClose = true;
-                    EvilMarbleSensorss.IsHome = false;
-                    playerDetectedFar = true;
-                    playerIsDetected = true;
-                    EvilRB.velocity = Vector3.zero;
-                    break;
+                    Debug.DrawRay(transform.position, directionToTarget * targetCloseDetection, Color.green, 1f);
+
+                    // If player is hit and not obstructed, update detection state
+                    if (hit.collider == hitCollider)
+                    {
+                        playerTransform = hitCollider.transform;
+                        detectionMeter += Time.deltaTime;
+
+                        detectionMeter = Mathf.Min(detectionMeter, detectPlayer);
+
+                        if (detectionMeter >= detectPlayer)
+                        {
+                            evilMarbleSensors.SeeTargetClose = true;
+                            evilMarbleSensors.IsHome = false;
+                            playerDetectedFar = true;
+                            playerIsDetected = true;
+                            EvilRB.velocity = Vector3.zero;
+
+                            // Broadcast the detected player location
+                            BroadcastPlayerLocation(playerTransform.position);
+                            break;
+                        }
+                    }
                 }
             }
-        }
 
-        //If player leaves radius, reset to base state
-        if (!playerDetectedFar && playerIsDetected)
+            if (!playerDetectedFar && playerIsDetected)
+            {
+                detectionMeter -= Time.deltaTime * detectionRate;
+                detectionMeter = Mathf.Max(detectionMeter, 0f);
+            }
+
+            // Reset state if the player is no longer detected
+            if (detectionMeter == 0f && playerIsDetected)
+            {
+                ResetStates();
+            }
+        }
+        
+    }
+
+    public void HearSound(Vector3 soundLocation)
+    {
+        if (Vector3.Distance(transform.position, soundLocation) <= soundDetectionRadius)
         {
-            ResetStates();
+            this.soundLocation = soundLocation;
+            isMovingToSound = true;
+        }
+    }
+
+    private void BroadcastPlayerLocation(Vector3 location)
+    {
+        Collider[] nearbyAIs = Physics.OverlapSphere(transform.position, broadcastRadius, aiLayer);
+
+        foreach (var ai in nearbyAIs)
+        {
+            if (ai.TryGetComponent(out SearchLocation_State locationState))
+            {
+                locationState.ReceiveLocation(location);
+                evilMarbleSensors.IsListening = true;
+            }
+        }
+    }
+
+    private void MoveToSound()
+    {
+        Vector3 targetDir = (soundLocation - transform.position).normalized;
+        EvilRB.AddForce(targetDir * 10f);
+
+        // Stop moving after reaching the sound location
+        if (Vector3.Distance(transform.position, soundLocation) < 1f)
+        {
+            isMovingToSound = false;
         }
     }
 
     public void ResetStates()
     {
-        EvilMarbleSensorss.SeeTargetClose = false;
-        EvilMarbleSensorss.IsBlocking = false;
+        evilMarbleSensors.SeeTargetClose = false;
+        evilMarbleSensors.IsBlocking = false;
         playerIsDetected = false;
-        EvilRB.velocity = Vector3.zero;
+        detectionMeter = 0f;
     }
 
-    //show radius
+    public void UpdateColor()
+    {
+        if (!evilMarbleSensors.SeeTargetClose && evilMarbleSensors.IsHome)
+        {
+            // Lerp between green (0 detection) and red (full detection)
+            Color color = Color.Lerp(Color.green, Color.red, detectionMeter / detectPlayer);
+            if (renderer != null)
+            {
+                renderer.material.color = color;
+            }
+        }
+        
+    }
+
+    // Show radius in the editor
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, targetCloseDetection);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, soundDetectionRadius);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, broadcastRadius);
     }
 }
