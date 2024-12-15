@@ -29,6 +29,7 @@ public class LobbyListUI : MonoBehaviour
     public Canvas LobbyUI;
     public Lobby hostLobby;
     public Lobby currentLobby;
+    public bool hasGameStarted = false;
 
     //This Part Written By Sean:
 
@@ -41,11 +42,6 @@ public class LobbyListUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /* if(Input.GetKeyDown(KeyCode.Space))
-         {
-             Create(refLobby.foundLobbies, refLobby.currentLobby, maxPlayers, isPrivate, refLobby.loggedInPlayer);
-         }*/
-
         HandleLobbyPollForUpdates();
     }
 
@@ -85,7 +81,7 @@ public class LobbyListUI : MonoBehaviour
     Debug.Log($"Created new lobby {lobby.Name} ({lobby.Id}) {lobby.LobbyCode}");
     */
 
-    private async void CreateLobby()
+    public async void CreateLobby()
     {
         try
         {
@@ -107,15 +103,16 @@ public class LobbyListUI : MonoBehaviour
             hostLobby = lobby;
             currentLobby = hostLobby;
 
-            Debug.Log("Lobby Created" + lobby.Name + ", " + lobby.MaxPlayers + ", " + lobby.Id + ", " + lobby.LobbyCode);
+            Debug.Log("Lobby Created" + lobby.Name + ", " + lobby.MaxPlayers + ", " + lobby.Id + ", " + lobby.LobbyCode);          
 
             lobbyCodeText.SetText("Lobby Code = " + hostLobby.LobbyCode);
+
         }
         catch (LobbyServiceException e)
         {
             Debug.LogError(e.Message);
         }
-    
+
     }
 
     private async void ListLobbies()
@@ -144,10 +141,10 @@ public class LobbyListUI : MonoBehaviour
                 //Instantiate the lobby prefab
                 var panel = Instantiate(panelUI);
                 panel.transform.parent = panelParent;
-                Debug.Log("lobby created");
+                Debug.Log("lobby's Refreshed");
             }
 
-        
+
         }
         catch (LobbyServiceException e)
         {
@@ -233,39 +230,39 @@ public class LobbyListUI : MonoBehaviour
     {
         try
         {
-            LobbyUI.gameObject.SetActive(false);
+           // string relayCode = await relayCreation.CreateRelay();
 
-            string relayCode = await relayCreation.CreateRelay();
+            /* 
+             currentLobby.Data["StartGame"] =
+                 new DataObject(DataObject.VisibilityOptions.Member, relayCode);
 
-            /*
-            currentLobby.Data["StartGame"] =
-                new DataObject(DataObject.VisibilityOptions.Member, relayCode);
+             
+             currentLobby = await LobbyService.Instance.UpdateLobbyAsync(
+                 currentLobby.Name,
+                 options: new UpdateLobbyOptions()
+                 {
+                     Data = currentLobby.Data,
+                 }
+                 );
+             */
 
-            currentLobby = await LobbyService.Instance.UpdateLobbyAsync(
-                currentLobby.Name,
-                options: new UpdateLobbyOptions()
-                {
-                    Data = currentLobby.Data,
-                }
-                );
-            */
-
-
-            Lobby lobby = await Lobbies.Instance.UpdateLobbyAsync(currentLobby.Name, new UpdateLobbyOptions
+            Lobby lobby = await Lobbies.Instance.UpdateLobbyAsync(currentLobby.Id, new UpdateLobbyOptions
             {
                 Data = new Dictionary<string, DataObject>
                 {
-                    { "StartGame", new DataObject(DataObject.VisibilityOptions.Member, relayCode) }
+                   // { "StartGame", new DataObject(DataObject.VisibilityOptions.Member, relayCode) }
                 }
             });
-
             currentLobby = lobby;
+            Debug.Log(currentLobby.Data);
 
+            LobbyUI.gameObject.SetActive(false);
         }
         catch (LobbyServiceException e)
         {
             Debug.Log(e);
         }
+      
     }
 
     private void HandleLobbyPollForUpdates()
@@ -274,12 +271,10 @@ public class LobbyListUI : MonoBehaviour
         {
             if (currentLobby.Data["StartGame"].Value != "0")
             {
-                if (!IsLobbyHost())
-                {
-                    relayCreation.JoinRelay(currentLobby.Data["StartGame"].Value);
-                }
+                relayCreation.JoinRelay(currentLobby.Data["StartGame"].Value);
             }
         }
+        currentLobby = null;
     }
 
     public bool IsLobbyHost()

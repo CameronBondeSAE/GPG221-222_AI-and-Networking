@@ -7,12 +7,29 @@ using System.Threading.Tasks;
 using Unity.Netcode.Transports.UTP;
 using Unity.Netcode;
 using Unity.Networking.Transport.Relay;
+using TMPro;
+using Unity.Services.Core;
+using Unity.Services.Authentication;
 
 public class RelayCreation : MonoBehaviour
 {
-
+    public TextMeshProUGUI lobbyCodeText;
+    public TMP_InputField lobbyInput;
     public string relayCode;
-    public async Task<string> CreateRelay()
+
+    private async void Start()
+    {
+        await UnityServices.InitializeAsync();
+
+        AuthenticationService.Instance.SignedIn += () =>
+        {
+            Debug.Log("Signed in " + AuthenticationService.Instance.PlayerId);
+        };
+
+        await AuthenticationService.Instance.SignInAnonymouslyAsync();
+    }
+
+    public async void CreateRelay()
     {
         try
         {
@@ -20,19 +37,18 @@ public class RelayCreation : MonoBehaviour
 
             relayCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
-
             Debug.Log(relayCode);
+            lobbyCodeText.SetText(relayCode);
 
             RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
             NetworkManager.Singleton.StartHost();
-            return relayCode;
+            
         }
         catch (RelayServiceException e)
         {
             Debug.Log(e);
-            return null;
         }
     }
 
@@ -53,5 +69,10 @@ public class RelayCreation : MonoBehaviour
         {
             Debug.Log(e);
         }
+    }
+
+    public void ClickJoin()
+    {
+        JoinRelay(lobbyInput.text);
     }
 }
