@@ -61,7 +61,7 @@ public class LobbyListUI : MonoBehaviour
         // Populate the new lobby with some data; use indexes so it's easy to search for
         var lobbyData = new Dictionary<string, DataObject>()
         {
-            ["KEY_START_GAME"] = new DataObject(DataObject.VisibilityOptions.Member, "0"),
+            ["StartGame"] = new DataObject(DataObject.VisibilityOptions.Member, "0"),
             ["Test"] = new DataObject(DataObject.VisibilityOptions.Public, "true", DataObject.IndexOptions.S1),
             ["GameMode"] = new DataObject(DataObject.VisibilityOptions.Public, "Marble Race", DataObject.IndexOptions.S2)
   
