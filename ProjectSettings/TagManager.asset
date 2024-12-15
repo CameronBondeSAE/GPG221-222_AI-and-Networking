@@ -26,9 +26,9 @@ TagManager:
   - LeftWall
   - RightWall
   - 
+  - FriendAI
   - 
-  - 
-  - 
+  - EnemyAI
   - 
   - 
   - 
