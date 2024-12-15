@@ -54,6 +54,7 @@ public class Marble_EB : NetworkBehaviour
             string selectedColor = PlayerPrefs.GetString("SelectedColor");
             int colorIndex = GetColorIndex(selectedColor);
             SetMarbleColorServerRpc(colorIndex);
+            UpdateColourRpc(colorIndex);
         }
 
         UpdateColor(marbleColorIndex.Value);
@@ -112,6 +113,12 @@ public class Marble_EB : NetworkBehaviour
     private void SetMarbleColorServerRpc(int colorIndex)
     {
         marbleColorIndex.Value = colorIndex;
+    }
+
+    [ClientRpc]
+    private void UpdateColourRpc(int colorIndex)
+    {
+        UpdateColor(colorIndex);
     }
 
     private void scaleCharacter()
