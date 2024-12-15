@@ -10,6 +10,7 @@ using Unity.Networking.Transport.Relay;
 using TMPro;
 using Unity.Services.Core;
 using Unity.Services.Authentication;
+using Unity.Services.Lobbies.Models;
 
 public class RelayCreation : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class RelayCreation : MonoBehaviour
     public TextMeshProUGUI joinCodeText;
     public string joinCode;
     public string relayCode;
+    public Canvas LobbyUI;
     private async void Start()
     {
         await UnityServices.InitializeAsync();
@@ -77,5 +79,10 @@ public class RelayCreation : MonoBehaviour
     public async void ClickStart()
     {
         await StartHostWithRelay();
+    }
+
+    public void UIGOBYE()
+    {
+        LobbyUI.gameObject.SetActive(false);
     }
 }
