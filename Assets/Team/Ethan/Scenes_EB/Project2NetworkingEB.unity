@@ -1634,6 +1634,10 @@ PrefabInstance:
         type: 3}
       insertIndex: 0
       addedObject: {fileID: 410546344}
+    - targetCorrespondingSourceObject: {fileID: 5980966815858136689, guid: 5ebf99f5498ade94e839791a557d6607,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 670728647}
     - targetCorrespondingSourceObject: {fileID: 7447886768030928815, guid: 5ebf99f5498ade94e839791a557d6607,
         type: 3}
       insertIndex: 1
@@ -2522,19 +2526,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 670728643}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.41666666, y: 0.41666666, z: 0.41666666}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 59444432}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 281659679}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 400, y: 225}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &773345789
 GameObject:
   m_ObjectHideFlags: 0
@@ -6454,4 +6458,3 @@ SceneRoots:
   - {fileID: 281659677}
   - {fileID: 650886763}
   - {fileID: 1728538990}
-  - {fileID: 670728647}
