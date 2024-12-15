@@ -43,16 +43,13 @@ public class SearchLocation_State : EvilMarbleBase
     {
         base.Execute(aDeltaTime, aTimeScale);
 
-        if (hasTargetLocation)
-        {
-            Vector3 direction = (targetLocation - evilMarble.transform.position).normalized;
-            EvilRB.AddForce(direction * EvilMarbleBase.speed * aDeltaTime);
+        base.Execute(aDeltaTime, aTimeScale);
 
-            // Stop if close enough to the target
-            if (Vector3.Distance(evilMarble.transform.position, targetLocation) < 1f)
-            {
-                hasTargetLocation = false;
-            }
-        }
+        // Calculate movement direction 
+        Vector3 direction = (targetLocation - evilMarble.transform.position).normalized;
+
+        // Apply movement force towards the target location
+        EvilRB.AddForce(direction * EvilMarbleBase.speed * aDeltaTime);
+
     }
 }

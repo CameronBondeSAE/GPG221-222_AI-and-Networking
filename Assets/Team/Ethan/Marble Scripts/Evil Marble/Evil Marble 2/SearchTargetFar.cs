@@ -106,6 +106,7 @@ public class SearchTargetFar : MonoBehaviour
         {
             this.soundLocation = soundLocation;
             isMovingToSound = true;
+            evilMarbleSensors.IsListening = true;
         }
     }
 

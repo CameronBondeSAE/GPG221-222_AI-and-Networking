@@ -20,6 +20,8 @@ MonoBehaviour:
       name: IsBlocking
     - id: 2
       name: See Target Close
+    - id: 3
+      name: Location
   actions:
   - name: MoveToHome
     isDefault: 1
@@ -64,15 +66,28 @@ MonoBehaviour:
       value: 1
     - id: 0
       value: 0
+  - name: Search Location
+    isDefault: 0
+    state: {fileID: 8480151317789674175, guid: 59090a95c4f7d464f887b16dcd105ae5, type: 3}
+    cost: 0
+    position: {x: 855, y: 93}
+    pre:
+    - id: 3
+      value: 1
+    post:
+    - id: 3
+      value: 0
   goals:
   - name: Block
     isDefault: 1
-    position: {x: 231.9126, y: 361.01556}
+    position: {x: 221.9126, y: 340.01556}
     conditions:
     - id: 1
       value: 1
+    - id: 3
+      value: 0
   worldStates:
-  - position: {x: 223.90726, y: 488.30914}
+  - position: {x: 223.90726, y: 487.30914}
     isAutoUpdate: 1
     list:
     - id: 0
@@ -81,3 +96,5 @@ MonoBehaviour:
       value: 0
     - id: 2
       value: 0
+    - id: 3
+      value: 1

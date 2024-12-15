@@ -107,6 +107,7 @@ public class SearchPlayerClose : MonoBehaviour
         {
             this.soundLocation = soundLocation;
             isMovingToSound = true;
+            EvilMarbleSensor.IsListening = true;
         }
     }
 
