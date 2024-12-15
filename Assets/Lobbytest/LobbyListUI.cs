@@ -9,7 +9,9 @@ using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
+using Unity.Services.Relay;
 using Random = UnityEngine.Random;
+using Unity.Services.Relay.Models;
 public class LobbyListUI : MonoBehaviour
 {
     public Transform panelParent;
@@ -24,7 +26,8 @@ public class LobbyListUI : MonoBehaviour
     private Lobby currentLobby;
     public TMP_InputField lobbyInput;
     public Player lobbyPlayer;
-
+    public RelayCreation relayCreation;
+    public Canvas LobbyUI;
 
     //This Part Written By Sean:
 
@@ -37,10 +40,12 @@ public class LobbyListUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       /* if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Create(refLobby.foundLobbies, refLobby.currentLobby, maxPlayers, isPrivate, refLobby.loggedInPlayer);
-        }*/
+        /* if(Input.GetKeyDown(KeyCode.Space))
+         {
+             Create(refLobby.foundLobbies, refLobby.currentLobby, maxPlayers, isPrivate, refLobby.loggedInPlayer);
+         }*/
+
+        HandleLobbyPollForUpdates();
     }
 
     public void MakeLobby()
@@ -56,11 +61,10 @@ public class LobbyListUI : MonoBehaviour
         // Populate the new lobby with some data; use indexes so it's easy to search for
         var lobbyData = new Dictionary<string, DataObject>()
         {
+            ["KEY_START_GAME"] = new DataObject(DataObject.VisibilityOptions.Member, "0"),
             ["Test"] = new DataObject(DataObject.VisibilityOptions.Public, "true", DataObject.IndexOptions.S1),
-            ["GameMode"] = new DataObject(DataObject.VisibilityOptions.Public, "Marble Race", DataObject.IndexOptions.S2),
-            ["Skill"] = new DataObject(DataObject.VisibilityOptions.Public, Random.Range(1, 51).ToString(),
-                DataObject.IndexOptions.N1),
-            ["Rank"] = new DataObject(DataObject.VisibilityOptions.Public, Random.Range(1, 51).ToString()),
+            ["GameMode"] = new DataObject(DataObject.VisibilityOptions.Public, "Marble Race", DataObject.IndexOptions.S2)
+  
         };
 
         // Create a new lobby
@@ -178,5 +182,46 @@ public class LobbyListUI : MonoBehaviour
         JoinLobby(lobbyInput.text);
     }
 
+    public async void StartGame()
+    {
+        try
+        {
+            LobbyUI.gameObject.SetActive(false);
+    
+            string relayCode = await relayCreation.CreateRelay();
+
+            Lobby lobby = await Lobbies.Instance.UpdateLobbyAsync(currentLobby.Id, new UpdateLobbyOptions
+            {
+                Data = new Dictionary<string, DataObject>
+                {
+                    { "StartGame", new DataObject(DataObject.VisibilityOptions.Member, relayCode) }
+                }
+            });
+
+            currentLobby = lobby;
+        }
+        catch (LobbyServiceException e)
+        {
+            Debug.Log(e);
+        }
+    }
+
+    private void HandleLobbyPollForUpdates()
+    {
+        if (currentLobby.Data["StartGame"].Value != "0")
+        {
+            if (!IsLobbyHost())
+            {
+                relayCreation.JoinRelay(currentLobby.Data["StartGame"].Value);
+            }
+        }
+
+        currentLobby = null;
+    }
+
+    public bool IsLobbyHost()
+    {
+        return currentLobby != null && currentLobby.HostId == AuthenticationService.Instance.PlayerId;
+    }
 }
 
