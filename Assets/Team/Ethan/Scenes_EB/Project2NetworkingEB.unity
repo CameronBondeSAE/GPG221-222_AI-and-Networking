@@ -677,6 +677,12 @@ Transform:
   - {fileID: 1099204705}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &144262305 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1629914877297115706, guid: 5ebf99f5498ade94e839791a557d6607,
+    type: 3}
+  m_PrefabInstance: {fileID: 281659677}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &206235962 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 8874116965284566330, guid: 7e155c95355e72748921fd44f7711f03,
@@ -875,7 +881,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 650886758}
     - target: {fileID: 2174030679875843811, guid: 5ebf99f5498ade94e839791a557d6607,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -1170,7 +1176,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 650886758}
     - target: {fileID: 8036572044314624290, guid: 5ebf99f5498ade94e839791a557d6607,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -1225,7 +1231,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 650886758}
     - target: {fileID: 8629409881424249188, guid: 5ebf99f5498ade94e839791a557d6607,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -1814,15 +1820,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f08fbae4de7dcdd4080a62b5292bb99a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelParent: {fileID: 0}
+  panelParent: {fileID: 144262305}
   refLobby: {fileID: 650886759}
   panelUI: {fileID: 8578492402750874951, guid: 5deaec1aa3147774c956401fcf063ba1, type: 3}
-  newLobbyName: LobbyHelloWorld2a873588-f157-44ce-bd10-c7bc4384eb82
+  newLobbyName: MarbleGameLobby
   lobbyNameText: 
   maxPlayers: 8
   isPrivate: 0
-  lobbyCodeText: {fileID: 0}
-  lobbyInput: {fileID: 0}
+  lobbyCodeText: {fileID: 410546345}
+  lobbyInput: {fileID: 2082349742}
 --- !u!114 &650886759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4927,6 +4933,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1937686589}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2082349742 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3446424983020289782, guid: 5ebf99f5498ade94e839791a557d6607,
+    type: 3}
+  m_PrefabInstance: {fileID: 281659677}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2092060760
 PrefabInstance:
   m_ObjectHideFlags: 0
