@@ -23,7 +23,8 @@ public class SearchTargetFar : MonoBehaviour
     public float soundDetectionRadius = 10f;
     public float broadcastRadius = 15f;
     public LayerMask aiLayer;
-    private Vector3 soundLocation;
+    public Vector3 soundLocation;
+    private bool hasBroadcastedPlayerPosition = false;
 
     public void Start()
     {
@@ -36,8 +37,7 @@ public class SearchTargetFar : MonoBehaviour
     {
         DetectCloseCircle();
         UpdateColor();
-
-
+        CheckSoundLocationReached();
     }
 
     // Uses a circle collider to detect the player using a layer
@@ -75,54 +75,77 @@ public class SearchTargetFar : MonoBehaviour
 
                             // Broadcast the detected player location
                             BroadcastPlayerLocation(playerTransform.position);
+                            hasBroadcastedPlayerPosition = true;
                             break;
                         }
                     }
                 }
+
+                if (!playerDetectedFar && playerIsDetected)
+                {
+                    ResetStates();
+                }
+
             }
 
-            if (!playerDetectedFar && playerIsDetected)
-            {
-                detectionMeter -= Time.deltaTime * detectionRate;
-                detectionMeter = Mathf.Max(detectionMeter, 0f);
-            }
-
-            // Reset state if the player is no longer detected
-            if (detectionMeter == 0f && playerIsDetected)
-            {
-                ResetStates();
-            }
+            
         }
         
     }
 
-    public void HearSound(Vector3 soundLocation)
+    public void HearSound(Vector3 playerPosition)
     {
-        if (Vector3.Distance(transform.position, soundLocation) <= soundDetectionRadius)
+        if (Vector3.Distance(transform.position, playerPosition) <= soundDetectionRadius)
         {
-            this.soundLocation = soundLocation;
-            evilMarbleSensors.IsListening = true;
+            soundLocation = playerPosition; // Update the target location
+            evilMarbleSensors.IsListening = true; // AI is now in a listening state
         }
     }
 
-    private void BroadcastPlayerLocation(Vector3 location)
+    public void BroadcastPlayerLocation(Vector3 playerPosition)
     {
+        // Get all nearby AIs within the broadcast radius
         Collider[] nearbyAIs = Physics.OverlapSphere(transform.position, broadcastRadius, aiLayer);
 
         foreach (var ai in nearbyAIs)
         {
-            if (ai.TryGetComponent(out SearchLocation_State locationState))
+            // Prevent broadcasting to itself
+            if (ai != this.GetComponent<Collider>())
             {
-                locationState.ReceiveLocation(location);
+                // Check for SearchPlayerClose component and call HearSound
+                if (ai.TryGetComponent(out SearchPlayerClose otherCloseAI))
+                {
+                    otherCloseAI.HearSound(playerPosition);
+                }
+
+                // Check for SearchTargetFar component and call HearSound
+                if (ai.TryGetComponent(out SearchTargetFar otherFarAI))
+                {
+                    otherFarAI.HearSound(playerPosition);
+                }
             }
         }
     }
 
+    private void CheckSoundLocationReached()
+    {
+        if (evilMarbleSensors.IsListening)
+        {
+            // Check the distance to the sound location
+            float distanceToSound = Vector3.Distance(EvilRB.position, soundLocation);
+
+            if (distanceToSound < 1f) 
+            {
+                ResetStates();
+            }
+        }
+    }
 
     public void ResetStates()
     {
         evilMarbleSensors.SeeTargetClose = false;
         evilMarbleSensors.IsBlocking = false;
+        evilMarbleSensors.IsListening = false;
         playerIsDetected = false;
         detectionMeter = 0f;
     }
