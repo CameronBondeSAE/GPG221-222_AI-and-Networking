@@ -23,18 +23,19 @@ public class LobbyListUI : MonoBehaviour
     public int maxPlayers = 8;
     public bool isPrivate = false;
     public TextMeshProUGUI lobbyCodeText;
-    private Lobby currentLobby;
     public TMP_InputField lobbyInput;
     public Player lobbyPlayer;
     public RelayCreation relayCreation;
     public Canvas LobbyUI;
+    public Lobby hostLobby;
+    public Lobby currentLobby;
 
     //This Part Written By Sean:
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -51,70 +52,111 @@ public class LobbyListUI : MonoBehaviour
     public void MakeLobby()
     {
 
-        Create(refLobby.foundLobbies, refLobby.currentLobby, maxPlayers, isPrivate);
-
-    }    
-
+        /// Create(refLobby.foundLobbies, refLobby.currentLobby, maxPlayers, isPrivate);
+        CreateLobby();
+    }
+    /* SEANS OLD LOBBY CREATION (JAMES REPLACED)
     public async Task Create(List<Lobby> foundLobbies, Lobby currentLobby, int maxPlayers, bool isPrivate)
     {
+    
+    // Populate the new lobby with some data; use indexes so it's easy to search for
+    var lobbyData = new Dictionary<string, DataObject>()
+    {
+        ["StartGame"] = new DataObject(DataObject.VisibilityOptions.Member, "0"),
+        ["Test"] = new DataObject(DataObject.VisibilityOptions.Public, "true", DataObject.IndexOptions.S1),
+        ["GameMode"] = new DataObject(DataObject.VisibilityOptions.Public, "Marble Race", DataObject.IndexOptions.S2)
 
-        // Populate the new lobby with some data; use indexes so it's easy to search for
-        var lobbyData = new Dictionary<string, DataObject>()
-        {
-            ["StartGame"] = new DataObject(DataObject.VisibilityOptions.Member, "0"),
-            ["Test"] = new DataObject(DataObject.VisibilityOptions.Public, "true", DataObject.IndexOptions.S1),
-            ["GameMode"] = new DataObject(DataObject.VisibilityOptions.Public, "Marble Race", DataObject.IndexOptions.S2)
-  
-        };
+    };
 
-        // Create a new lobby
-        currentLobby = await LobbyService.Instance.CreateLobbyAsync(
-            lobbyName: newLobbyName,
-            maxPlayers: maxPlayers,
-            options: new CreateLobbyOptions()
-            {
-                Data = lobbyData,
-                IsPrivate = isPrivate,
-                Player = lobbyPlayer
-            });
-
-        Debug.Log($"Created new lobby {currentLobby.Name} ({currentLobby.Id}) {currentLobby.LobbyCode}");
-        
-        List<QueryOrder> queryOrdering = new List<QueryOrder>
+    // Create a new lobby
+    Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(
+        lobbyName: newLobbyName,
+        maxPlayers: maxPlayers,
+        options: new CreateLobbyOptions()
         {
-            new QueryOrder(true, QueryOrder.FieldOptions.AvailableSlots),
-            new QueryOrder(false, QueryOrder.FieldOptions.Created),
-            new QueryOrder(false, QueryOrder.FieldOptions.Name),
-        };
-        response = await LobbyService.Instance.QueryLobbiesAsync(new QueryLobbiesOptions()
-        {
-            Count = 20, // Override default number of results to return
-           
-            Order = queryOrdering,
+            Data = lobbyData,
+            IsPrivate = isPrivate,
+            Player = lobbyPlayer
         });
-        
-        PopulateLobbyUI(foundLobbies);
 
-        lobbyCodeText.SetText("Lobby Code = " + currentLobby.LobbyCode);
+    hostLobby = lobby;
+    currentLobby = hostLobby;
+
+    Debug.Log($"Created new lobby {lobby.Name} ({lobby.Id}) {lobby.LobbyCode}");
+    */
+
+    private async void CreateLobby()
+    {
+        try
+        {
+            string lobbyName = "lobby";
+            int maxPlayers = 4;
+            CreateLobbyOptions createLobbyOptions = new CreateLobbyOptions
+            {
+                IsPrivate = false,
+                Data = new Dictionary<string, DataObject>
+                {
+                    {"GameMode", new DataObject(DataObject.VisibilityOptions.Public, "MarbleGame") },
+                    {"StartGame", new DataObject(DataObject.VisibilityOptions.Member, "0") }
+            }
+            };
+
+
+            Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, createLobbyOptions);
+
+            hostLobby = lobby;
+            currentLobby = hostLobby;
+
+            Debug.Log("Lobby Created" + lobby.Name + ", " + lobby.MaxPlayers + ", " + lobby.Id + ", " + lobby.LobbyCode);
+
+            lobbyCodeText.SetText("Lobby Code = " + hostLobby.LobbyCode);
+        }
+        catch (LobbyServiceException e)
+        {
+            Debug.LogError(e.Message);
+        }
+    
     }
 
+    private async void ListLobbies()
+    {
+        try
+        {
+            QueryLobbiesOptions queryLobbiesOptions = new QueryLobbiesOptions
+            {
+                Count = 20, // Override default number of results to return
+
+                Filters = new List<QueryFilter>
+                {
+                     new QueryFilter(QueryFilter.FieldOptions.AvailableSlots, "0", QueryFilter.OpOptions.GT)
+                },
+                Order = new List<QueryOrder>
+                {
+                    new QueryOrder(false, QueryOrder.FieldOptions.Created)
+                }
+            };
+
+
+            QueryResponse queryResponse = await Lobbies.Instance.QueryLobbiesAsync(queryLobbiesOptions);
+
+            foreach (Lobby lobby in queryResponse.Results)
+            {
+                //Instantiate the lobby prefab
+                var panel = Instantiate(panelUI);
+                panel.transform.parent = panelParent;
+                Debug.Log("lobby created");
+            }
+
+        
+        }
+        catch (LobbyServiceException e)
+        {
+            Debug.Log(e);
+        }
+    }
     public void refresh()
     {
-        PopulateLobbyUI(refLobby.foundLobbies);
-    }
-    public void PopulateLobbyUI(List<Lobby> foundLobbies)
-    {
-       
-        
-        foundLobbies = response.Results;
-        //For each lobby in the list
-        foreach (Lobby item in foundLobbies) 
-        { 
-            //Instantiate the lobby prefab
-            var panel =  Instantiate(panelUI);
-            panel.transform.parent = panelParent;
-            Debug.Log("lobby created");
-        }
+        ListLobbies();
     }
 
     //This Part Written By James:
@@ -130,6 +172,8 @@ public class LobbyListUI : MonoBehaviour
         // Add some data to our player
         // This data will be included in a lobby under players -> player.data
         //lobbyPlayer.Data.Add("Ready", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, "No"));
+
+        ListLobbies();
     }
 
     // Log in a player using Unity's "Anonymous Login" API and construct a Player object for use with the Lobbies APIs
@@ -162,14 +206,17 @@ public class LobbyListUI : MonoBehaviour
         // Player is optional because the service can pull the player data from the auth token
         // However, if your player has custom data, you will want to pass the Player object into this call
         // This will save you having to do a Join call followed by an UpdatePlayer call
-        currentLobby = await LobbyService.Instance.JoinLobbyByCodeAsync(
+        Lobby lobby = await LobbyService.Instance.JoinLobbyByCodeAsync(
             lobbyCode,
             options: new JoinLobbyByCodeOptions()
             {
                 Player = lobbyPlayer
             });
 
-        Debug.Log($"Joined lobby {currentLobby.Name} ({currentLobby.LobbyCode})");
+        currentLobby = lobby;
+
+
+        Debug.Log($"Joined lobby {lobby.Name} ({lobby.LobbyCode})");
 
         // You can also join via a Lobby Code instead of a lobby ID
         // Lobby Codes are a short, unique codes that map to a specific lobby ID
@@ -187,10 +234,24 @@ public class LobbyListUI : MonoBehaviour
         try
         {
             LobbyUI.gameObject.SetActive(false);
-    
+
             string relayCode = await relayCreation.CreateRelay();
 
-            Lobby lobby = await Lobbies.Instance.UpdateLobbyAsync(currentLobby.Id, new UpdateLobbyOptions
+            /*
+            currentLobby.Data["StartGame"] =
+                new DataObject(DataObject.VisibilityOptions.Member, relayCode);
+
+            currentLobby = await LobbyService.Instance.UpdateLobbyAsync(
+                currentLobby.Name,
+                options: new UpdateLobbyOptions()
+                {
+                    Data = currentLobby.Data,
+                }
+                );
+            */
+
+
+            Lobby lobby = await Lobbies.Instance.UpdateLobbyAsync(currentLobby.Name, new UpdateLobbyOptions
             {
                 Data = new Dictionary<string, DataObject>
                 {
@@ -199,6 +260,7 @@ public class LobbyListUI : MonoBehaviour
             });
 
             currentLobby = lobby;
+
         }
         catch (LobbyServiceException e)
         {
@@ -208,15 +270,16 @@ public class LobbyListUI : MonoBehaviour
 
     private void HandleLobbyPollForUpdates()
     {
-        if (currentLobby.Data["StartGame"].Value != "0")
+        if (currentLobby != null)
         {
-            if (!IsLobbyHost())
+            if (currentLobby.Data["StartGame"].Value != "0")
             {
-                relayCreation.JoinRelay(currentLobby.Data["StartGame"].Value);
+                if (!IsLobbyHost())
+                {
+                    relayCreation.JoinRelay(currentLobby.Data["StartGame"].Value);
+                }
             }
         }
-
-        currentLobby = null;
     }
 
     public bool IsLobbyHost()

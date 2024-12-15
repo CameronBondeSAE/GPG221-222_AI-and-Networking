@@ -11,23 +11,23 @@ using Unity.Networking.Transport.Relay;
 public class RelayCreation : MonoBehaviour
 {
 
-    public string joinCode;
+    public string relayCode;
     public async Task<string> CreateRelay()
     {
         try
         {
             Allocation allocation = await RelayService.Instance.CreateAllocationAsync(3);
 
-            joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
+            relayCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
 
-            Debug.Log(joinCode);
+            Debug.Log(relayCode);
 
             RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
             NetworkManager.Singleton.StartHost();
-            return joinCode;
+            return relayCode;
         }
         catch (RelayServiceException e)
         {

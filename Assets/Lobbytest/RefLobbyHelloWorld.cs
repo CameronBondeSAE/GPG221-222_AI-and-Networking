@@ -151,7 +151,7 @@ public class RefLobbyHelloWorld : MonoBehaviour
 
         //await listUI.Create(foundLobbies,currentLobby, maxPlayers, isPrivate, loggedInPlayer);
 
-        listUI.PopulateLobbyUI(foundLobbies);
+       // listUI.PopulateLobbyUI(foundLobbies);
 
 
     }
