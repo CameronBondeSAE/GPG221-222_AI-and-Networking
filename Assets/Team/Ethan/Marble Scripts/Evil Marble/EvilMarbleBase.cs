@@ -18,4 +18,5 @@ public class EvilMarbleBase : AntAIState
     public Transform currentBlockTarget;
     public float targetReachThreshold = 0.5f;
     public float movementSpeed = 5f;
+    public float locationSpeed = 10f;
 }

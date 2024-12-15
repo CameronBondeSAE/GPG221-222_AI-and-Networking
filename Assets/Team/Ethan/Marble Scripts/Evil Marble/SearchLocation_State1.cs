@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class SearchLocation_State : EvilMarbleBase
+public class SearchLocation_State1 : EvilMarbleBase
 {
     //References to other gameobjects/scripts
     public GameObject evilMarble;
@@ -13,7 +13,7 @@ public class SearchLocation_State : EvilMarbleBase
     public TextFaceCameraEvilMarble textEvilMarble;
     public Vector3 targetLocation;
     public bool hasTargetLocation;
-    public SearchTargetFar SearchTargetFar;
+    public SearchPlayerClose searchPlayerClose;
 
     //make sure when created to get all references
     public override void Create(GameObject aGameObject)
@@ -23,7 +23,7 @@ public class SearchLocation_State : EvilMarbleBase
         EvilRB = aGameObject.GetComponent<Rigidbody>();
         EvilMarbleBase = aGameObject.GetComponent<EvilMarbleBase>();
         textEvilMarble = aGameObject.GetComponentInChildren<TextFaceCameraEvilMarble>();
-        SearchTargetFar = aGameObject.GetComponent<SearchTargetFar>();
+        searchPlayerClose = aGameObject.GetComponent<SearchPlayerClose>();
     }
 
     //when entering the state change colour and txt
@@ -45,7 +45,7 @@ public class SearchLocation_State : EvilMarbleBase
     {
         base.Execute(aDeltaTime, aTimeScale);
 
-        EvilRB.position = Vector3.MoveTowards(EvilRB.position, SearchTargetFar.soundLocation, Time.deltaTime * EvilMarbleBase.locationSpeed);
+        EvilRB.position = Vector3.MoveTowards(EvilRB.position, searchPlayerClose.soundLocation, Time.deltaTime * EvilMarbleBase.locationSpeed);
     }
 
 }

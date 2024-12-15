@@ -353,6 +353,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Emote Particle System
       objectReference: {fileID: 0}
+    - target: {fileID: 6452484251243983188, guid: 2d0abdaf71a84fe418ea99299d6ac10e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1029,6 +1034,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Emote Particle System (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6452484251243983188, guid: 2d0abdaf71a84fe418ea99299d6ac10e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1137,7 +1147,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 295055470}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Block Location 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1286,7 +1296,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 405635486}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Block Locations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1863,7 +1873,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 850630795}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Block Location 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2064,7 +2074,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1047331366}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Block Location 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2601,6 +2611,8 @@ MonoBehaviour:
     _prefab: Assets/Team/Ethan/Prefab_EB/Marble Prefab/Evil Marble Blocker Variant.prefab
   - _gameObject: {fileID: 197949241}
     _prefab: Assets/Prefabs/Emote Particle System.prefab
+  - _gameObject: {fileID: 4918324964914535201}
+    _prefab: Assets/Team/Ethan/Marble Scripts/Evil Marble/States/LocationsState.prefab
 --- !u!4 &1286699234
 Transform:
   m_ObjectHideFlags: 11
@@ -3607,7 +3619,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1958672511}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Block Location 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4068,12 +4080,12 @@ PrefabInstance:
     - target: {fileID: 924865290102367802, guid: a259a2c3794343647b85fabaa92a8016,
         type: 3}
       propertyPath: broadcastRadius
-      value: 51
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 924865290102367802, guid: a259a2c3794343647b85fabaa92a8016,
         type: 3}
       propertyPath: soundDetectionRadius
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 924865290102367802, guid: a259a2c3794343647b85fabaa92a8016,
         type: 3}
@@ -4125,6 +4137,11 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1911401738166546236, guid: a259a2c3794343647b85fabaa92a8016,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2654399053100400511, guid: a259a2c3794343647b85fabaa92a8016,
         type: 3}
       propertyPath: GlobalObjectIdHash
@@ -4134,6 +4151,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Evil Marble Blocker
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018197778357924979, guid: a259a2c3794343647b85fabaa92a8016,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4639158079191464708, guid: a259a2c3794343647b85fabaa92a8016,
         type: 3}
@@ -4166,6 +4188,11 @@ PrefabInstance:
       propertyPath: player_rb
       value: 
       objectReference: {fileID: 1164126103}
+    - target: {fileID: 5336063174802767863, guid: a259a2c3794343647b85fabaa92a8016,
+        type: 3}
+      propertyPath: locationSpeed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5336063174802767863, guid: a259a2c3794343647b85fabaa92a8016,
         type: 3}
       propertyPath: movementSpeed
@@ -4289,6 +4316,80 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4536966782528947930}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4918324964914535200
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6012768891456550920, guid: a995ffe5c3b49494ab6f85e041c483c3,
+        type: 3}
+      propertyPath: m_Name
+      value: LocationsState
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815030205823870373, guid: a995ffe5c3b49494ab6f85e041c483c3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -346.77994
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815030205823870373, guid: a995ffe5c3b49494ab6f85e041c483c3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -191.20767
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815030205823870373, guid: a995ffe5c3b49494ab6f85e041c483c3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2070.785
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815030205823870373, guid: a995ffe5c3b49494ab6f85e041c483c3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815030205823870373, guid: a995ffe5c3b49494ab6f85e041c483c3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815030205823870373, guid: a995ffe5c3b49494ab6f85e041c483c3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815030205823870373, guid: a995ffe5c3b49494ab6f85e041c483c3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815030205823870373, guid: a995ffe5c3b49494ab6f85e041c483c3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815030205823870373, guid: a995ffe5c3b49494ab6f85e041c483c3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815030205823870373, guid: a995ffe5c3b49494ab6f85e041c483c3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a995ffe5c3b49494ab6f85e041c483c3, type: 3}
+--- !u!1 &4918324964914535201 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6012768891456550920, guid: a995ffe5c3b49494ab6f85e041c483c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4918324964914535200}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6898237669897963866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4402,6 +4503,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Evil Marble Chaser
       objectReference: {fileID: 0}
+    - target: {fileID: 1109663096535718673, guid: 7a439c318dba3c543a7d0e93055fddb4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2050123826585931805, guid: 7a439c318dba3c543a7d0e93055fddb4,
         type: 3}
       propertyPath: GlobalObjectIdHash
@@ -4414,18 +4520,23 @@ PrefabInstance:
       objectReference: {fileID: 8138514401119575904}
     - target: {fileID: 2231129357988352492, guid: 7a439c318dba3c543a7d0e93055fddb4,
         type: 3}
+      propertyPath: detectPlayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2231129357988352492, guid: 7a439c318dba3c543a7d0e93055fddb4,
+        type: 3}
       propertyPath: aiLayer.m_Bits
       value: 4096
       objectReference: {fileID: 0}
     - target: {fileID: 2231129357988352492, guid: 7a439c318dba3c543a7d0e93055fddb4,
         type: 3}
       propertyPath: broadcastRadius
-      value: 51
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2231129357988352492, guid: 7a439c318dba3c543a7d0e93055fddb4,
         type: 3}
       propertyPath: soundDetectionRadius
-      value: 50
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2231129357988352492, guid: 7a439c318dba3c543a7d0e93055fddb4,
         type: 3}
@@ -4451,6 +4562,11 @@ PrefabInstance:
         type: 3}
       propertyPath: detectionLayers.Array.data[1].m_Bits
       value: 16384
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459942737482186846, guid: 7a439c318dba3c543a7d0e93055fddb4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3554550229276109661, guid: 7a439c318dba3c543a7d0e93055fddb4,
         type: 3}
@@ -4552,6 +4668,11 @@ PrefabInstance:
       propertyPath: home
       value: 
       objectReference: {fileID: 111705041}
+    - target: {fileID: 8261941535327637653, guid: 7a439c318dba3c543a7d0e93055fddb4,
+        type: 3}
+      propertyPath: locationSpeed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8607296588347757111, guid: 7a439c318dba3c543a7d0e93055fddb4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4602,3 +4723,4 @@ SceneRoots:
   - {fileID: 1541912994}
   - {fileID: 1302823137}
   - {fileID: 715889805}
+  - {fileID: 4918324964914535200}

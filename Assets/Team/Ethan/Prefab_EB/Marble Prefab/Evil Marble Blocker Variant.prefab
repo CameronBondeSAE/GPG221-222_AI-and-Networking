@@ -140,6 +140,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Evil Marble Blocker Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2050123826585931805, guid: 7a439c318dba3c543a7d0e93055fddb4,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3699045777
+      objectReference: {fileID: 0}
     - target: {fileID: 2797386509719839992, guid: 7a439c318dba3c543a7d0e93055fddb4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -374,11 +379,10 @@ MonoBehaviour:
   currentBlockTarget: {fileID: 0}
   targetReachThreshold: 0.5
   movementSpeed: 5
-  player_rb: {fileID: 0}
-  playerTransform: {fileID: 0}
   IsBlocking: 0
   IsHome: 0
   SeeTargetClose: 0
+  IsListening: 0
 --- !u!114 &924865290102367802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,10 +396,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetCloseDetection: 50
-  detectionLayer:
-    serializedVersion: 2
-    m_Bits: 8
+  detectionLayers: []
   playerTransform: {fileID: 0}
+  EvilRB: {fileID: 0}
+  detectionMeter: 0
+  detectPlayer: 5
+  detectionRate: 2
+  renderer: {fileID: 0}
+  soundDetectionRadius: 10
+  broadcastRadius: 15
+  aiLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  soundLocation: {x: 0, y: 0, z: 0}
 --- !u!4 &5752947781403737429 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8607296588347757111, guid: 7a439c318dba3c543a7d0e93055fddb4,
